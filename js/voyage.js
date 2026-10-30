@@ -43,16 +43,7 @@ function arriver(m) {
 }
 
 // ===================== Comptoirs : la vie =====================
-function tickConvoi() {}
-function positionConvoi() { return null; }
 function nouveauComptoir(m) {
   majComptoirs(); voisins = voisinage(); majHud();
   dire("<b>" + m.nom + " est un port de la Compagnie.</b> Il tend l’oreille au vide pour toi.");
-}
-function ancienComptoir(m) {
-  const avant = equipementColonies().length;
-  majComptoirs(); voisins = voisinage(); majHud();
-  const t = TYPE[m.type];
-  if (equipementColonies().length > avant) { bip(4); dire("<b>" + m.nom + " est un comptoir de la Compagnie</b>, et tu en reviens équipé : <b>" + t.equip.nom + "</b>, " + t.equip.desc + ". Dans ta soute, pour toutes tes expéditions."); }
-  else dire("<b>" + m.nom + " est un comptoir de la Compagnie.</b> Il écoute le noir avec les autres, et les navettes y passeront.");
 }

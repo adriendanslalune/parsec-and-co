@@ -1,6 +1,6 @@
 :root {
-  --nuit: #121a3d; --nuit-2: #0c1230; --papier: #f1e2bc; --creme: #f4e9cf; --orange: #ef9b4f;
-  --eau: #8fd3c4; --lavande: #b9aae8; --rose: #e8a99a; --encre: #1b2451; --encre-douce: #46507e;
+  --papier: #f1e2bc; --orange: #ef9b4f;
+  --eau: #8fd3c4; --rose: #e8a99a; --encre: #1b2451; --encre-douce: #46507e;
   --trame: radial-gradient(rgba(27,36,81,0.07) 1px, transparent 1.5px) 0 0 / 6px 6px;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -49,7 +49,6 @@ button[disabled] { opacity: 0.5; cursor: default; }
 /* le papier : une case de bande dessinée */
 .papier { background: var(--trame), var(--papier); color: var(--encre); border: 1.5px solid var(--encre); border-radius: 3px; padding: 11px 14px; box-shadow: 4px 4px 0 var(--orange); font-size: 16px; line-height: 1.4; transform: rotate(-0.4deg); }
 .papier b { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-weight: 400; font-size: 17px; letter-spacing: 0.01em; }
-.papier.cache { display: none; }
 .papier button { margin-top: 10px; margin-right: 6px; font-size: 15px; padding: 7px 12px; }
 /* la page de magazine */
 .fiche { position: fixed; inset: 0; background: rgba(40,28,16,0.5); display: flex; align-items: flex-end; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + 12px) 12px calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 5; }
@@ -72,9 +71,6 @@ button[disabled] { opacity: 0.5; cursor: default; }
 .fiche .choix { margin-top: 14px; }
 .fiche .choix button { display: block; width: 100%; text-align: left; margin: 10px 0; padding: 12px 15px; font-size: 17px; line-height: 1.3; }
 .fiche .journal { border-left: 2px solid var(--orange); padding-left: 12px; margin: 12px 0; color: var(--encre-douce); font-style: italic; font-size: 16px; }
-table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 15px; }
-th { text-align: left; font-size: 14px; font-style: italic; font-weight: 400; color: var(--encre-douce); padding: 4px 6px; border-bottom: 1.5px solid var(--encre); }
-td { padding: 6px; border-bottom: 1px solid rgba(27,36,81,0.18); vertical-align: top; }
 .gris { color: var(--encre-douce); font-size: 14px; font-style: italic; }
 /* la soute */
 .grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px 9px; margin: 12px 0; touch-action: none; }
@@ -83,7 +79,5 @@ td { padding: 6px; border-bottom: 1px solid rgba(27,36,81,0.18); vertical-align:
 .tuile { width: 86%; height: 86%; border: 1.5px solid var(--encre); border-radius: 3px; box-shadow: 2px 2px 0 var(--encre); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--encre); cursor: grab; transition: transform 0.15s; position: relative; }
 .tuile span { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 20px; line-height: 1; }
 .tuile small { font-size: 9px; letter-spacing: 1px; margin-top: 3px; }
-.gain { position: fixed; left: 18px; font: 700 16px "Vollkorn", serif; color: var(--eau); pointer-events: none; animation: monte 1.4s ease-out forwards; }
-@keyframes monte { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-30px); } }
 input { font: 400 18px "Vollkorn", Georgia, serif; padding: 10px 12px; border: 1.5px solid var(--encre); border-radius: 3px; width: 100%; box-sizing: border-box; background: #fbf3dc; color: var(--encre); }
 @media (prefers-reduced-motion: reduce) { .tuile, button { transition: none; } }

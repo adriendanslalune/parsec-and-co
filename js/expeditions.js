@@ -1,22 +1,21 @@
 // Parsec & Co : le moteur des expéditions. Les scènes elles-mêmes sont dans mondes/, un fichier par type de monde.
 // Script classique : il partage ses variables avec les autres fichiers de js/ (voir l’ordre dans index.html).
 
-// ===================== Types de mondes et équipement fourni =====================
+// ===================== Types de mondes =====================
 const TYPES = [
-  { k: "rocheux", nom: "Monde rocheux", poids: 22, c1: "#8d7b6e", c2: "#4a3f3a", danger: [1, 3], equip: { nom: "foreuse", desc: "perce la roche, les portes, et parfois le silence" }, desc: ["des cailloux, puis d’autres cailloux, puis une vallée, remplie de cailloux", "une surface grise qui a décidé très tôt de ne pas faire d’efforts", "un relief si monotone que les géologues y pleurent d’ennui, puis de joie, puis d’ennui"] },
-  { k: "gazeux", nom: "Géante gazeuse", poids: 16, c1: "#e8c38a", c2: "#9a6a3c", danger: [2, 4], equip: { nom: "ballast à gaz", desc: "flotte dans n’importe quelle atmosphère, même celles qui ne veulent pas" }, desc: ["une boule de gaz de la taille d’une mauvaise idée, avec des tempêtes qui durent plus longtemps que la plupart des civilisations", "des bandes de nuages couleur café au lait, sans surface où poser quoi que ce soit, ni même une opinion", "un endroit où « atterrir » n’est pas un verbe mais une façon de mourir"] },
-  { k: "desert", nom: "Monde désertique", poids: 14, c1: "#f0c78a", c2: "#b8763a", danger: [1, 3], equip: { nom: "réserve d’eau", desc: "de l’eau, dans un désert, c’est de la magie en bidon" }, desc: ["du sable, de la chaleur, et une seule dune qui ressemble un peu à une autre dune", "un désert si vaste que le vent lui-même s’y perd et revient demander son chemin", "deux soleils, zéro ombre, et un silence qu’on entend d’ici"] },
-  { k: "glace", nom: "Monde glacé", poids: 14, c1: "#d9eef5", c2: "#6e9fc0", danger: [1, 3], equip: { nom: "combinaison thermique", desc: "garde la chaleur, les doigts et la bonne humeur" }, desc: ["de la glace jusqu’à l’horizon, puis, après l’horizon, de la glace", "un monde qui craque la nuit comme une vieille maison, en beaucoup plus grand et sans personne pour s’en inquiéter", "des falaises bleues, un froid honnête, et nulle part où acheter des gants"] },
-  { k: "volcan", nom: "Monde volcanique", poids: 9, c1: "#f27c4a", c2: "#3a1f1c", danger: [3, 5], equip: { nom: "bouclier thermique", desc: "entre toi et la lave, il y a lui, et il préfère que ça reste comme ça" }, desc: ["des volcans qui n’ont jamais entendu parler du concept de pause", "une croûte mince comme une excuse, et dessous, de la lave qui attend", "un ciel orange, une odeur d’œuf, et des paysages magnifiques pour qui aime regarder vite"] },
-  { k: "toxique", nom: "Monde toxique", poids: 8, c1: "#b7d36a", c2: "#4d5a2a", danger: [3, 5], equip: { nom: "masque à acides", desc: "filtre tout ce qui pique, y compris certaines remarques" }, desc: ["une atmosphère verdâtre qui dissout les sondes, les espoirs, et les paragraphes trop longs", "des lacs jaunes dont la Compagnie déconseille formellement de goûter l’eau, par expérience", "un monde où respirer est une mauvaise habitude que l’on perd vite"] },
-  { k: "crateres", nom: "Monde criblé", poids: 10, c1: "#a9a3a0", c2: "#3e3b3a", danger: [1, 2], equip: { nom: "détecteur de métaux", desc: "bipe près des trésors, des épaves et des boîtes de conserve" }, desc: ["des cratères dans des cratères, comme si quelqu’un avait raté le même coup de poing pendant un milliard d’années", "une surface morte, calme, et parfaitement reposante pour qui ne tient pas à la vie", "le genre d’endroit où on retrouve ses clefs tout de suite, parce qu’il n’y a rien d’autre"] },
-  { k: "ocean", nom: "Monde océan", poids: 3, c1: "#5fb8c9", c2: "#1f4a7a", danger: [1, 2], equip: { nom: "sonar", desc: "voit sous l’eau, sous la glace, et à travers les mensonges épais" }, desc: ["de l’eau partout, très profonde, avec dedans quelque chose de grand qui n’a pas encore donné son nom", "un océan turquoise sans aucune île, ce qui rend les cartes très simples et les naufrages très longs", "des vagues lentes, chaudes, et un plancton qui brille la nuit en formant des mots qu’on préfère ne pas lire"] },
-  { k: "jungle", nom: "Monde jungle", poids: 2, c1: "#6fbf73", c2: "#1f4a2c", danger: [2, 3], equip: { nom: "machette", desc: "ouvre les chemins, les noix de coco et les négociations" }, desc: ["une forêt si dense qu’on y entre debout et qu’on en sort digéré", "des arbres hauts comme des tours, et au sommet, d’autres arbres, qui semblent au courant", "tout y pousse, tout y mange, et tout y sourit, ce qui est le plus inquiétant"] },
-  { k: "tempere", nom: "Monde tempéré", poids: 2, c1: "#9fd6a8", c2: "#3b6fb0", danger: [0, 1], equip: { nom: "vivres frais", desc: "du vrai pain. Les autochtones de la galaxie entière en parlent encore" }, desc: ["des prairies, des rivières, un climat raisonnable : la Compagnie y voit déjà des impôts", "un monde si agréable qu’on se demande ce qu’il cache, et la réponse est : rien, c’est pire", "des saisons, des oiseaux, et une lumière du soir qui ferait pleurer un expert-comptable"] },
-  { k: "etrange", nom: "Monde étrange", poids: 2, c1: "#d7a8f0", c2: "#4a2a7a", danger: [2, 4], equip: { nom: "boussole cassée", desc: "indique toujours quelque chose. Jamais le nord, mais quelque chose" }, desc: ["des montagnes de cristal qui chantent quand on passe, faux, mais avec conviction", "la gravité y change d’avis deux fois par jour, et les habitants, s’il y en a, ne s’en formalisent plus", "un monde dont les anneaux projettent une ombre qui met trois heures à arriver au sol et repart vexée"] },
-  { k: "habite", nom: "Monde habité", poids: 2, c1: "#f7d774", c2: "#7a4a2a", danger: [2, 5], equip: { nom: "traducteur", desc: "traduit 4 000 langues et comprend à peu près la moitié des blagues" }, desc: ["des lumières la nuit, des villes le jour, et une civilisation qui nous regarde arriver avec l’expression de quelqu’un dont on sonne à la porte pendant le dîner", "quelqu’un y vit déjà, construit déjà, et a déjà un avis sur nous", "une espèce intelligente, polie, et visiblement en train de prendre des notes"] }
+  { k: "rocheux", nom: "Monde rocheux", poids: 22, c1: "#8d7b6e", c2: "#4a3f3a", danger: [1, 3], desc: ["des cailloux, puis d’autres cailloux, puis une vallée, remplie de cailloux", "une surface grise qui a décidé très tôt de ne pas faire d’efforts", "un relief si monotone que les géologues y pleurent d’ennui, puis de joie, puis d’ennui"] },
+  { k: "gazeux", nom: "Géante gazeuse", poids: 16, c1: "#e8c38a", c2: "#9a6a3c", danger: [2, 4], desc: ["une boule de gaz de la taille d’une mauvaise idée, avec des tempêtes qui durent plus longtemps que la plupart des civilisations", "des bandes de nuages couleur café au lait, sans surface où poser quoi que ce soit, ni même une opinion", "un endroit où « atterrir » n’est pas un verbe mais une façon de mourir"] },
+  { k: "desert", nom: "Monde désertique", poids: 14, c1: "#f0c78a", c2: "#b8763a", danger: [1, 3], desc: ["du sable, de la chaleur, et une seule dune qui ressemble un peu à une autre dune", "un désert si vaste que le vent lui-même s’y perd et revient demander son chemin", "deux soleils, zéro ombre, et un silence qu’on entend d’ici"] },
+  { k: "glace", nom: "Monde glacé", poids: 14, c1: "#d9eef5", c2: "#6e9fc0", danger: [1, 3], desc: ["de la glace jusqu’à l’horizon, puis, après l’horizon, de la glace", "un monde qui craque la nuit comme une vieille maison, en beaucoup plus grand et sans personne pour s’en inquiéter", "des falaises bleues, un froid honnête, et nulle part où acheter des gants"] },
+  { k: "volcan", nom: "Monde volcanique", poids: 9, c1: "#f27c4a", c2: "#3a1f1c", danger: [3, 5], desc: ["des volcans qui n’ont jamais entendu parler du concept de pause", "une croûte mince comme une excuse, et dessous, de la lave qui attend", "un ciel orange, une odeur d’œuf, et des paysages magnifiques pour qui aime regarder vite"] },
+  { k: "toxique", nom: "Monde toxique", poids: 8, c1: "#b7d36a", c2: "#4d5a2a", danger: [3, 5], desc: ["une atmosphère verdâtre qui dissout les sondes, les espoirs, et les paragraphes trop longs", "des lacs jaunes dont la Compagnie déconseille formellement de goûter l’eau, par expérience", "un monde où respirer est une mauvaise habitude que l’on perd vite"] },
+  { k: "crateres", nom: "Monde criblé", poids: 10, c1: "#a9a3a0", c2: "#3e3b3a", danger: [1, 2], desc: ["des cratères dans des cratères, comme si quelqu’un avait raté le même coup de poing pendant un milliard d’années", "une surface morte, calme, et parfaitement reposante pour qui ne tient pas à la vie", "le genre d’endroit où on retrouve ses clefs tout de suite, parce qu’il n’y a rien d’autre"] },
+  { k: "ocean", nom: "Monde océan", poids: 3, c1: "#5fb8c9", c2: "#1f4a7a", danger: [1, 2], desc: ["de l’eau partout, très profonde, avec dedans quelque chose de grand qui n’a pas encore donné son nom", "un océan turquoise sans aucune île, ce qui rend les cartes très simples et les naufrages très longs", "des vagues lentes, chaudes, et un plancton qui brille la nuit en formant des mots qu’on préfère ne pas lire"] },
+  { k: "jungle", nom: "Monde jungle", poids: 2, c1: "#6fbf73", c2: "#1f4a2c", danger: [2, 3], desc: ["une forêt si dense qu’on y entre debout et qu’on en sort digéré", "des arbres hauts comme des tours, et au sommet, d’autres arbres, qui semblent au courant", "tout y pousse, tout y mange, et tout y sourit, ce qui est le plus inquiétant"] },
+  { k: "tempere", nom: "Monde tempéré", poids: 2, c1: "#9fd6a8", c2: "#3b6fb0", danger: [0, 1], desc: ["des prairies, des rivières, un climat raisonnable : la Compagnie y voit déjà des impôts", "un monde si agréable qu’on se demande ce qu’il cache, et la réponse est : rien, c’est pire", "des saisons, des oiseaux, et une lumière du soir qui ferait pleurer un expert-comptable"] },
+  { k: "etrange", nom: "Monde étrange", poids: 2, c1: "#d7a8f0", c2: "#4a2a7a", danger: [2, 4], desc: ["des montagnes de cristal qui chantent quand on passe, faux, mais avec conviction", "la gravité y change d’avis deux fois par jour, et les habitants, s’il y en a, ne s’en formalisent plus", "un monde dont les anneaux projettent une ombre qui met trois heures à arriver au sol et repart vexée"] },
+  { k: "habite", nom: "Monde habité", poids: 2, c1: "#f7d774", c2: "#7a4a2a", danger: [2, 5], desc: ["des lumières la nuit, des villes le jour, et une civilisation qui nous regarde arriver avec l’expression de quelqu’un dont on sonne à la porte pendant le dîner", "quelqu’un y vit déjà, construit déjà, et a déjà un avis sur nous", "une espèce intelligente, polie, et visiblement en train de prendre des notes"] }
 ];
-const TYPE = Object.fromEntries(TYPES.map(t => [t.k, t]));
 const POIDS_TOTAL = TYPES.reduce((s, t) => s + t.poids, 0);
 const OUVERTURES = ["Le Guide dit :", "D’après le Guide,", "Le Guide, sobrement :", "Extrait du Guide, page 4 081 :", "Le Guide note, sans s’émouvoir :"];
 function genererMonde(e) {
@@ -27,10 +26,6 @@ function genererMonde(e) {
   return { id: e.id, nom: e.nom, x: e.x, y: e.y, d: e.d, type: type.k, titre: type.nom, danger, c1: type.c1, c2: type.c2,
     texte: OUVERTURES[Math.floor(h(3) * OUVERTURES.length)] + " " + e.nom + ", c’est " + type.desc[Math.floor(h(4) * type.desc.length)] + ".", trouve: Date.now(), journal: [] };
 }
-// la soute : objets trouvés + équipement fourni par les colonies
-// les outils : le premier monde d’un type que tu as traversé t’a appris à t’équiper
-function equipementColonies() { return []; }   // plus d’outils : une seule chose en soute, les objets des quatre séries
-function touteLaSoute() { return [...equipementColonies(), ...soute]; }
 
 // ===================== Les scènes d’expédition (briques) =====================
 // Chaque scène : t (texte), a (prudent), b (audacieux : réussite/échec selon le danger), o (si on sort le bon objet de la soute)
@@ -56,11 +51,6 @@ function tirerTrouvaille(m, k) {
   const series = Object.keys(TROUVAILLES), s = choisir(series, h(1)), idx = Math.floor(h(2) * TROUVAILLES[s].length);
   return { serie: s, serieNom: SERIE_NOM[s], idx, texte: TROUVAILLES[s][idx], objet: objetPalier(s, 1) };
 }
-function tirerTrouvailleAncienne(m, k) {
-  const h = (a) => hash(Math.round(m.x * 1000), Math.round(m.y * 1000), a + k * 10, seed + 7);
-  const series = Object.keys(TROUVAILLES), s = choisir(series, h(1)), idx = Math.floor(h(2) * TROUVAILLES[s].length);
-  return { serie: s, serieNom: SERIE_NOM[s], idx, texte: TROUVAILLES[s][idx] };
-}
 
 // ===================== L’expédition : vivre un monde =====================
 function commencerExpedition(m) {
@@ -85,7 +75,7 @@ function ouvrirExpedition(m) {
   for (const j of exp.journal) html += "<div class=\"journal\">" + j + "</div>";
   html += "<p>" + texte(sc.t, m) + "</p>";
   html += "<div class=\"choix\"><button type=\"button\" data-choix=\"a\">" + texte(sc.a[0], m) + "</button><button type=\"button\" class=\"ping\" data-choix=\"b\">" + texte(sc.b[0], m) + " <span class=\"gris\">(risqué)</span></button>";
-  const objets = touteLaSoute();
+  const objets = [...soute];
   if (objets.length) html += "<button type=\"button\" class=\"second\" id=\"ouvrirSoute\">Sortir un objet de la soute…</button>";
   html += "</div><div id=\"listeSoute\"></div></div>";
   page.innerHTML = html;
