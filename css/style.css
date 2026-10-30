@@ -59,6 +59,10 @@ button[disabled] { opacity: 0.5; cursor: default; }
 .fiche .mast span:last-child { font-style: italic; font-size: 14px; }
 .fiche .image { height: 36vh; min-height: 190px; position: relative; overflow: hidden; border-bottom: 1.5px solid var(--encre); }
 .fiche .image canvas { position: static; width: 100%; height: 100%; }
+/* une illustration, quand elle existe, recouvre la vignette dessinée ; elle est en portrait, la case grandit */
+.fiche .image.illustree { height: 52vh; transition: height 0.3s ease-out; }
+.fiche .image .illu { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; animation: apparait 0.4s ease-out; }
+@keyframes apparait { from { opacity: 0; } to { opacity: 1; } }
 .fiche .manchette { position: absolute; left: 14px; bottom: 14px; background: var(--orange); color: var(--encre); font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 14px; padding: 5px 11px 4px; transform: rotate(-3deg); border: 1.5px solid var(--encre); box-shadow: 2px 2px 0 var(--encre); }
 .fiche .texte { padding: 16px 18px 20px; font-size: 17px; line-height: 1.5; }
 .fiche .texte p { margin: 0 0 12px; max-width: 34em; }
@@ -80,4 +84,4 @@ button[disabled] { opacity: 0.5; cursor: default; }
 .tuile span { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 20px; line-height: 1; }
 .tuile small { font-size: 9px; letter-spacing: 1px; margin-top: 3px; }
 input { font: 400 18px "Vollkorn", Georgia, serif; padding: 10px 12px; border: 1.5px solid var(--encre); border-radius: 3px; width: 100%; box-sizing: border-box; background: #fbf3dc; color: var(--encre); }
-@media (prefers-reduced-motion: reduce) { .tuile, button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .tuile, button, .fiche .image.illustree { transition: none; } .fiche .image .illu { animation: none; } }
