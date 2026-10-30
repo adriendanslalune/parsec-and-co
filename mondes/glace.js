@@ -1,7 +1,9 @@
-// Monde glacé : les scènes d’expédition
+// Monde glacé : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("glace", [
+histoire("glace", "La lumière sous la banquise", [
 
   // scène 1
   {
@@ -40,6 +42,12 @@ scenes("glace", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "Sur ta photo de la forme, on devine des colonnes, plus loin.",
+      reussite: "La coque est restée ouverte derrière toi. Le vent s’y engouffre et file vers des colonnes.",
+      echec: "Tu claques encore des dents. Le vent, lui, joue une note.",
+      objet: "La trappe de la coque s’est refermée toute seule, polie."
+    },
     situation: "Des colonnes de glace, des centaines, alignées. Le vent y souffle une note grave qui te fait vibrer les dents.",
     prudent: {
       choix: "Traverser en silence",
@@ -58,7 +66,13 @@ scenes("glace", [
 
   // scène 3
   {
-    situation: "Une lumière bleue bouge sous la banquise, lente, comme quelqu’un qui cherche ses clefs.",
+    rappel: {
+      prudent: "La note des colonnes te suit encore. Sous la glace, quelque chose l’a entendue.",
+      reussite: "La colonne fendue sonne encore. Sous la banquise, une lumière s’est allumée.",
+      echec: "Le sol a fini de trembler. Sous la banquise, une lumière cherche qui a fait ça.",
+      objet: "La colonne libérée chante plus juste qu’avant. Sous la banquise, quelqu’un écoute."
+    },
+    situation: "Une lumière bleue bouge sous la banquise, lente, comme quelqu’un qui cherche ses clefs. Elle vient de la forme sombre.",
     prudent: {
       choix: "La suivre à distance",
       resultat: "Elle tourne en rond, puis s’éteint. Tu notes : « cherche encore ». Tu rentres avec les mains froides et vides."

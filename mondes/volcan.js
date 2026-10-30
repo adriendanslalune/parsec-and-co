@@ -1,7 +1,9 @@
-// Monde volcanique : les scènes d’expédition
+// Monde volcanique : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,21 +13,21 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("volcan", [
+histoire("volcan", "Enfin", [
 
   // scène 1
   {
     situation: "Un lac de lave respire à cent mètres. Sur une île au milieu, quelque chose brille qui n’est pas de la lave.",
     prudent: {
       choix: "Observer depuis la rive",
-      resultat: "Tu attends qu’une bulle éclate. Elle éclate. Le Guide note : « joli, mortel, pas de parking »."
+      resultat: "Tu attends qu’une bulle éclate. Elle éclate. Le Guide note : « joli, mortel, pas de parking ». Derrière le lac, une cheminée éteinte."
     },
     risque: {
       choix: "Sauter d’îlot en îlot",
@@ -40,6 +42,12 @@ scenes("volcan", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "Tu as regardé le lac de loin. La cheminée, elle, te regarde de près.",
+      reussite: "Tu marches désormais en chaussettes, vers une cheminée.",
+      echec: "Tu sens encore le roussi. La cheminée, devant toi, aussi.",
+      objet: "Ton écran fume encore un peu."
+    },
     situation: "Une cheminée éteinte, large comme un puits. Une corde y pend, très vieille, attachée à rien de visible.",
     prudent: {
       choix: "Tirer sur la corde",
@@ -58,6 +66,12 @@ scenes("volcan", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Le nœud marin est dans ta poche. Sous tes pieds, le sol s’est mis à battre.",
+      reussite: "« Enfin », disait l’inscription. Sous tes pieds, quelque chose est d’accord.",
+      echec: "Tu sens le poil roussi, et le sol bat comme s’il riait.",
+      objet: "La paroi s’est refermée derrière toi. Le sol, lui, s’est mis à battre."
+    },
     situation: "Le sol est tiède, et il bat. Un battement lent, profond, qu’on sent dans les genoux.",
     prudent: {
       choix: "Repartir vers le vaisseau",

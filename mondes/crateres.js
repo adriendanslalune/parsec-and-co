@@ -1,7 +1,9 @@
-// Monde criblé : les scènes d’expédition
+// Monde criblé : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("crateres", [
+histoire("crateres", "Celui qui saute", [
 
   // scène 1
   {
@@ -34,12 +36,18 @@ scenes("crateres", [
     },
     objet: {
       serie: "epaves",
-      resultat: "{objet:Il|Elle} bipe vers le centre, mais s’arrête à vingt mètres : {trouvaille} est juste là, sous la poussière."
+      resultat: "Tu {objet:le|la} tiens au-dessus du trou : ça vibre, ça grince, ça indique. À vingt mètres, sous la poussière : {trouvaille}."
     }
   },
 
   // scène 2
   {
+    rappel: {
+      prudent: "Le point noir est resté au centre. Sur le bord, une empreinte.",
+      reussite: "Quelqu’un voulait qu’on trouve ce qu’il y avait dans le trou. Ce quelqu’un a de grands pieds.",
+      echec: "En sortant du trou, tu tombes nez à nez avec une empreinte.",
+      objet: "Le trou s’est refermé. À côté, une empreinte."
+    },
     situation: "La poussière garde une seule empreinte, énorme, à trois orteils. Une seule. Comme si quelque chose avait sauté.",
     prudent: {
       choix: "Mesurer l’empreinte",
@@ -58,6 +66,12 @@ scenes("crateres", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Tu n’as pas vérifié. Les empreintes, elles, mènent à un vieux module.",
+      reussite: "Tu n’as pas cherché la troisième empreinte. Elle est devant un vieux module.",
+      echec: "L’empreinte fraîche avait un propriétaire. Il a garé son module ici.",
+      objet: "L’empreinte refermée pointait vers un vieux module."
+    },
     situation: "Un vieux module repose sur le flanc, à moitié enterré. Son antenne tourne encore, très lentement.",
     prudent: {
       choix: "Lire la plaque",
