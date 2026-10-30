@@ -13,14 +13,6 @@ const PALIERS_OBJ = {
   bizarreries: ["une lueur dans un bocal", "un murmure en boucle", "un petit paradoxe de poche", "un petit miracle, périmé bientôt", "une chose indescriptible, mais polie"]
 };
 function objetPalier(serie, palier) { return { nom: PALIERS_OBJ[serie][Math.min(palier, 4) - 1], serie, serieNom: SERIE_NOM[serie], palier }; }
-function fusionner(serie, palier) {
-  const memes = soute.filter(o => o.serie === serie && (o.palier || 1) === palier);
-  if (memes.length < 2 || palier >= 5) return false;
-  soute = soute.filter(o => o !== memes[0] && o !== memes[1]);
-  const n = objetPalier(serie, palier + 1);
-  soute.push({ id: "fus-" + Date.now() + "-" + Math.floor(Math.random() * 1e6), nom: n.nom, tag: "artefact", serie, serieNom: n.serieNom, palier: palier + 1, de: "fusion", usage: "objet" });
-  sauver("parsec.soute", soute); carillon(); majHud(); return true;
-}
 // migration des anciennes trouvailles vers des objets de palier 1
 for (const o of soute) { if (!o.palier) { const s = Object.keys(SERIE_NOM).find(k => SERIE_NOM[k] === o.serie) || "bizarreries"; o.serie = s; o.serieNom = SERIE_NOM[s]; o.palier = 1; o.nom = PALIERS_OBJ[s][0]; } }
 sauver("parsec.soute", soute);

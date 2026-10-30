@@ -1,7 +1,6 @@
 // Parsec & Co : la carte. Dessin (papier, étoiles, ports, spectacles, vignette), doigts et caméra.
 // Script classique : il partage ses variables avec les autres fichiers de js/ (voir l’ordre dans index.html).
 
-const VITESSE2 = 20000;
 const vue = { cx: home.x, cy: home.y, lpp: 0.25 };
 const LPP_MIN = 0.0000025, LPP_MAX = 420;
 const canvas = document.getElementById("c"), ctx = canvas.getContext("2d");
@@ -238,7 +237,7 @@ function dessiner() {
     if (prog >= 1) { ctx.font = "italic 14px Vollkorn, serif"; ctx.fillStyle = SEPIA; ctx.fillText(fmtD(c.r) + " années-lumière", cx + rr * 0.7071 + 6, cy - rr * 0.7071 - 6); }
   }
   if (radio && cercles.length) {
-    enCours = true; const force = forceRadio(); radio.force = force; majRadioAudio(force);
+    enCours = true; const force = forceRadio(); majRadioAudio(force);
     const [px, py] = ecran(radio.poste.x, radio.poste.y), r0 = cercles[0].r / vue.lpp, L = Math.max(W, H) * 2;
     ctx.strokeStyle = "rgba(181,82,59," + (0.3 + 0.6 * force) + ")"; ctx.lineWidth = 1 + 2 * force; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + Math.cos(radio.ang) * L, py + Math.sin(radio.ang) * L); ctx.stroke();
     const qx = px + Math.cos(radio.ang) * r0, qy = py + Math.sin(radio.ang) * r0; ctx.font = "16px Bowlby One, Arial Black, sans-serif"; ctx.fillStyle = BRIQUE; ctx.fillText("?", qx - 5, qy + 6);
@@ -264,7 +263,7 @@ function dessiner() {
   }
   // le centre : rose des vents s’il est hors de la carte, soleil s’il y est
   const [gx, gy] = ecran(0, 0);
-  if (gx < 0 || gx > W || gy < 0 || gy > H) { const haut = parseFloat(getComputedStyle(document.documentElement).paddingTop) || 0; roseDesVents(W - 36, hautBande() + 40, Math.atan2(gy - H / 2, gx - W / 2)); }
+  if (gx < 0 || gx > W || gy < 0 || gy > H) { roseDesVents(W - 36, hautBande() + 40, Math.atan2(gy - H / 2, gx - W / 2)); }
   else { ctx.strokeStyle = BRIQUE; ctx.lineWidth = 1.5; for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(gx + Math.cos(a) * 6, gy + Math.sin(a) * 6); ctx.lineTo(gx + Math.cos(a) * 11, gy + Math.sin(a) * 11); ctx.stroke(); }
     ctx.fillStyle = BRIQUE; ctx.beginPath(); ctx.arc(gx, gy, 4, 0, Math.PI * 2); ctx.fill(); ctx.font = "italic 700 14px Vollkorn, serif"; ctx.fillStyle = SEPIA; ctx.fillText("Sagittarius A*", gx + 15, gy + 5); }
   // ton monde

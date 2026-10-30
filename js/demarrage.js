@@ -5,12 +5,11 @@
 for (const f of branchements) f();   // tous les fichiers sont là : on branche les doigts, les boutons, le redimensionnement
 setInterval(() => { if (Math.random() < 0.12) lancerSpectacle(); tickVol(); majBlessure(); sauver("parsec.vu", Date.now()); if (navettes.length || colonies.size > 1) demander(); }, 1000);
 const vuLe = charger("parsec.vu", 0);
-reprise = { depuis: vuLe, arrivees: [], colonies: [] };
+reprise = { depuis: vuLe, arrivees: [] };
 tickVol(); majHud();
 if (decouverts.size) btnPing.innerHTML = ico("antenne") + "Scruter le vide";
 (function finReprise() {
   const r = reprise; reprise = null;
-  const absence = r.depuis ? Date.now() - r.depuis : 0;
   const att = mondeEnAttente();
   if (!joueur.nom) {
     const page = document.getElementById("page");

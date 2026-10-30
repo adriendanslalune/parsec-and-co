@@ -58,7 +58,7 @@ brancher(function () {
 function ouvrirFiche(m, nouveau) {
   if (!m.exp || !m.exp.finie) { if (!m.vu) { commencerExpedition(m); return; } }
   m.vu = true; sauver("parsec.explores", [...explores.values()]);
-  const page = document.getElementById("page"), t = TYPE[m.type];
+  const page = document.getElementById("page");
   let html = mast() + "<div class=\"image\"><canvas id=\"cvFiche\" width=\"520\" height=\"340\"></canvas><div class=\"manchette\">" + (nouveau ? "Nouveau monde" : "Le Guide") + "</div></div>";
   html += "<div class=\"texte\"><h2>" + m.nom + "</h2><div class=\"sous\">" + m.titre + ", à " + fmtD(m.d) + " années-lumière, visité par " + joueur.nom + "</div>";
   html += "<div class=\"faits\"><span class=\"fait\">" + ico("danger") + "Danger " + "●".repeat(m.danger) + "○".repeat(5 - m.danger) + "</span></div>";
@@ -86,7 +86,7 @@ function ouvrirGuide() {
 
 brancher(() => document.getElementById("btnGuide").addEventListener("click", ouvrirGuide));
 brancher(() => document.getElementById("btnSoute").addEventListener("click", () => ouvrirSoute()));
-function dire(html) { const p = document.getElementById("papier"); p.innerHTML = html; p.classList.remove("cache"); }
+function dire(html) { const p = document.getElementById("papier"); p.innerHTML = html; }
 brancher(() => document.getElementById("papier").addEventListener("click", ev => {
   const b = ev.target.closest("button[data-fiche]"); if (b && explores.get(b.dataset.fiche)) { ouvrirFiche(explores.get(b.dataset.fiche), true); return; }
   const p = ev.target.closest("button[data-partir]"); if (p && decouverts.get(p.dataset.partir)) partir(decouverts.get(p.dataset.partir));

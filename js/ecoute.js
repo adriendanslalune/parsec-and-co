@@ -39,7 +39,7 @@ function ecouterDepuis(poste) {
   if (!signal) { dire("<b>Silence autour de " + poste.nom + ".</b> Tout ce qu’elle peut entendre est déjà sur la carte. Essaie depuis une autre colonie, ou fonde plus loin."); return; }
   cercles = [{ x: poste.x, y: poste.y, r: Math.hypot(signal.x - poste.x, signal.y - poste.y), t0: performance.now() }]; flash = null;
   bip(1);
-  radio = { poste, ang: hash(decouverts.size, 9, 9, seed) * Math.PI * 2, force: 0 };
+  radio = { poste, ang: hash(decouverts.size, 9, 9, seed) * Math.PI * 2 };
   demarrerRadio();
   animerVers(poste.x, poste.y, Math.max(LPP_MIN, signal.d * 2.6 / Math.min(W, H)), 900);
   btnPing.innerHTML = ico("viseur") + "Verrouiller";
