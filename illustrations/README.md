@@ -63,6 +63,8 @@ Pour une scène, le jeu cherche d’abord `<type>-<scène>.webp`, puis `<type>.w
 | `habite-2.webp` | La statue, scène 2 : Un marché. |
 | `habite-3.webp` | La statue, scène 3 : Une statue te représente. |
 
+Tous les prompts, prêts à coller (le prompt maître et les 45 images qui restent) : [PROMPTS.md](PROMPTS.md).
+
 ## Le prompt maître
 
 À coller dans ChatGPT, suivi de la description de la scène.
