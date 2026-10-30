@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Parsec &amp; Co</title>
+<meta name="description" content="Explorateur pour une petite compagnie galactique : scrute le vide, vole vers les étoiles, vis de courtes expéditions.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icones/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icones/icone-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Parsec &amp; Co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="fiche cache" id="fiche"><div class="page" id="page"></div></div>
+<header class="hud">
+  <div class="identite">
+    <div class="marque"><span data-ico="fusee"></span>Parsec &amp; Co</div>
+    <div class="nom" id="nomJ">…</div>
+    <div class="titre"><span data-ico="etoile"></span><span id="titreJ"></span></div>
+  </div>
+  <div class="xp"><i id="xpBar" style="width:0%"></i></div>
+  <div class="releve">
+    <div><span id="nbCol"></span> <span data-ico="boussole"></span><b id="dist">…</b> al du centre</div>
+    <div class="echelle"><i id="barre"></i><span id="txtEchelle"></span></div>
+  </div>
+  <nav class="onglets" aria-label="Menus">
+    <button id="btnSoute" type="button">Soute</button>
+    <button id="btnGuide" type="button">Guide</button>
+    <button id="btnVoir" type="button"><span data-ico="galaxie"></span>Galaxie</button>
+  </nav>
+</header>
+<div class="bas">
+  <div class="papier" id="papier"></div>
+  <button class="ping action" id="btnPing" type="button"><span data-ico="antenne"></span>Scruter le vide</button>
+</div>
+
+<!-- Scripts classiques, chargés dans cet ordre : ils partagent leurs variables, et chacun peut utiliser ce que les précédents ont défini. -->
+<script src="js/galaxie.js"></script>
+<script src="js/etat.js"></script>
+<script src="js/interface.js"></script>
+<script src="js/carte.js"></script>
+<script src="js/sons.js"></script>
+<script src="js/ecoute.js"></script>
+<script src="js/voyage.js"></script>
+<script src="js/expeditions.js"></script>
+<!-- Les scènes d’expédition, un fichier par type de monde -->
+<script src="mondes/rocheux.js"></script>
+<script src="mondes/gazeux.js"></script>
+<script src="mondes/desert.js"></script>
+<script src="mondes/glace.js"></script>
+<script src="mondes/volcan.js"></script>
+<script src="mondes/toxique.js"></script>
+<script src="mondes/crateres.js"></script>
+<script src="mondes/ocean.js"></script>
+<script src="mondes/jungle.js"></script>
+<script src="mondes/tempere.js"></script>
+<script src="mondes/etrange.js"></script>
+<script src="mondes/habite.js"></script>
+<script src="js/soute.js"></script>
+<script src="js/demarrage.js"></script>
+<script>
+  // l’appli installée : le jeu reste jouable hors ligne (voir sw.js)
+  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>

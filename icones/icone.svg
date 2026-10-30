@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Parsec & Co : une planète cerclée d’encre sur papier, ombre orange mal calée, une étoile lavande -->
+  <defs>
+    <pattern id="trame" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.8" fill="#3b2a1e" fill-opacity="0.10"/>
+      <circle cx="10" cy="10" r="1.8" fill="#3b2a1e" fill-opacity="0.10"/>
+    </pattern>
+    <clipPath id="disque"><circle cx="246" cy="270" r="112"/></clipPath>
+  </defs>
+  <rect width="512" height="512" fill="#efe6d2"/>
+  <rect width="512" height="512" fill="url(#trame)"/>
+  <!-- l’anneau, moitié arrière -->
+  <path d="M 70 300 A 186 50 -16 0 1 422 199" fill="none" stroke="#3b2a1e" stroke-width="12" stroke-linecap="round"/>
+  <!-- l’ombre de couleur, décalée -->
+  <circle cx="262" cy="286" r="112" fill="#ef9b4f"/>
+  <!-- la planète : aplat, bandes, terminateur -->
+  <circle cx="246" cy="270" r="112" fill="#3f8f80"/>
+  <g clip-path="url(#disque)">
+    <rect x="120" y="222" width="260" height="16" fill="#1b2451" fill-opacity="0.25"/>
+    <rect x="120" y="296" width="260" height="24" fill="#1b2451" fill-opacity="0.25"/>
+    <path d="M 300 150 A 150 150 0 0 1 300 400 L 400 400 L 400 150 Z" fill="#1b2451" fill-opacity="0.30"/>
+  </g>
+  <circle cx="246" cy="270" r="112" fill="none" stroke="#3b2a1e" stroke-width="12"/>
+  <!-- l’anneau, moitié avant -->
+  <path d="M 422 199 A 186 50 -16 0 1 70 300" fill="none" stroke="#b5523b" stroke-width="12" stroke-linecap="round"/>
+  <!-- l’étoile repérée -->
+  <path d="M 376 96 L 386 126 L 416 136 L 386 146 L 376 176 L 366 146 L 336 136 L 366 126 Z" fill="#6f5fae" stroke="#3b2a1e" stroke-width="6" stroke-linejoin="round"/>
+</svg>
