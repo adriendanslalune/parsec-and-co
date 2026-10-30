@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -23,12 +29,12 @@ scenes("ocean", [
     },
     risque: {
       choix: "Plonger derrière elle",
-      reussite: "L’ombre te mène à une fosse, et dans la fosse, coincé dans le corail : {trouvaille}. Elle t’attendait là, ou attendait quelqu’un.",
+      reussite: "L’ombre te mène à une fosse, et dans la fosse, {trouvaille:coincé|coincée} dans le corail : {trouvaille}. Elle t’attendait là, ou attendait quelqu’un.",
       echec: "L’ombre se retourne. Elle a une bouche. Tu remontes vite, pas assez."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Il brille sous l’eau. L’ombre le suit comme un chien, et te mène à {trouvaille}."
+      resultat: "{objet:Il|Elle} brille sous l’eau. L’ombre {objet:le|la} suit comme un chien, et te mène à {trouvaille}."
     }
   },
 
@@ -41,12 +47,12 @@ scenes("ocean", [
     },
     risque: {
       choix: "Y débarquer",
-      reussite: "L’île est un animal, très vieux, très doux, et sur son dos : {trouvaille}, enfoncé dans la mousse. Tu le prends ; il soupire.",
+      reussite: "L’île est un animal, très vieux, très doux, et sur son dos : {trouvaille}, {trouvaille:enfoncé|enfoncée} dans la mousse. Tu {trouvaille:le|la} prends ; il soupire.",
       echec: "L’île plonge quand tu poses le pied. Tu nages. Longtemps."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Tu le déposes sur le dos de l’île. Elle soupire, s’arrête, et te laisse prendre {trouvaille}."
+      resultat: "Tu {objet:le|la} déposes sur le dos de l’île. Elle soupire, s’arrête, et te laisse prendre {trouvaille}."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("ocean", [
     },
     risque: {
       choix: "Écrire une réponse à la rame",
-      reussite: "Le plancton répond à son tour, et la mer te rend {trouvaille}, poussé par un courant poli.",
+      reussite: "Le plancton répond à son tour, et la mer te rend {trouvaille}, {trouvaille:poussé|poussée} par un courant poli.",
       echec: "Le plancton n’aime pas ta réponse. L’eau devient très froide, très vite."
     },
     objet: {
       serie: "reliques",
-      resultat: "Tu le tiens au-dessus de l’eau : le plancton change de phrase, rit, et te lance {trouvaille}."
+      resultat: "Tu {objet:le|la} tiens au-dessus de l’eau : le plancton change de phrase, rit, et te lance {trouvaille}."
     }
   }
 

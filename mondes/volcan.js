@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -24,7 +30,7 @@ scenes("volcan", [
     risque: {
       choix: "Sauter d’îlot en îlot",
       reussite: "Tu arrives sur l’île, tu attrapes {trouvaille}, tu reviens, et tu ne regardes tes semelles que plus tard. Elles ont fondu.",
-      echec: "Le troisième îlot n’était pas un îlot. Tu te sauves par miracle, et pas entier."
+      echec: "Le troisième îlot n’était pas un îlot. Tu te sauves par miracle, et {toi:pas entier|pas entière}."
     },
     objet: {
       serie: "epaves",
@@ -46,7 +52,7 @@ scenes("volcan", [
     },
     objet: {
       serie: "reliques",
-      resultat: "Dans la niche, un socle à sa forme exacte. Tu le poses : la paroi s’ouvre sur {trouvaille}."
+      resultat: "Dans la niche, un socle à sa forme exacte. Tu {objet:le|la} poses : la paroi s’ouvre sur {trouvaille}."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("volcan", [
     },
     risque: {
       choix: "Poser l’oreille au sol",
-      reussite: "Tu entends un rythme, puis un autre dessous, puis tu sens sous ta main {trouvaille}, chaud, remonté par une fissure. Le monde te l’a donné.",
+      reussite: "Tu entends un rythme, puis un autre dessous, puis tu sens sous ta main {trouvaille}, {trouvaille:chaud, remonté|chaude, remontée} par une fissure. Le monde te l’a {trouvaille:donné|donnée}.",
       echec: "Le sol bat plus fort, et s’ouvre. Pas beaucoup. Assez."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Il bat au même rythme que le sol. La fissure s’ouvre juste assez : {trouvaille}, chaud."
+      resultat: "{objet:Il|Elle} bat au même rythme que le sol. La fissure s’ouvre juste assez : {trouvaille}, {trouvaille:chaud|chaude}."
     }
   }
 

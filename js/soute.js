@@ -51,7 +51,7 @@ function ouvrirSoute(message) {
     t.addEventListener("pointerdown", e => {
       e.preventDefault(); t.setPointerCapture(e.pointerId);
       const o = soute.find(x => x.id === t.dataset.id);
-      document.getElementById("legende").innerHTML = "<b>" + o.nom + "</b>, " + o.serieNom.toLowerCase() + " de palier " + (o.palier || 1) + ", " + (o.de === "fusion" || o.de === "bricolé à bord" ? "bricolé à bord" : "trouvé sur " + o.de) + ".";
+      document.getElementById("legende").innerHTML = "<b>" + o.nom + "</b>, " + o.serieNom.toLowerCase() + " de palier " + (o.palier || 1) + ", " + accords(o.de === "fusion" || o.de === "bricolé à bord" ? "{objet:bricolé|bricolée} à bord" : "{objet:trouvé|trouvée} sur ", o) + (o.de === "fusion" || o.de === "bricolé à bord" ? "" : o.de) + "." + (o.provenance ? " Provenance : " + o.provenance + "." : "");
       drag = { t, o, x0: e.clientX, y0: e.clientY, bouge: false };
       t.style.zIndex = 10; t.style.transition = "none";
     });
