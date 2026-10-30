@@ -1,6 +1,12 @@
 // Parsec & Co : la sauvegarde (localStorage, clés parsec.*) et l’état de la partie.
 // Script classique : il partage ses variables avec les autres fichiers de js/ (voir l’ordre dans index.html).
 
+// ===================== Les écouteurs : branchés une fois tout chargé =====================
+// les fichiers arrivent un par un : un toucher ou un redimensionnement entre deux fichiers ne doit rien déclencher
+// avant que tout existe ; chaque addEventListener passe donc par brancher(), et demarrage.js les branche d’un coup
+const branchements = [];
+function brancher(f) { branchements.push(f); }
+
 // ===================== Sauvegarde et état =====================
 function charger(cle, defaut) { try { const v = localStorage.getItem(cle); return v === null ? defaut : JSON.parse(v); } catch (e) { return defaut; } }
 function sauver(cle, v) { try { localStorage.setItem(cle, JSON.stringify(v)); } catch (e) {} }

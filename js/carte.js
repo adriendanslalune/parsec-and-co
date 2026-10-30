@@ -286,7 +286,7 @@ function majEchelle() {
   document.getElementById("txtEchelle").textContent = fmt(n) + (n === 1 ? unite.s : unite.p);
 }
 function redim() { dpr = Math.min(window.devicePixelRatio || 1, 2.5); W = window.innerWidth; H = window.innerHeight; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); dessiner(); }
-window.addEventListener("resize", redim);
+brancher(() => window.addEventListener("resize", redim));
 let animEnCours = false;
 function boucleAnim() { if (animEnCours) return; animEnCours = true; (function pas() { const encore = dessiner(); if (encore) requestAnimationFrame(pas); else animEnCours = false; })(); }
 let demande = false;
@@ -294,14 +294,14 @@ function demander() { if (!demande) { demande = true; requestAnimationFrame(() =
 
 // ===================== Doigts =====================
 const pointeurs = new Map(); let pinch = null, depart = null, bouge = false, tourneAntenne = false;
-canvas.addEventListener("pointerdown", e => {
+brancher(() => canvas.addEventListener("pointerdown", e => {
   canvas.setPointerCapture(e.pointerId); pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY }); depart = { x: e.clientX, y: e.clientY }; bouge = false;
   tourneAntenne = false;
   if (radio && pointeurs.size === 1) { const [px, py] = ecran(radio.poste.x, radio.poste.y); tourneAntenne = Math.hypot(e.clientX - px, e.clientY - py) < Math.max(90, cercles.length ? cercles[0].r / vue.lpp + 40 : 0); }
   if (pointeurs.size === 2) { const [a, b] = [...pointeurs.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), lpp: vue.lpp }; }
   arreterVol();
-});
-canvas.addEventListener("pointermove", e => {
+}));
+brancher(() => canvas.addEventListener("pointermove", e => {
   if (!pointeurs.has(e.pointerId)) return;
   const prev = pointeurs.get(e.pointerId), cur = { x: e.clientX, y: e.clientY };
   if (depart && Math.hypot(cur.x - depart.x, cur.y - depart.y) > 8) bouge = true;
@@ -309,15 +309,15 @@ canvas.addEventListener("pointermove", e => {
   else if (pointeurs.size === 1) { vue.cx -= (cur.x - prev.x) * vue.lpp; vue.cy -= (cur.y - prev.y) * vue.lpp; }
   else if (pointeurs.size === 2 && pinch) { pointeurs.set(e.pointerId, cur); const [a, b] = [...pointeurs.values()]; zoomVers((a.x + b.x) / 2, (a.y + b.y) / 2, pinch.lpp * pinch.d / Math.max(Math.hypot(a.x - b.x, a.y - b.y), 1)); }
   pointeurs.set(e.pointerId, cur); demander();
-});
-canvas.addEventListener("pointerup", e => {
+}));
+brancher(() => canvas.addEventListener("pointerup", e => {
   const unSeul = pointeurs.size === 1; pointeurs.delete(e.pointerId); if (pointeurs.size < 2) pinch = null;
   if (unSeul && !bouge) {
     if (radio) { if (!tourneAntenne) annulerEcoute(); }
     else if (choixPoste) { const c = colonieTouchee(e.clientX, e.clientY); if (c) ecouterDepuis(c); else annulerEcoute(); }
     else { const et = etoileTouchee(e.clientX, e.clientY); if (et) panneauEtoile(et); }
   }
-});
+}));
 // un simple toucher n’importe où annule ce qu’on était en train de faire
 function annulerEcoute() {
   arreterRadio(); radio = null; choixPoste = false; signal = null; cercles = [];
@@ -325,8 +325,8 @@ function annulerEcoute() {
   dire("<b>Laisse tomber.</b> Le vide attendra, il a l’habitude.");
   demander();
 }
-canvas.addEventListener("pointercancel", e => { pointeurs.delete(e.pointerId); if (pointeurs.size < 2) pinch = null; });
-canvas.addEventListener("wheel", e => { e.preventDefault(); arreterVol(); zoomVers(e.clientX, e.clientY, vue.lpp * Math.exp(e.deltaY * 0.0015)); demander(); }, { passive: false });
+brancher(() => canvas.addEventListener("pointercancel", e => { pointeurs.delete(e.pointerId); if (pointeurs.size < 2) pinch = null; }));
+brancher(() => canvas.addEventListener("wheel", e => { e.preventDefault(); arreterVol(); zoomVers(e.clientX, e.clientY, vue.lpp * Math.exp(e.deltaY * 0.0015)); demander(); }, { passive: false }));
 function zoomVers(sx, sy, lppNouveau) { lppNouveau = Math.max(LPP_MIN, Math.min(LPP_MAX, lppNouveau)); const [wx, wy] = monde(sx, sy); vue.lpp = lppNouveau; vue.cx = wx - (sx - W / 2) * vue.lpp; vue.cy = wy - (sy - H / 2) * vue.lpp; }
 function etoileTouchee(sx, sy) { let best = null, bd = 22; for (const e of decouverts.values()) { const [ex, ey] = ecran(e.x, e.y); const d = Math.hypot(ex - sx, ey - sy); if (d < bd) { bd = d; best = e; } } return best; }
 function colonieTouchee(sx, sy) { let best = null, bd = 28; for (const c of colonies.values()) { const [ex, ey] = ecran(c.x, c.y); const d = Math.hypot(ex - sx, ey - sy); if (d < bd) { bd = d; best = c; } } return best; }
@@ -342,4 +342,4 @@ function animerVers(cx, cy, lpp, duree) {
 }
 function arreterVol() { if (volCam) { cancelAnimationFrame(volCam); volCam = null; } }
 const btnVoir = document.getElementById("btnVoir"); let loin = false;
-btnVoir.addEventListener("click", () => { if (!loin) { animerVers(0, 0, (2 * R_MAX + 6000) / Math.min(W, H), 7000); btnVoir.innerHTML = ico("maison") + "Chez moi"; } else { animerVers(home.x, home.y, 0.25, 5000); btnVoir.innerHTML = ico("galaxie") + "Galaxie"; } loin = !loin; });
+brancher(() => btnVoir.addEventListener("click", () => { if (!loin) { animerVers(0, 0, (2 * R_MAX + 6000) / Math.min(W, H), 7000); btnVoir.innerHTML = ico("maison") + "Chez moi"; } else { animerVers(home.x, home.y, 0.25, 5000); btnVoir.innerHTML = ico("galaxie") + "Galaxie"; } loin = !loin; }));

@@ -63,4 +63,4 @@ function reveler() {
   dire("<b>" + e.nom + ".</b> Une étoile, à <b>" + fmtD(e.d) + " années-lumière</b>. Elle est à toi sur la carte, pour toujours. Touche-la pour y aller.");
   boucleAnim();
 }
-btnPing.addEventListener("click", () => { if (radio) verrouiller(); else ecouter(); });
+brancher(() => btnPing.addEventListener("click", () => { if (radio) verrouiller(); else ecouter(); }));
