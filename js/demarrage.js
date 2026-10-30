@@ -2,6 +2,7 @@
 // Script classique : il partage ses variables avec les autres fichiers de js/ (voir l’ordre dans index.html).
 
 // ===================== Démarrage =====================
+for (const f of branchements) f();   // tous les fichiers sont là : on branche les doigts, les boutons, le redimensionnement
 setInterval(() => { if (Math.random() < 0.12) lancerSpectacle(); tickVol(); majBlessure(); sauver("parsec.vu", Date.now()); if (navettes.length || colonies.size > 1) demander(); }, 1000);
 const vuLe = charger("parsec.vu", 0);
 reprise = { depuis: vuLe, arrivees: [], colonies: [] };

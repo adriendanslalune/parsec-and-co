@@ -46,7 +46,7 @@ function majHud() {
 function mast() { return "<div class=\"mast\"><span>Parsec &amp; Co</span><span>Le Guide, n° " + explores.size + "</span></div>"; }
 function fermer() { document.getElementById("fiche").classList.add("cache"); }
 // une fenêtre se ferme d’un glisser vers le bas, ou d’un toucher sur le fond sombre
-(function () {
+brancher(function () {
   const f = document.getElementById("fiche"), page = document.getElementById("page");
   f.addEventListener("pointerdown", e => { if (e.target === f) fermer(); });
   let s = null;
@@ -54,7 +54,7 @@ function fermer() { document.getElementById("fiche").classList.add("cache"); }
   page.addEventListener("touchmove", e => { if (!s || !s.haut) return; const dy = e.touches[0].clientY - s.y; if (dy > 0) { e.preventDefault(); page.style.transform = "translateY(" + Math.min(dy, 160) + "px) rotate(0.5deg)"; } }, { passive: false });
   const fin = e => { if (!s) return; const dy = (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : s.y) - s.y, vite = performance.now() - s.t < 350; page.style.transform = ""; if (s.haut && (dy > 110 || (vite && dy > 50))) fermer(); s = null; };
   page.addEventListener("touchend", fin); page.addEventListener("touchcancel", fin);
-})();
+});
 function ouvrirFiche(m, nouveau) {
   if (!m.exp || !m.exp.finie) { if (!m.vu) { commencerExpedition(m); return; } }
   m.vu = true; sauver("parsec.explores", [...explores.values()]);
@@ -84,13 +84,13 @@ function ouvrirGuide() {
   page.querySelectorAll("button[data-fiche]").forEach(b => b.addEventListener("click", () => ouvrirFiche(explores.get(b.dataset.fiche), false)));
 }
 
-document.getElementById("btnGuide").addEventListener("click", ouvrirGuide);
-document.getElementById("btnSoute").addEventListener("click", () => ouvrirSoute());
+brancher(() => document.getElementById("btnGuide").addEventListener("click", ouvrirGuide));
+brancher(() => document.getElementById("btnSoute").addEventListener("click", () => ouvrirSoute()));
 function dire(html) { const p = document.getElementById("papier"); p.innerHTML = html; p.classList.remove("cache"); }
-document.getElementById("papier").addEventListener("click", ev => {
+brancher(() => document.getElementById("papier").addEventListener("click", ev => {
   const b = ev.target.closest("button[data-fiche]"); if (b && explores.get(b.dataset.fiche)) { ouvrirFiche(explores.get(b.dataset.fiche), true); return; }
   const p = ev.target.closest("button[data-partir]"); if (p && decouverts.get(p.dataset.partir)) partir(decouverts.get(p.dataset.partir));
-});
+}));
 function panneauEtoile(e) {
   const m = explores.get(e.id);
   if (m) { ouvrirFiche(m, false); return; }
