@@ -110,7 +110,7 @@ function resoudre(m, sc, choix, objet) {
     else { ligne = "<b>Tu sors " + (objet ? objet.nom : "quelque chose") + ".</b> " + accords("Tu {objet:le|la} regardes, la scène {objet:le|la} regarde, et rien ne se passe. Tu {objet:le|la} ranges avec dignité. Il faut quand même choisir.", objet); exp.journal.push(ligne); sauver("parsec.explores", [...explores.values()]); ouvrirExpedition(m); return; }
   } else if (choix === "a") { ligne = "<b>" + texte(sc.a[0], m) + ".</b> " + texte(sc.a[1], m); }
   else {
-    const echec = Math.random() * 100 < 12 * m.danger;
+    const echec = Math.random() * 100 < 7 * m.danger;   // 7 % par point de danger
     if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); blessure = (5 + 5 * m.danger) * 60 * 1000; xp = 1; fait = "echec"; }
     else { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[1], m); gagne = m._trouvaille; xp = 2; fait = "reussite"; }
   }

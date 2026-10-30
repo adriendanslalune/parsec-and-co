@@ -37,7 +37,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Une histoire de 3 scènes qui se suivent, tirée parmi celles du type de monde (une seule par type pour l'instant), avec un titre. Chaque scène : une situation et trois options.
 - Les scènes 2 et 3 s'ouvrent sur une phrase qui se souvient du choix d'avant : prudent, risque réussi, blessure ou objet.
   - **Prudent** : on apprend peu, on rentre entier (+1 XP).
-  - **Risqué** : trouvaille probable, ou blessure selon le danger du monde (12 % par point de danger) (+2 XP si réussi).
+  - **Risqué** : trouvaille probable, ou blessure selon le danger du monde (7 % par point de danger) (+2 XP si réussi). À 12 %, la règle d’avant, 61 % des expéditions jouées tout en risque finissaient sur une blessure ; à 7 %, environ 40 %.
   - **Sortir un objet de la soute** : un objet de la bonne série fait basculer la scène ; un objet de palier 2+ garantit le risqué ; palier 3+ donne +4 XP. L'objet est consommé.
 - **La trouvaille** est l'objet réellement reçu : un objet de palier 1 d'une des quatre séries, nommé tel quel dans le texte, avec une provenance drôle (« Provenance : une boîte noire qui ne contient que des excuses »).
 - **Blessure** : l'expédition s'arrête, convalescence de 5 min + 5 min par point de danger, ni vol ni scrutation pendant ce temps. Répliques drôles tirées au hasard. On reprend à la scène suivante une fois remis.
