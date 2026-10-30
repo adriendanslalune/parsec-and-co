@@ -67,6 +67,21 @@ function dessinerSpectacles(t) {
 
 // la vignette : ligne claire, aplats, trame de points, et toi, minuscule, devant le monde
 const SOLS = { rocheux: "#c9b6a4", gazeux: "#d9c6e8", desert: "#efcf98", glace: "#e3f0f2", volcan: "#7a3a2c", toxique: "#c2d48a", crateres: "#bdb7b2", ocean: "#7fc4cf", jungle: "#7dbf7f", tempere: "#b6dcb0", etrange: "#d8b9ee", habite: "#e9cf86" };
+// les illustrations : illustrations/<type>-<scène>.webp pour une scène (<type>-<histoire>-<scène> à partir de la 2e histoire),
+// illustrations/<type>.webp pour le monde ; on essaie les noms dans l’ordre, et tant qu’aucun fichier n’existe, la vignette dessinée reste
+const illusAbsentes = new Set();
+function illustrer(noms) {
+  const cadre = document.querySelector("#page .image"); if (!cadre) return;
+  (function essayer(k) {
+    if (k >= noms.length) return;
+    const src = "illustrations/" + noms[k] + ".webp";
+    if (illusAbsentes.has(src)) { essayer(k + 1); return; }
+    const img = new Image();
+    img.onload = () => { if (!cadre.isConnected) return; img.className = "illu"; img.alt = ""; cadre.classList.add("illustree"); cadre.insertBefore(img, cadre.querySelector(".manchette")); };
+    img.onerror = () => { illusAbsentes.add(src); essayer(k + 1); };
+    img.src = src;
+  })(0);
+}
 function dessinerPlanete(cv, m) {
   // la case a la taille de la page : on dessine à sa vraie taille, sans étirer
   const w = Math.max(200, Math.min(520, window.innerWidth - 24) - 3), h = Math.max(190, window.innerHeight * 0.36), d = Math.min(window.devicePixelRatio || 1, 2.5);
