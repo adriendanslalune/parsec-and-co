@@ -2,7 +2,7 @@
 
 Pour chaque image : colle le prompt maître dans ChatGPT, puis la scène juste après « Scène : ». Envoie-moi l’image avec son nom (par exemple `rocheux-2`), je la convertis et je l’intègre.
 
-Déjà faites : `rocheux-1`, `habite-3`, `etrange-3`. Il en reste 45 : les 12 mondes d’abord (chacune sert de secours à toutes les scènes de son monde, et à la fiche du Guide), puis les 33 scènes.
+Déjà faites : `rocheux-1`, `habite-3`, `etrange-3`, et les mondes `rocheux`, `gazeux`, `desert`, `glace`, `volcan`. Il en reste 40 : les 7 autres mondes d’abord (chacune sert de secours à toutes les scènes de son monde, et à la fiche du Guide), puis les 33 scènes.
 
 ## Le prompt maître
 
