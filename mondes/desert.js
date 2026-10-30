@@ -1,7 +1,9 @@
-// Monde désertique : les scènes d’expédition
+// Monde désertique : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,21 +13,21 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("desert", [
+histoire("desert", "La route sous le sable", [
 
   // scène 1
   {
     situation: "Une ligne droite traverse les dunes sur des kilomètres. Trop droite pour être naturelle, trop longue pour être utile.",
     prudent: {
       choix: "La longer un moment",
-      resultat: "Elle ne mène nulle part de visible. Le Guide note : « quelqu’un avait un plan ». Tu rentres avant la nuit."
+      resultat: "Elle ne mène nulle part de visible. Le Guide note : « quelqu’un avait un plan ». Au bout, très loin, un arbre seul."
     },
     risque: {
       choix: "Creuser au milieu",
@@ -34,13 +36,19 @@ scenes("desert", [
     },
     objet: {
       serie: "epaves",
-      resultat: "{objet:Il|Elle} bipe sur la ligne. Tu creuses au bon endroit, une fois : {trouvaille}."
+      resultat: "Tu {objet:le|la} poses sur le sable : ça résonne, il y a du métal dessous. Tu creuses au bon endroit, une fois : {trouvaille}."
     }
   },
 
   // scène 2
   {
-    situation: "Un mirage ne disparaît pas quand tu t’approches. C’est une oasis, avec de l’eau noire et un seul arbre.",
+    rappel: {
+      prudent: "Tu as suivi la ligne, sagement. Elle mène à l’arbre.",
+      reussite: "Tu as un morceau de route dans la soute. La route, elle, continue jusqu’à un arbre.",
+      echec: "Tu as encore du sable dans des endroits que le Guide ne nomme pas.",
+      objet: "Sous tes pieds, la route résonne encore."
+    },
+    situation: "Au bout de la ligne, un mirage ne disparaît pas quand tu t’approches. C’est une oasis, avec de l’eau noire et un seul arbre.",
     prudent: {
       choix: "Remplir une gourde et repartir",
       resultat: "L’eau est froide, bonne, et un peu trop calme. Tu n’as pas attendu de voir si l’arbre bougeait."
@@ -58,14 +66,20 @@ scenes("desert", [
 
   // scène 3
   {
-    situation: "Le sable chante quand tu marches dessus, une note différente à chaque pas. Tu te surprends à composer.",
+    rappel: {
+      prudent: "L’eau noire clapote dans ta gourde. Plus loin, la route reprend, et le sable chante.",
+      reussite: "L’arbre t’a fait un cadeau. Le sable, autour, a l’air jaloux : il chante pour qu’on le remarque.",
+      echec: "Tu ne sais toujours pas qui t’a {toi:porté|portée} pendant la nuit. Le sable, lui, a l’air au courant.",
+      objet: "L’eau noire a gardé ta trace. La route reprend derrière l’oasis."
+    },
+    situation: "La route s’enfonce sous une dune. Le sable chante quand tu marches dessus, une note différente à chaque pas. Tu te surprends à composer.",
     prudent: {
       choix: "Enregistrer la mélodie",
-      resultat: "Le Guide a maintenant une bande-son. Elle est bizarre. Tu l’écoutes trois fois."
+      resultat: "Le Guide a maintenant une bande-son. Elle est bizarre. Tu l’écoutes trois fois, et la route reste sous la dune."
     },
     risque: {
       choix: "Jouer la mélodie à l’envers",
-      reussite: "Le sable s’affaisse sur dix mètres et découvre une dalle. Sous la dalle : {trouvaille}. La musique, c’était un mot de passe.",
+      reussite: "Le sable s’affaisse sur dix mètres et découvre une dalle. Sous la dalle : {trouvaille}. La musique était un mot de passe, et la route, une porte.",
       echec: "Le sable n’aime pas ta version. Il te le fait savoir en se dérobant sous tes pieds."
     },
     objet: {

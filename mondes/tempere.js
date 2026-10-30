@@ -1,7 +1,9 @@
-// Monde tempéré : les scènes d’expédition
+// Monde tempéré : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("tempere", [
+histoire("tempere", "Le thé encore chaud", [
 
   // scène 1
   {
@@ -40,6 +42,12 @@ scenes("tempere", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "Le pique-nique fini, tu remarques au bout de la prairie un verger.",
+      reussite: "La pierre taillée le prouve : quelqu’un vit ici. Son verger aussi.",
+      echec: "Tu sèches au soleil, au bord d’un verger.",
+      objet: "Le ruisseau chante encore avec sa nouvelle voix, jusqu’à un verger."
+    },
     situation: "Un verger. Les fruits sont mûrs, nombreux, et aucun oiseau ne les touche.",
     prudent: {
       choix: "Ne pas y toucher non plus",
@@ -58,6 +66,12 @@ scenes("tempere", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Tu n’as pas touché aux fruits. Au bout du verger, une maison.",
+      reussite: "Le fruit te fait encore voir à travers le temps. Ce que tu vois, c’est une maison.",
+      echec: "Tu te réveilles de ta sieste devant une maison. Elle n’était pas là avant.",
+      objet: "Le panier du verger était à quelqu’un. Sa maison est juste là."
+    },
     situation: "Une maison. Une seule. Porte ouverte, table mise, personne. Le thé est encore chaud.",
     prudent: {
       choix: "Rester sur le seuil",

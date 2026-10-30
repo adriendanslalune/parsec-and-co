@@ -1,7 +1,9 @@
-// Monde étrange : les scènes d’expédition
+// Monde étrange : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("etrange", [
+histoire("etrange", "Le monde qui hésite", [
 
   // scène 1
   {
@@ -40,6 +42,12 @@ scenes("etrange", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "La gravité s’est remise à l’endroit, à peu près. Au loin, des cristaux chantent.",
+      reussite: "Tu as marché sur un mur. Les cristaux, plus loin, en parlent déjà.",
+      echec: "Tu as visité le plafond, le sol et le mur. Plus loin, des cristaux applaudissent.",
+      objet: "La gravité a l’air vexée qu’on l’ait ignorée. Des cristaux s’en moquent en chantant."
+    },
     situation: "Des cristaux chantent quand tu passes. Faux. Mais ils chantent ta chanson préférée, celle que tu n’as dite à personne.",
     prudent: {
       choix: "Passer vite",
@@ -58,6 +66,12 @@ scenes("etrange", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Les cristaux finissent ta chanson dans ton dos. Devant toi, une plaque de verre.",
+      reussite: "Ton duo avec les cristaux résonne encore. Dans une plaque de verre, ton reflet chante en retard.",
+      echec: "Tu n’entends plus très bien. Ton reflet, dans une plaque de verre, a l’air d’entendre pour toi.",
+      objet: "Les cristaux se taisent encore, impressionnés. Ton reflet aussi, avec trois secondes de retard."
+    },
     situation: "Ton reflet dans une plaque de verre a trois secondes de retard. Il te regarde partir avant que tu ne partes.",
     prudent: {
       choix: "Partir sans regarder le reflet",

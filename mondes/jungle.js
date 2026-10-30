@@ -1,7 +1,9 @@
-// Monde jungle : les scènes d’expédition
+// Monde jungle : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,21 +13,21 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("jungle", [
+histoire("jungle", "Les jardiniers", [
 
   // scène 1
   {
     situation: "Les arbres font cent mètres. Et au-dessus, d’autres arbres, qui poussent sur les premiers.",
     prudent: {
       choix: "Rester au sol",
-      resultat: "Il fait sombre, humide, et tout bouge. Tu notes trois espèces, tu en oublies deux, tu repars."
+      resultat: "Il fait sombre, humide, et tout bouge. Tu notes trois espèces, tu en oublies deux, tu avances."
     },
     risque: {
       choix: "Grimper jusqu’à la seconde forêt",
@@ -40,6 +42,12 @@ scenes("jungle", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "Tu as gardé les pieds sur terre. Ici, la terre a des fleurs.",
+      reussite: "Du haut de la seconde forêt, tu as vu une fleur énorme. Elle aussi t’a {toi:vu|vue}.",
+      echec: "Le bras t’a laissé tomber devant une fleur. Il avait sûrement ses raisons.",
+      objet: "Les arbres s’écartent encore sur ton passage, jusqu’à une fleur."
+    },
     situation: "Une fleur grande comme une voiture s’ouvre à ton approche. Elle sent la cannelle et la mauvaise foi.",
     prudent: {
       choix: "Reculer lentement",
@@ -58,6 +66,12 @@ scenes("jungle", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "La fleur boude. Derrière elle, un sentier.",
+      reussite: "Tu sens encore la sève. Derrière la fleur, un sentier tout propre.",
+      echec: "Tu as perdu quelques affaires dans la fleur. Quelqu’un les a rangées au bord d’un sentier.",
+      objet: "La fleur digère encore ton offrande. Derrière elle, un sentier."
+    },
     situation: "Un sentier. Entretenu. Avec des bornes. Personne en vue, mais quelqu’un passe le balai ici.",
     prudent: {
       choix: "Suivre le sentier jusqu’au premier virage",
@@ -70,7 +84,7 @@ scenes("jungle", [
     },
     objet: {
       serie: "epaves",
-      resultat: "{objet:Il|Elle} bipe sous une borne enterrée. Tu la déterres : {trouvaille}, et une borne, aussi."
+      resultat: "Tu {objet:le|la} glisses dans une borne : elle s’ouvre comme une vieille boîte à outils. Dedans : {trouvaille}, et un balai."
     }
   }
 

@@ -1,7 +1,9 @@
-// Monde toxique : les scènes d’expédition
+// Monde toxique : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("toxique", [
+histoire("toxique", "Le marcheur du lac jaune", [
 
   // scène 1
   {
@@ -34,12 +36,18 @@ scenes("toxique", [
     },
     objet: {
       serie: "epaves",
-      resultat: "{objet:Il|Elle} filtre l’air et l’acide. Tu marches dans le lac jusqu’à la taille : au fond, {trouvaille}."
+      resultat: "Tu en fais un filtre de fortune, pour l’air et pour l’acide. Tu marches dans le lac jusqu’à la taille : au fond, {trouvaille}."
     }
   },
 
   // scène 2
   {
+    rappel: {
+      prudent: "Tu n’as pas suivi les traces. D’autres, plus loin, mènent à une mare.",
+      reussite: "Ce qu’a laissé le marcheur du lac est dans ta soute. Tu as l’impression qu’on te regarde.",
+      echec: "Ton pied fume encore. Une mare, plus loin, fait des bulles comme on se moque.",
+      objet: "Le lac a gardé la forme de tes pas. Ils mènent à une mare."
+    },
     situation: "Des bulles remontent d’une mare et éclatent en formant des mots. Des vrais mots. Dans ta langue.",
     prudent: {
       choix: "Lire, ne pas répondre",
@@ -58,6 +66,12 @@ scenes("toxique", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Les bulles ont dit « merci ». Le ciel, lui, se couvre.",
+      reussite: "La mare t’a répondu. Le ciel, vexé de ne pas avoir été consulté, se couvre.",
+      echec: "Tu tousses encore. Le ciel tourne au vert, par solidarité.",
+      objet: "Derrière toi, les bulles s’excusent encore. Le ciel se couvre."
+    },
     situation: "Une pluie verte commence. Elle grésille sur le vaisseau, et le vaisseau n’aime pas ça.",
     prudent: {
       choix: "Rentrer et décoller",

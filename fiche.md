@@ -34,7 +34,8 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Arrivée : la caméra plonge dans le système, carillon, puis l'expédition s'ouvre.
 
 ### L'expédition
-- 2 ou 3 scènes tirées parmi celles du type de monde. Chaque scène : une situation et trois options.
+- Une histoire de 3 scènes qui se suivent, tirée parmi celles du type de monde (une seule par type pour l'instant), avec un titre. Chaque scène : une situation et trois options.
+- Les scènes 2 et 3 s'ouvrent sur une phrase qui se souvient du choix d'avant : prudent, risque réussi, blessure ou objet.
   - **Prudent** : on apprend peu, on rentre entier (+1 XP).
   - **Risqué** : trouvaille probable, ou blessure selon le danger du monde (12 % par point de danger) (+2 XP si réussi).
   - **Sortir un objet de la soute** : un objet de la bonne série fait basculer la scène ; un objet de palier 2+ garantit le risqué ; palier 3+ donne +4 XP. L'objet est consommé.
@@ -44,7 +45,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - À la fin : la fiche du Guide (texte, journal des choix), et le monde devient un port.
 
 ### Les mondes (12 types actuels)
-Rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité. Chacun avec un poids de tirage (les rocheux dominent), une fourchette de danger (0 à 5), des couleurs, des textes du Guide et 3 scènes.
+Rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité. Chacun avec un poids de tirage (les rocheux dominent), une fourchette de danger (0 à 5), des couleurs, des textes du Guide et une histoire de 3 scènes.
 
 ### Les ports
 - Tout monde exploré est un port de la Compagnie : il écoute le vide, il étend le territoire (hachures vert-de-gris sur la carte).
@@ -91,12 +92,11 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
 
 ## En attente
 
-1. **Histoires liées** : passer des scènes indépendantes à des histoires de 3 scènes qui se suivent (le chemin) et se souviennent des choix (une phrase change selon le choix d'avant). Les 36 scènes actuelles se réorganisent en 12 histoires.
-2. **Plus de types de mondes** (26 au total) : rares (bibliothèque, champignon, administratif, cimetière de vaisseaux, musical, en chantier, ruche), très rares (creux, plat, horloge, miroir, à rebours), légendaires (endormi, fantôme, jardin d'un dieu absent). Règle : un type fantastique n'est gardé que si ChatGPT en fait une illustration cohérente. Viser à terme une dizaine de scènes par type.
-3. **Illustrations** : environ 60 images (style Moebius, palette pastel, portrait vertical, aucun texte), prompt maître testé sur 3 images d'abord, WebP ~100 Ko.
-4. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
-5. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.
-6. **Play Store**.
+1. **Plus de types de mondes** (26 au total) : rares (bibliothèque, champignon, administratif, cimetière de vaisseaux, musical, en chantier, ruche), très rares (creux, plat, horloge, miroir, à rebours), légendaires (endormi, fantôme, jardin d'un dieu absent). Règle : un type fantastique n'est gardé que si ChatGPT en fait une illustration cohérente. Viser à terme plusieurs histoires par type : le moteur en tire déjà une au hasard parmi celles du fichier, et une seule histoire par type, c'est répétitif sur les mondes fréquents.
+2. **Illustrations** : environ 60 images (style Moebius, palette pastel, portrait vertical, aucun texte), prompt maître testé sur 3 images d'abord, WebP ~100 Ko.
+3. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
+4. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.
+5. **Play Store**.
 
 ## Ce qu'on ne fera pas
 - Pas de bâtiments, pas de jauges, pas de chaîne de production.

@@ -36,12 +36,14 @@ const PROVENANCES = {
   reliques: ["une pièce de monnaie dont les deux faces disent « pile »", "un panneau indiquant une sortie qui n’a jamais existé", "une statue d’un dirigeant visiblement surpris", "un ticket de parking encore valable, techniquement"],
   bizarreries: ["un caillou qui pèse plus lourd quand on le regarde", "une flaque qui reflète hier", "un son, conservé dans un bocal", "une ombre sans propriétaire, en bon état"]
 };
-// les scènes : chaque fichier mondes/<type>.js appelle scenes(type, [...]) ; on les range ici sous leur forme compacte
-// t (texte), a (prudent), b (audacieux : réussite/échec), o ([série, texte si on sort un objet de cette série])
-const SCENES = {};
-function scenes(type, liste) {
-  SCENES[type] = liste.map(s => ({ t: s.situation, a: [s.prudent.choix, s.prudent.resultat], b: [s.risque.choix, s.risque.reussite, s.risque.echec], o: [s.objet.serie, s.objet.resultat] }));
+// les histoires : chaque fichier mondes/<type>.js appelle histoire(type, titre, [3 scènes]) ; on les range ici sous forme compacte
+// t (texte), a (prudent), b (audacieux : réussite/échec), o ([série, texte si on sort un objet de cette série]),
+// r (rappel : la phrase qui ouvre la scène selon le choix d’avant : prudent, reussite, echec ou objet)
+const HISTOIRES = {};
+function histoire(type, titre, liste) {
+  (HISTOIRES[type] = HISTOIRES[type] || []).push({ titre, scenes: liste.map(s => ({ t: s.situation, a: [s.prudent.choix, s.prudent.resultat], b: [s.risque.choix, s.risque.reussite, s.risque.echec], o: [s.objet.serie, s.objet.resultat], r: s.rappel || {} })) });
 }
+function histoireDe(m) { const hs = HISTOIRES[m.type] || HISTOIRES.rocheux; return hs[Math.min(m.exp.h || 0, hs.length - 1)]; }
 function choisir(arr, h) { return arr[Math.floor(h * arr.length)]; }
 function texte(s, m, objet) {
   return accords(s, objet, m._trouvaille && m._trouvaille.objet).replace(/\{nom\}/g, m.nom).replace(/\{joueur\}/g, joueur.nom).replace(/\{objet\}/g, objet ? objet.nom : "l’objet")
@@ -55,11 +57,15 @@ function tirerTrouvaille(m, k) {
 
 // ===================== L’expédition : vivre un monde =====================
 function commencerExpedition(m) {
+  // une histoire tirée parmi celles du type de monde, ses scènes dans l’ordre
   if (!m.exp) {
-    const h = (a) => hash(Math.round(m.x * 1000), Math.round(m.y * 1000), a, seed + 31);
-    const pool = SCENES[m.type] || SCENES.rocheux;
-    const ordre = pool.map((s, i) => i).sort((a, b) => h(a + 1) - h(b + 1)).slice(0, 2 + (h(9) < 0.4 ? 1 : 0));
-    m.exp = { scenes: ordre, i: 0, journal: [], finie: false };
+    const h = (a) => hash(Math.round(m.x * 1000), Math.round(m.y * 1000), a, seed + 31), hs = HISTOIRES[m.type] || HISTOIRES.rocheux, k = Math.floor(h(1) * hs.length);
+    m.exp = { h: k, scenes: hs[k].scenes.map((s, i) => i), choix: [], i: 0, journal: [], finie: false };
+    sauver("parsec.explores", [...explores.values()]);
+  }
+  // une expédition commencée du temps des scènes indépendantes reprend l’histoire là où elle en était
+  else if (!m.exp.finie && !m.exp.choix) {
+    m.exp.h = 0; m.exp.scenes = histoireDe(m).scenes.map((s, i) => i); m.exp.choix = [];
     sauver("parsec.explores", [...explores.values()]);
   }
   ouvrirExpedition(m);
@@ -69,12 +75,12 @@ function ouvrirExpedition(m) {
   const exp = m.exp;
   if (Date.now() < blesse && exp.i < exp.scenes.length) { fermer(); dire("<b>Convalescence.</b> " + m.nom + " attendra que tu sois sur pied, encore " + dureeTxt(blesse - Date.now()) + ". Le Guide recommande une tisane et un plaid."); return; }
   if (exp.i >= exp.scenes.length) { exp.finie = true; const neuf = !m.vu; m.vu = true; sauver("parsec.explores", [...explores.values()]); if (neuf) nouveauComptoir(m); ouvrirFiche(m, true); return; }
-  const sc = (SCENES[m.type] || SCENES.rocheux)[exp.scenes[exp.i]];
+  const hist = histoireDe(m), sc = hist.scenes[exp.scenes[exp.i]], rappel = exp.i > 0 && sc.r[(exp.choix || [])[exp.i - 1]];
   m._trouvaille = tirerTrouvaille(m, exp.i);
-  let html = mast() + "<div class=\"image\"><canvas id=\"cvFiche\" width=\"520\" height=\"340\"></canvas><div class=\"manchette\">Scène " + (exp.i + 1) + " sur " + exp.scenes.length + "</div></div>";
+  let html = mast() + "<div class=\"image\"><canvas id=\"cvFiche\" width=\"520\" height=\"340\"></canvas><div class=\"manchette\">" + hist.titre + " · " + (exp.i + 1) + "/" + exp.scenes.length + "</div></div>";
   html += "<div class=\"texte\"><h2>" + m.nom + "</h2><div class=\"sous\">" + m.titre + ", danger " + "●".repeat(m.danger) + "○".repeat(5 - m.danger) + "</div>";
   for (const j of exp.journal) html += "<div class=\"journal\">" + j + "</div>";
-  html += "<p>" + texte(sc.t, m) + "</p>";
+  html += "<p>" + (rappel ? "<i>" + texte(rappel, m) + "</i> " : "") + texte(sc.t, m) + "</p>";
   html += "<div class=\"choix\"><button type=\"button\" data-choix=\"a\">" + texte(sc.a[0], m) + "</button><button type=\"button\" class=\"ping\" data-choix=\"b\">" + texte(sc.b[0], m) + " <span class=\"gris\">(risqué)</span></button>";
   const objets = [...soute];
   if (objets.length) html += "<button type=\"button\" class=\"second\" id=\"ouvrirSoute\">Sortir un objet de la soute…</button>";
@@ -92,25 +98,25 @@ function ouvrirExpedition(m) {
   });
 }
 function resoudre(m, sc, choix, objet) {
-  const exp = m.exp; let ligne = "", gagne = null, blessure = 0, xp = 1;
+  const exp = m.exp; let ligne = "", gagne = null, blessure = 0, xp = 1, fait = "prudent";   // fait : ce dont la scène suivante se souviendra
   if (choix === "o") {
-    if (objet && sc.o && objet.serie === sc.o[0]) { soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute); ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.o[1], m, objet) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>"; gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; }
+    if (objet && sc.o && objet.serie === sc.o[0]) { soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute); ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.o[1], m, objet) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>"; gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; fait = "objet"; }
     else if (objet && objet.tag === "artefact" && (objet.palier || 1) >= 2) {
       soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute);
       ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.b[0], m) + ", et avec ça en main, rien ne peut mal tourner. " + texte(sc.b[1], m) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>";
-      gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2;
+      gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; fait = "reussite";
     }
     else { ligne = "<b>Tu sors " + (objet ? objet.nom : "quelque chose") + ".</b> " + accords("Tu {objet:le|la} regardes, la scène {objet:le|la} regarde, et rien ne se passe. Tu {objet:le|la} ranges avec dignité. Il faut quand même choisir.", objet); exp.journal.push(ligne); sauver("parsec.explores", [...explores.values()]); ouvrirExpedition(m); return; }
   } else if (choix === "a") { ligne = "<b>" + texte(sc.a[0], m) + ".</b> " + texte(sc.a[1], m); }
   else {
     const echec = Math.random() * 100 < 12 * m.danger;
-    if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); blessure = (5 + 5 * m.danger) * 60 * 1000; xp = 1; }
-    else { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[1], m); gagne = m._trouvaille; xp = 2; }
+    if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); blessure = (5 + 5 * m.danger) * 60 * 1000; xp = 1; fait = "echec"; }
+    else { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[1], m); gagne = m._trouvaille; xp = 2; fait = "reussite"; }
   }
   if (gagne) { const ob = gagne.objet; soute.push({ id: "art-" + m.id + "-" + exp.i + "-" + Date.now(), nom: ob.nom, tag: "artefact", serie: ob.serie, serieNom: ob.serieNom, palier: 1, de: m.nom, provenance: gagne.provenance, usage: "objet" }); sauver("parsec.soute", soute); carillon(); ligne += " <span class=\"gris\">(Dans la soute : " + ob.nom + ". Provenance : " + gagne.provenance + ".)</span>"; }
   else if (blessure) { blesse = Math.max(blesse, Date.now() + blessure); sauver("parsec.blesse", blesse); bipSourd(); }
   else bip(1);
-  exp.journal.push(ligne); exp.i += 1;
+  exp.journal.push(ligne); (exp.choix = exp.choix || [])[exp.i] = fait; exp.i += 1;
   gagnerXp(xp);
   sauver("parsec.explores", [...explores.values()]);
   majHud();

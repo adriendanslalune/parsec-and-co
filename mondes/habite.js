@@ -1,7 +1,9 @@
-// Monde habité : les scènes d’expédition
+// Monde habité : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("habite", [
+histoire("habite", "La statue", [
 
   // scène 1
   {
@@ -40,6 +42,12 @@ scenes("habite", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "Les habitants ont fini par rentrer dîner. Le lendemain, c’est jour de marché.",
+      reussite: "Tu as mangé le plat violet. Au marché, tout le monde le sait déjà.",
+      echec: "L’incident diplomatique a fait le tour de la ville. Au marché, on te regarde de travers.",
+      objet: "Ta bonne réponse a fait le tour de la ville. Au marché, on te salue."
+    },
     situation: "Un marché. Des étals, des cris, des odeurs. On te vend tout et on ne veut rien de tes mégacrédits, qui n’existent pas ici de toute façon.",
     prudent: {
       choix: "Regarder sans acheter",
@@ -58,6 +66,12 @@ scenes("habite", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "Tu n’as rien acheté au marché. Au bout de la place, une statue a l’air de le savoir.",
+      reussite: "Le marchand raconte votre affaire à tout le monde. Au bout de la place, une statue écoute.",
+      echec: "Le décollage peut attendre : au bout de la place, une statue te ressemble.",
+      objet: "Ton accolade avec le marchand a été vue de loin. Par une statue."
+    },
     situation: "Une statue te représente. Toi. En plus grand, et avec une expression de certitude que tu n’as jamais eue.",
     prudent: {
       choix: "Ne rien dire",

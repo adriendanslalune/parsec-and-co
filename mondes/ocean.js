@@ -1,7 +1,9 @@
-// Monde océan : les scènes d’expédition
+// Monde océan : l’histoire d’expédition
 //
-// Une expédition tire 2 ou 3 scènes de ce fichier. Chaque scène a :
-//   situation : ce que l’explorateur découvre en arrivant ;
+// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+//   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
+//               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
+//   situation : ce que l’explorateur découvre ;
 //   prudent   : le choix sans risque (le bouton, puis ce qui se passe) ;
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
@@ -11,14 +13,14 @@
 // Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
 //   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
 //   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
-//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+//   {trouvaille:coincé|coincée} avec l’objet trouvé (pas dans les rappels : la trouvaille d’avant est déjà loin).
 // Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
-// Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
-// Ne change pas l’ordre des scènes existantes et n’en supprime pas : une expédition en cours retient leurs numéros.
+// Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
+// Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
 
-scenes("ocean", [
+histoire("ocean", "Ce qui nage dessous", [
 
   // scène 1
   {
@@ -40,6 +42,12 @@ scenes("ocean", [
 
   // scène 2
   {
+    rappel: {
+      prudent: "L’ombre est partie. Ce qui dérive vers toi lui ressemble, en plus calme.",
+      reussite: "L’ombre t’a montré sa fosse. Maintenant, elle t’envoie quelqu’un.",
+      echec: "L’ombre avait une bouche. Ce qui arrive maintenant en a une aussi, mais elle sourit.",
+      objet: "L’ombre te suit encore, docile, et pousse quelque chose vers toi."
+    },
     situation: "Une île flotte. Pas posée : flottante, et elle dérive vers toi.",
     prudent: {
       choix: "La laisser passer",
@@ -58,6 +66,12 @@ scenes("ocean", [
 
   // scène 3
   {
+    rappel: {
+      prudent: "L’île est passée en chantant. À la nuit, le plancton reprend sa chanson.",
+      reussite: "L’île a soupiré. À la nuit tombée, le plancton répète le soupir.",
+      echec: "Tu as nagé longtemps. À la nuit, le plancton s’allume autour de toi.",
+      objet: "L’île s’est arrêtée pour toi. La nuit tombe dessus."
+    },
     situation: "Le plancton s’allume à la nuit tombée et dessine des lettres. Elles forment un mot. Tu le lis. Tu préfères ne pas l’avoir lu.",
     prudent: {
       choix: "Éteindre les lumières et attendre l’aube",
