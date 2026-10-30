@@ -68,10 +68,16 @@ Pour une scène, le jeu cherche d’abord `<type>-<scène>.webp`, puis `<type>.w
 À coller dans ChatGPT, suivi de la description de la scène.
 
 ```
-Illustration pour un jeu mobile d’exploration spatiale humoristique, dans le style de Moebius (Jean Giraud) : ligne claire, trait d’encre fin et régulier, grands aplats de couleur, peu d’ombres, paysages immenses et perspective ample. Palette pastel et chaude, comme une impression pulp des années 50 : papier crème, sépia, brique, vert-de-gris, lavande, orange doux, rose, bleu encre. Une légère trame de points dans les ciels et les ombres, et un léger décalage des couleurs, comme une impression mal calée. Ton : absurde et poétique, à la façon du Guide du voyageur galactique et du Disque-monde ; l’étrange est traité calmement, avec humour, jamais comme de l’horreur. Quelque part dans l’image, minuscule, un explorateur en scaphandre orange à casque rond, vu de loin, souvent le bras levé vers ce qu’il découvre : il ne domine jamais l’image. Format portrait vertical 2:3. Le sujet principal tient dans le tiers central de l’image, avec du ciel en haut et du sol en bas. Aucun texte, aucune lettre, aucun chiffre, aucune signature, aucun logo, aucun cadre.
+Illustration pour un jeu mobile d’exploration spatiale humoristique, dans le style de Moebius (Jean Giraud) : ligne claire, trait d’encre fin et régulier, grands aplats de couleur, peu d’ombres, paysages immenses et perspective ample. Palette pastel et chaude, comme une impression pulp des années 50 : papier crème, sépia, brique, vert-de-gris, lavande, orange doux, rose, bleu encre. Une légère trame de points dans les ciels et les ombres, et un léger décalage des couleurs, comme une impression mal calée. Ton : absurde et poétique, à la façon du Guide du voyageur galactique et du Disque-monde ; l’étrange est traité calmement, avec humour, jamais comme de l’horreur. Quelque part dans l’image, minuscule, un explorateur en scaphandre orange à casque rond, vu de loin, souvent le bras levé vers ce qu’il découvre : il ne domine jamais l’image, et il se tient dans la moitié haute ou au milieu de l’image, jamais dans le quart du bas. Aplats francs et contours nets, pas de rendu peint ni de dégradés, peu de détails : de grandes surfaces simples. Pas de planète géante ni de grosse lune dans le ciel, sauf si la scène le demande. Format portrait vertical 2:3. Le sujet principal tient dans le tiers central de l’image, avec du ciel en haut et du sol en bas. Aucun texte, aucune lettre, aucun chiffre, aucune signature, aucun logo, aucun cadre.
 
 Scène :
 ```
+
+## Où on en est
+
+Les 3 images de test sont faites (`rocheux-1`, `habite-3`, `etrange-3`). Le prompt maître ci-dessus est corrigé après elles : l’explorateur ne descend plus dans le quart du bas (l’étiquette du titre le cache sur téléphone), les aplats sont demandés plus nettement, et la planète géante qui revenait dans chaque ciel est interdite.
+
+Les fichiers font 720 × 1080, WebP qualité 58 : environ 100 à 125 Ko (le grain du papier se compresse mal).
 
 ## Les 3 images de test
 
