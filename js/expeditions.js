@@ -29,7 +29,8 @@ function genererMonde(e) {
 
 // ===================== Les scènes d’expédition (briques) =====================
 // Chaque scène : t (texte), a (prudent), b (audacieux : réussite/échec selon le danger), o (si on sort le bon objet de la soute)
-const TROUVAILLES = {
+// la trouvaille est un objet de palier 1 de sa série ; ces phrases disent d’où il vient
+const PROVENANCES = {
   epaves: ["une tuyère corrodée gravée dans une langue à quatorze voyelles", "un siège de pilote pour une créature à trois fesses", "une boîte noire qui ne contient que des excuses", "un hublot encore embué de l’intérieur"],
   fossiles: ["une empreinte de quelque chose qui marchait en rond", "une coquille en spirale dans le mauvais sens", "une dent, et au vu de la taille, une seule suffit", "une fleur de pierre qui regarde encore une étoile éteinte"],
   reliques: ["une pièce de monnaie dont les deux faces disent « pile »", "un panneau indiquant une sortie qui n’a jamais existé", "une statue d’un dirigeant visiblement surpris", "un ticket de parking encore valable, techniquement"],
@@ -43,13 +44,13 @@ function scenes(type, liste) {
 }
 function choisir(arr, h) { return arr[Math.floor(h * arr.length)]; }
 function texte(s, m, objet) {
-  return s.replace(/\{nom\}/g, m.nom).replace(/\{joueur\}/g, joueur.nom).replace(/\{objet\}/g, objet ? objet.nom : "l’objet")
+  return accords(s, objet, m._trouvaille && m._trouvaille.objet).replace(/\{nom\}/g, m.nom).replace(/\{joueur\}/g, joueur.nom).replace(/\{objet\}/g, objet ? objet.nom : "l’objet")
     .replace(/\{trouvaille\}/g, "<b>" + (m._trouvaille ? m._trouvaille.texte : "quelque chose") + "</b>");
 }
 function tirerTrouvaille(m, k) {
   const h = (a) => hash(Math.round(m.x * 1000), Math.round(m.y * 1000), a + k * 10, seed + 7);
-  const series = Object.keys(TROUVAILLES), s = choisir(series, h(1)), idx = Math.floor(h(2) * TROUVAILLES[s].length);
-  return { serie: s, serieNom: SERIE_NOM[s], idx, texte: TROUVAILLES[s][idx], objet: objetPalier(s, 1) };
+  const series = Object.keys(PROVENANCES), s = choisir(series, h(1)), idx = Math.floor(h(2) * PROVENANCES[s].length), objet = objetPalier(s, 1);
+  return { serie: s, serieNom: SERIE_NOM[s], idx, texte: objet.nom, provenance: PROVENANCES[s][idx], objet };
 }
 
 // ===================== L’expédition : vivre un monde =====================
@@ -93,20 +94,20 @@ function ouvrirExpedition(m) {
 function resoudre(m, sc, choix, objet) {
   const exp = m.exp; let ligne = "", gagne = null, blessure = 0, xp = 1;
   if (choix === "o") {
-    if (objet && sc.o && objet.serie === sc.o[0]) { soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute); ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.o[1], m, objet) + " <span class=\"gris\">(" + objet.nom + " y est resté.)</span>"; gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; }
+    if (objet && sc.o && objet.serie === sc.o[0]) { soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute); ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.o[1], m, objet) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>"; gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; }
     else if (objet && objet.tag === "artefact" && (objet.palier || 1) >= 2) {
       soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute);
-      ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.b[0], m) + ", et avec ça en main, rien ne peut mal tourner. " + texte(sc.b[1], m) + " <span class=\"gris\">(" + objet.nom + " y est resté.)</span>";
+      ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.b[0], m) + ", et avec ça en main, rien ne peut mal tourner. " + texte(sc.b[1], m) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>";
       gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2;
     }
-    else { ligne = "<b>Tu sors " + (objet ? objet.nom : "quelque chose") + ".</b> Tu le regardes, la scène le regarde, et rien ne se passe. Tu le ranges avec dignité. Il faut quand même choisir."; exp.journal.push(ligne); sauver("parsec.explores", [...explores.values()]); ouvrirExpedition(m); return; }
+    else { ligne = "<b>Tu sors " + (objet ? objet.nom : "quelque chose") + ".</b> " + accords("Tu {objet:le|la} regardes, la scène {objet:le|la} regarde, et rien ne se passe. Tu {objet:le|la} ranges avec dignité. Il faut quand même choisir.", objet); exp.journal.push(ligne); sauver("parsec.explores", [...explores.values()]); ouvrirExpedition(m); return; }
   } else if (choix === "a") { ligne = "<b>" + texte(sc.a[0], m) + ".</b> " + texte(sc.a[1], m); }
   else {
     const echec = Math.random() * 100 < 12 * m.danger;
     if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); blessure = (5 + 5 * m.danger) * 60 * 1000; xp = 1; }
     else { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[1], m); gagne = m._trouvaille; xp = 2; }
   }
-  if (gagne) { const ob = gagne.objet; soute.push({ id: "art-" + m.id + "-" + exp.i + "-" + Date.now(), nom: ob.nom, tag: "artefact", serie: ob.serie, serieNom: ob.serieNom, palier: 1, de: m.nom, usage: "objet" }); sauver("parsec.soute", soute); carillon(); ligne += " <span class=\"gris\">(Dans la soute : " + ob.nom + ".)</span>"; }
+  if (gagne) { const ob = gagne.objet; soute.push({ id: "art-" + m.id + "-" + exp.i + "-" + Date.now(), nom: ob.nom, tag: "artefact", serie: ob.serie, serieNom: ob.serieNom, palier: 1, de: m.nom, provenance: gagne.provenance, usage: "objet" }); sauver("parsec.soute", soute); carillon(); ligne += " <span class=\"gris\">(Dans la soute : " + ob.nom + ". Provenance : " + gagne.provenance + ".)</span>"; }
   else if (blessure) { blesse = Math.max(blesse, Date.now() + blessure); sauver("parsec.blesse", blesse); bipSourd(); }
   else bip(1);
   exp.journal.push(ligne); exp.i += 1;
@@ -117,13 +118,13 @@ function resoudre(m, sc, choix, objet) {
     fermer(); majBlessure();
     const REPOS = [
       "Le médecin de bord, un grille-pain diplômé par correspondance, te prescrit {d} de repos et une tartine.",
-      "Ton scaphandre a déposé une réclamation officielle. Délai de traitement : {d}. Tu restes allongé en attendant.",
+      "Ton scaphandre a déposé une réclamation officielle. Délai de traitement : {d}. Tu restes {toi:allongé|allongée} en attendant.",
       "La Compagnie rappelle que les blessures ne sont pas couvertes par ton contrat. Le canapé de la cabine, si. {d}.",
       "Le Guide classe l’incident dans la rubrique « ça arrive ». Repos forcé : {d}, sous plaid réglementaire.",
       "Le vaisseau a mis de la musique douce et refuse de décoller pendant {d}. Il dit que c’est pour ton bien.",
-      "Tu as été déclaré « un peu cabossé » par le pilote automatique, qui ne sait pas mentir. Repos : {d}."
+      "Tu as été {toi:déclaré « un peu cabossé »|déclarée « un peu cabossée »} par le pilote automatique, qui ne sait pas mentir. Repos : {d}."
     ];
-    dire("<b>Retour au vaisseau, en pièces détachées.</b> " + texte(sc.b[2], m) + " " + REPOS[Math.floor(Math.random() * REPOS.length)].replace("{d}", dureeTxt(blessure)) + " " + m.nom + " t’attendra.");
+    dire("<b>Retour au vaisseau, en pièces détachées.</b> " + texte(sc.b[2], m) + " " + accords(REPOS[Math.floor(Math.random() * REPOS.length)]).replace("{d}", dureeTxt(blessure)) + " " + m.nom + " t’attendra.");
     return;
   }
   ouvrirExpedition(m);
@@ -138,6 +139,6 @@ function majBlessure() {
     etaitBlesse = false; btnPing.disabled = false; btnPing.innerHTML = ico("antenne") + "Scruter le vide";
     const att = mondeEnAttente();
     carillon();
-    dire("<b>Remis sur pied.</b> " + (att ? att.nom + " t’attend. <button type=\"button\" data-fiche=\"" + att.id + "\">Y retourner</button>" : "Le vide t’attend."));
+    dire("<b>" + accords("{toi:Remis|Remise}") + " sur pied.</b> " + (att ? att.nom + " t’attend. <button type=\"button\" data-fiche=\"" + att.id + "\">Y retourner</button>" : "Le vide t’attend."));
   }
 }

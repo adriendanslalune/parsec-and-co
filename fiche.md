@@ -20,7 +20,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Une formule, pas une base de données : une graine + une position donnent toujours la même étoile, le même nom, le même monde. Rien n'est stocké tant que personne n'y est allé.
 - Forme réelle : bulbe, deux bras spiraux, densité qui augmente vers le centre, rayon d'environ 55 000 années-lumière.
 - Étoiles par niveaux de cellules, avec fondu entre les niveaux au zoom. Chaque étoile a son système de planètes en orbite. Zoom de la galaxie entière jusqu'à l'échelle d'un système (unités astronomiques).
-- Le joueur démarre sur un monde tiré au sort ; il choisit son nom d'explorateur au premier lancement.
+- Le joueur démarre sur un monde tiré au sort ; il signe sa fiche d'embauche au premier lancement : son nom, et explorateur ou exploratrice. Les textes s'accordent (titres, scènes, messages).
 
 ### Scruter le vide (le cœur du jeu)
 1. Le joueur choisit le port qui écoute (s'il en a plusieurs).
@@ -38,6 +38,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
   - **Prudent** : on apprend peu, on rentre entier (+1 XP).
   - **Risqué** : trouvaille probable, ou blessure selon le danger du monde (12 % par point de danger) (+2 XP si réussi).
   - **Sortir un objet de la soute** : un objet de la bonne série fait basculer la scène ; un objet de palier 2+ garantit le risqué ; palier 3+ donne +4 XP. L'objet est consommé.
+- **La trouvaille** est l'objet réellement reçu : un objet de palier 1 d'une des quatre séries, nommé tel quel dans le texte, avec une provenance drôle (« Provenance : une boîte noire qui ne contient que des excuses »).
 - **Blessure** : l'expédition s'arrête, convalescence de 5 min + 5 min par point de danger, ni vol ni scrutation pendant ce temps. Répliques drôles tirées au hasard. On reprend à la scène suivante une fois remis.
 - **Verrou** : on ne repart pas scruter tant que l'expédition en cours n'est pas finie.
 - À la fin : la fiche du Guide (texte, journal des choix), et le monde devient un port.
@@ -60,6 +61,7 @@ Rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jung
 ### Progression
 - XP : +1 prudent, +2 risqué réussi ou bon objet, +4 avec objet de palier 3+.
 - Titres aux seuils 0, 3, 8, 15, 25, 40, 60, 90, 130, 200 : Stagiaire du Vide, Touriste Assermenté, Arpenteur Approximatif, Cartographe Malgré Lui, Dompteur de Cailloux, Inspecteur des Horizons, Vétéran Fêlé, Légende Locale (très locale), Grand Explorateur selon lui-même, Monument Interstellaire Classé.
+- Au féminin : Stagiaire du Vide, Touriste Assermentée, Arpenteuse Approximative, Cartographe Malgré Elle, Dompteuse de Cailloux, Inspectrice des Horizons, Vétérane Fêlée, Légende Locale (très locale), Grande Exploratrice selon elle-même, Monument Interstellaire Classé.
 - Le niveau accélère le vaisseau.
 
 ### Interface
@@ -89,7 +91,7 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
 
 ## En attente
 
-1. **Histoires liées** : passer des scènes indépendantes à des histoires de 3 scènes qui se suivent (le chemin) et se souviennent des choix (une phrase change selon le choix d'avant). Les 36 scènes actuelles se réorganisent en 12 histoires. Corriger en même temps : la trouvaille annoncée dans le texte doit être l'objet réellement reçu ; accords grammaticaux ; titres au féminin.
+1. **Histoires liées** : passer des scènes indépendantes à des histoires de 3 scènes qui se suivent (le chemin) et se souviennent des choix (une phrase change selon le choix d'avant). Les 36 scènes actuelles se réorganisent en 12 histoires.
 2. **Plus de types de mondes** (26 au total) : rares (bibliothèque, champignon, administratif, cimetière de vaisseaux, musical, en chantier, ruche), très rares (creux, plat, horloge, miroir, à rebours), légendaires (endormi, fantôme, jardin d'un dieu absent). Règle : un type fantastique n'est gardé que si ChatGPT en fait une illustration cohérente. Viser à terme une dizaine de scènes par type.
 3. **Illustrations** : environ 60 images (style Moebius, palette pastel, portrait vertical, aucun texte), prompt maître testé sur 3 images d'abord, WebP ~100 Ko.
 4. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.

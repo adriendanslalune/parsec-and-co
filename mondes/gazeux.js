@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -28,7 +34,7 @@ scenes("gazeux", [
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Il flotte tout seul ; tu t’y accroches et tu descends sans effort. Sur une plateforme perdue : {trouvaille}."
+      resultat: "{objet:Il flotte tout seul|Elle flotte toute seule} ; tu t’y accroches et tu descends sans effort. Sur une plateforme perdue : {trouvaille}."
     }
   },
 
@@ -46,7 +52,7 @@ scenes("gazeux", [
     },
     objet: {
       serie: "fossiles",
-      resultat: "La chose polie le renifle, le reconnaît, et dépose {trouvaille} à côté de toi, lentement."
+      resultat: "La chose polie {objet:le|la} renifle, {objet:le|la} reconnaît, et dépose {trouvaille} à côté de toi, lentement."
     }
   },
 
@@ -60,11 +66,11 @@ scenes("gazeux", [
     risque: {
       choix: "Traverser par l’œil",
       reussite: "Dans l’œil, le silence. Et un nuage de débris en orbite : {trouvaille} flotte à portée de bras.",
-      echec: "La paroi de l’œil bouge plus vite que les cartes. Tu ressors secoué, et pas du bon côté."
+      echec: "La paroi de l’œil bouge plus vite que les cartes. Tu ressors {toi:secoué|secouée}, et pas du bon côté."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Il vibre vers l’œil de la tempête, et t’y guide. Au centre, en apesanteur : {trouvaille}."
+      resultat: "{objet:Il|Elle} vibre vers l’œil de la tempête, et t’y guide. Au centre, en apesanteur : {trouvaille}."
     }
   }
 

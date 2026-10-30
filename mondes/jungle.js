@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -23,12 +29,12 @@ scenes("jungle", [
     },
     risque: {
       choix: "Grimper jusqu’à la seconde forêt",
-      reussite: "Là-haut, la lumière, et dans un nid immense : {trouvaille}, couvé depuis des années par rien du tout.",
+      reussite: "Là-haut, la lumière, et dans un nid immense : {trouvaille}, {trouvaille:couvé|couvée} depuis des années par rien du tout.",
       echec: "Une branche que tu croyais branche était un bras. Tu redescends sans l’aide de l’échelle."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Les arbres le sentent et s’écartent d’un pas. À mi-hauteur, dans un creux : {trouvaille}."
+      resultat: "Les arbres {objet:le|la} sentent et s’écartent d’un pas. À mi-hauteur, dans un creux : {trouvaille}."
     }
   },
 
@@ -41,12 +47,12 @@ scenes("jungle", [
     },
     risque: {
       choix: "Regarder dedans",
-      reussite: "Au fond du calice, dans un peu de sève : {trouvaille}, digéré à moitié mais récupérable. Tu te laves longtemps.",
-      echec: "Elle se referme. Sur toi. Tu sors par le haut, poisseux et plus léger de quelques affaires."
+      reussite: "Au fond du calice, dans un peu de sève : {trouvaille}, {trouvaille:digéré|digérée} à moitié mais récupérable. Tu te laves longtemps.",
+      echec: "Elle se referme. Sur toi. Tu sors par le haut, {toi:poisseux et plus léger|poisseuse et plus légère} de quelques affaires."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Tu le jettes dans la fleur. Elle le goûte, frémit, s’ouvre tout grand : {trouvaille}, au fond."
+      resultat: "Tu {objet:le|la} jettes dans la fleur. Elle {objet:le|la} goûte, frémit, s’ouvre tout grand : {trouvaille}, au fond."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("jungle", [
     },
     risque: {
       choix: "Quitter le sentier",
-      reussite: "Hors du chemin, caché exprès : {trouvaille}, sous une pierre qui n’a rien à faire là. Les jardiniers rangent mal.",
+      reussite: "Hors du chemin, {trouvaille:caché|cachée} exprès : {trouvaille}, sous une pierre qui n’a rien à faire là. Les jardiniers rangent mal.",
       echec: "Hors du chemin, la jungle est la jungle. Tu reviens au sentier avec des bouts en moins."
     },
     objet: {
       serie: "epaves",
-      resultat: "Il bipe sous une borne enterrée. Tu la déterres : {trouvaille}, et une borne, aussi."
+      resultat: "{objet:Il|Elle} bipe sous une borne enterrée. Tu la déterres : {trouvaille}, et une borne, aussi."
     }
   }
 

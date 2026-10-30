@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -23,12 +29,12 @@ scenes("crateres", [
     },
     risque: {
       choix: "Marcher jusqu’au centre",
-      reussite: "Le point noir est un trou, et dans le trou, posé sur une marche : {trouvaille}. Quelqu’un voulait qu’on le trouve.",
+      reussite: "Le point noir est un trou, et dans le trou, {trouvaille:posé|posée} sur une marche : {trouvaille}. Quelqu’un voulait qu’on {trouvaille:le|la} trouve.",
       echec: "Le trou est plus proche que prévu. Et plus profond."
     },
     objet: {
       serie: "epaves",
-      resultat: "Il bipe vers le centre, mais s’arrête à vingt mètres : {trouvaille} est juste là, sous la poussière."
+      resultat: "{objet:Il|Elle} bipe vers le centre, mais s’arrête à vingt mètres : {trouvaille} est juste là, sous la poussière."
     }
   },
 
@@ -41,12 +47,12 @@ scenes("crateres", [
     },
     risque: {
       choix: "Chercher l’atterrissage",
-      reussite: "Trois kilomètres plus loin, une seconde empreinte, et dedans : {trouvaille}, écrasé mais entier. Tu ne cherches pas la troisième.",
+      reussite: "Trois kilomètres plus loin, une seconde empreinte, et dedans : {trouvaille}, {trouvaille:écrasé mais entier|écrasée mais entière}. Tu ne cherches pas la troisième.",
       echec: "Tu la trouves. Elle est fraîche."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Tu le poses dans l’empreinte. Elle se referme doucement sur lui, et te laisse {trouvaille} en échange."
+      resultat: "Tu {objet:le|la} poses dans l’empreinte. Elle se referme doucement sur {objet:lui|elle}, et te laisse {trouvaille} en échange."
     }
   },
 

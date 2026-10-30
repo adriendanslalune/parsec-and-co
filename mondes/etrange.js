@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -18,7 +24,7 @@ scenes("etrange", [
   {
     situation: "La gravité change toutes les heures. En ce moment, elle tire vers la gauche.",
     prudent: {
-      choix: "Attendre la prochaine bascule couché",
+      choix: "Attendre la prochaine bascule {toi:couché|couchée}",
       resultat: "La gravité revient au sol. Tu te relèves. Le Guide note : « prévoir des sangles ». Tu n’as rien trouvé sauf un torticolis."
     },
     risque: {
@@ -28,7 +34,7 @@ scenes("etrange", [
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Il flotte, insensible aux caprices de la gravité. Tu t’y accroches et tu attrapes {trouvaille} au passage."
+      resultat: "{objet:Il|Elle} flotte, insensible aux caprices de la gravité. Tu t’y accroches et tu attrapes {trouvaille} au passage."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("etrange", [
     },
     risque: {
       choix: "Attendre que le reflet fasse autre chose",
-      reussite: "Il fait autre chose : il se baisse et ramasse {trouvaille}. Tu te baisses, tu ramasses. Il y était.",
+      reussite: "Il fait autre chose : il se baisse et ramasse {trouvaille}. Tu te baisses, tu ramasses. {trouvaille:Il|Elle} y était.",
       echec: "Il fait autre chose : il te montre le plafond. Tu lèves les yeux. Le plafond tombe."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Ton reflet le voit avant toi, et te montre où chercher. Dans la plaque : {trouvaille}."
+      resultat: "Ton reflet {objet:le|la} voit avant toi, et te montre où chercher. Dans la plaque : {trouvaille}."
     }
   }
 

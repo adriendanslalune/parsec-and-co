@@ -27,7 +27,13 @@ document.querySelectorAll("[data-ico]").forEach(el => { el.outerHTML = ico(el.da
 const PALIERS = [0, 3, 8, 15, 25, 40, 60, 90, 130, 200];
 const TITRES = ["Stagiaire du Vide", "Touriste Assermenté", "Arpenteur Approximatif", "Cartographe Malgré Lui", "Dompteur de Cailloux", "Inspecteur des Horizons", "Vétéran Fêlé", "Légende Locale (très locale)", "Grand Explorateur, selon lui-même", "Monument Interstellaire Classé"];
 function niveau() { let n = 0; while (n + 1 < PALIERS.length && joueur.xp >= PALIERS[n + 1]) n++; return n; }
-function titre() { return TITRES[niveau()]; }
+const TITRES_F = ["Stagiaire du Vide", "Touriste Assermentée", "Arpenteuse Approximative", "Cartographe Malgré Elle", "Dompteuse de Cailloux", "Inspectrice des Horizons", "Vétérane Fêlée", "Légende Locale (très locale)", "Grande Exploratrice, selon elle-même", "Monument Interstellaire Classé"];
+function titre() { return (joueur.genre === "f" ? TITRES_F : TITRES)[niveau()]; }
+// les accords : {toi:m|f} suit l’explorateur ou l’exploratrice, {objet:m|f} l’objet sorti de la soute, {trouvaille:m|f} l’objet trouvé
+function feminin(nom) { return /^une /.test(nom || ""); }
+function accords(s, objet, trouvaille) {
+  return s.replace(/\{(toi|objet|trouvaille):([^{}|]*)\|([^{}]*)\}/g, (_, qui, m, f) => (qui === "toi" ? joueur.genre === "f" : feminin(qui === "objet" ? objet && objet.nom : trouvaille && trouvaille.nom)) ? f : m);
+}
 function facteurVitesse() { return 1 + 0.15 * niveau(); }
 function gagnerXp(n) { const avant = niveau(); joueur.xp += n; sauver("parsec.joueur", joueur); majHud(); if (niveau() > avant) { carillon(); dire("<b>Promotion.</b> " + joueur.nom + " est désormais <b>" + titre() + "</b>. La Compagnie n’a pas de budget pour une médaille, mais elle y a pensé."); } }
 function majHud() {

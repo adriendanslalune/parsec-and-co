@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -23,12 +29,12 @@ scenes("toxique", [
     },
     risque: {
       choix: "Suivre les traces jusqu’au bord",
-      reussite: "Au bord, sous une croûte de sel : {trouvaille}, laissé là par quelqu’un qui n’avait plus besoin de rien. Tu ne demandes pas.",
+      reussite: "Au bord, sous une croûte de sel : {trouvaille}, {trouvaille:laissé|laissée} là par quelqu’un qui n’avait plus besoin de rien. Tu ne demandes pas.",
       echec: "La rive est molle. Ton pied y plonge, et l’acide ne plaisante pas."
     },
     objet: {
       serie: "epaves",
-      resultat: "Il filtre l’air et l’acide. Tu marches dans le lac jusqu’à la taille : au fond, {trouvaille}."
+      resultat: "{objet:Il|Elle} filtre l’air et l’acide. Tu marches dans le lac jusqu’à la taille : au fond, {trouvaille}."
     }
   },
 
@@ -37,7 +43,7 @@ scenes("toxique", [
     situation: "Des bulles remontent d’une mare et éclatent en formant des mots. Des vrais mots. Dans ta langue.",
     prudent: {
       choix: "Lire, ne pas répondre",
-      resultat: "Les mots disent « encore », puis « merci », puis plus rien. Tu repars troublé et prudent."
+      resultat: "Les mots disent « encore », puis « merci », puis plus rien. Tu repars {toi:troublé et prudent|troublée et prudente}."
     },
     risque: {
       choix: "Répondre à voix haute",
@@ -46,7 +52,7 @@ scenes("toxique", [
     },
     objet: {
       serie: "reliques",
-      resultat: "Les bulles le reconnaissent et s’excusent en vieille langue. La mare te rend {trouvaille}, « emprunté »."
+      resultat: "Les bulles {objet:le|la} reconnaissent et s’excusent en vieille langue. La mare te rend {trouvaille}, « {trouvaille:emprunté|empruntée} »."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("toxique", [
     },
     risque: {
       choix: "Attendre sous un surplomb",
-      reussite: "La pluie révèle, en rongeant le sol, {trouvaille}, enterré là depuis toujours. Tu le ramasses entre deux gouttes.",
-      echec: "Le surplomb fond. Tout fond ici. Tu cours jusqu’au vaisseau, moins entier qu’à l’aller."
+      reussite: "La pluie révèle, en rongeant le sol, {trouvaille}, {trouvaille:enterré|enterrée} là depuis toujours. Tu {trouvaille:le|la} ramasses entre deux gouttes.",
+      echec: "Le surplomb fond. Tout fond ici. Tu cours jusqu’au vaisseau, {toi:moins entier|moins entière} qu’à l’aller."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Tu l’exposes à la pluie verte : il l’absorbe. Tu te promènes sous l’averse et ramasses {trouvaille}."
+      resultat: "Tu l’exposes à la pluie verte : {objet:il|elle} l’absorbe. Tu te promènes sous l’averse et ramasses {trouvaille}."
     }
   }
 

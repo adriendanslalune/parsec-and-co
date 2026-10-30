@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -19,16 +25,16 @@ scenes("glace", [
     situation: "Sous la glace, à trois mètres, une forme sombre, grande comme une maison. Elle n’a pas bougé depuis que tu regardes. Tu regardes depuis longtemps.",
     prudent: {
       choix: "Mesurer, photographier, partir",
-      resultat: "Le Guide gagne un croquis. La forme gagne un visiteur. Vous êtes quittes."
+      resultat: "Le Guide gagne un croquis. La forme gagne {toi:un visiteur|une visiteuse}. Vous êtes quittes."
     },
     risque: {
       choix: "Creuser jusqu’à elle",
-      reussite: "La glace cède sur une coque. Dans une ouverture : {trouvaille}, gelé, intact, et presque tiède.",
+      reussite: "La glace cède sur une coque. Dans une ouverture : {trouvaille}, {trouvaille:gelé, intact|gelée, intacte}, et presque tiède.",
       echec: "La glace cède, mais sous toi. L’eau est à moins deux. Tu ressors en claquant des dents et des mots."
     },
     objet: {
       serie: "epaves",
-      resultat: "Tu le branches sur la coque enfouie ; une trappe s’ouvre d’elle-même : {trouvaille}, tiède."
+      resultat: "Tu {objet:le|la} branches sur la coque enfouie ; une trappe s’ouvre d’elle-même : {trouvaille}, tiède."
     }
   },
 
@@ -41,12 +47,12 @@ scenes("glace", [
     },
     risque: {
       choix: "Frapper une colonne",
-      reussite: "Elle sonne, les autres répondent, et l’une d’elles se fend : {trouvaille} tombe à tes pieds, enfermé depuis des âges.",
+      reussite: "Elle sonne, les autres répondent, et l’une d’elles se fend : {trouvaille} tombe à tes pieds, {trouvaille:enfermé|enfermée} depuis des âges.",
       echec: "Elle sonne, les autres répondent, et le sol aussi. Tu cours. Tu ne cours pas assez vite."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Tu le frappes doucement contre une colonne. Elle répond, se fend, et libère {trouvaille}."
+      resultat: "Tu {objet:le|la} frappes doucement contre une colonne. Elle répond, se fend, et libère {trouvaille}."
     }
   },
 
@@ -64,7 +70,7 @@ scenes("glace", [
     },
     objet: {
       serie: "bizarreries",
-      resultat: "La lumière bleue le voit, approche, hésite, laisse {trouvaille} sur la glace, repart."
+      resultat: "La lumière bleue {objet:le|la} voit, approche, hésite, laisse {trouvaille} sur la glace, repart."
     }
   }
 

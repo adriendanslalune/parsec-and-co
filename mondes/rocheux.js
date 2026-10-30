@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -23,7 +29,7 @@ scenes("rocheux", [
     },
     risque: {
       choix: "Descendre en rappel",
-      reussite: "Trente mètres plus bas, coincé entre deux blocs : {trouvaille}. Tu remontes avec, et avec un sourire idiot.",
+      reussite: "Trente mètres plus bas, {trouvaille:coincé|coincée} entre deux blocs : {trouvaille}. Tu remontes avec, et avec un sourire idiot.",
       echec: "Le rocher où tu as ancré la corde a d’autres projets. Tu descends plus vite que prévu."
     },
     objet: {
@@ -41,12 +47,12 @@ scenes("rocheux", [
     },
     risque: {
       choix: "Grimper au col avant eux",
-      reussite: "Au col, le vent t’offre une vue sur trois vallées et, calé dans une fissure, {trouvaille}.",
+      reussite: "Au col, le vent t’offre une vue sur trois vallées et, {trouvaille:calé|calée} dans une fissure, {trouvaille}.",
       echec: "Un galet plus gros que les autres te prend la cheville en passant. Il avait l’air pressé."
     },
     objet: {
       serie: "bizarreries",
-      resultat: "Tu le poses au sol : les galets s’arrêtent net, comme gênés. L’un d’eux n’est pas un galet : {trouvaille}."
+      resultat: "Tu {objet:le|la} poses au sol : les galets s’arrêtent net, comme gênés. L’un d’eux n’est pas un galet : {trouvaille}."
     }
   },
 
@@ -59,12 +65,12 @@ scenes("rocheux", [
     },
     risque: {
       choix: "Entrer entre deux souffles",
-      reussite: "La grotte est un ancien conduit, lisse, et au bout, posé là : {trouvaille}. Le souffle s’arrête une seconde quand tu le prends.",
+      reussite: "La grotte est un ancien conduit, lisse, et au bout, {trouvaille:posé|posée} là : {trouvaille}. Le souffle s’arrête une seconde quand tu {trouvaille:le|la} prends.",
       echec: "Tu entres au mauvais moment. Le souffle te recrache. Tu atterris mal."
     },
     objet: {
       serie: "fossiles",
-      resultat: "Tu le présentes à l’entrée. Le souffle s’arrête, poli. Au fond : {trouvaille}, et un peu de honte."
+      resultat: "Tu {objet:le|la} présentes à l’entrée. Le souffle s’arrête, poli. Au fond : {trouvaille}, et un peu de honte."
     }
   }
 

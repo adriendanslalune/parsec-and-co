@@ -6,7 +6,13 @@
 //   risque    : le choix risqué (le bouton, ce qui se passe si ça marche, ce qui se passe si on se blesse) ;
 //   objet     : la série d’objet qui fait basculer la scène (epaves, fossiles, reliques ou bizarreries),
 //               et ce qui se passe quand on sort cet objet de la soute.
-// {trouvaille} est remplacé par l’objet trouvé, en gras.
+// {trouvaille} est remplacé par l’objet trouvé, en gras (un objet de palier 1 : un boulon d’épave, une écaille fossile…).
+//
+// Les accords : écris les deux formes entre accolades, la masculine puis la féminine, avec à qui elles s’accordent.
+//   {toi:trempé|trempée}        s’accorde avec l’explorateur ou l’exploratrice ;
+//   {objet:le|la}               avec l’objet sorti de la soute (dans « objet : resultat ») ;
+//   {trouvaille:coincé|coincée} avec l’objet trouvé.
+// Sans accolades, la phrase ne change pas : c’est très bien quand elle n’a rien à accorder.
 //
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour ajouter une scène : copie un bloc { … } entier, à la fin de la liste, sans oublier la virgule entre deux blocs.
@@ -28,7 +34,7 @@ scenes("habite", [
     },
     objet: {
       serie: "reliques",
-      resultat: "Tu le poses sur le plateau. Silence, puis applaudissements : la bonne réponse. On te donne {trouvaille}."
+      resultat: "Tu {objet:le|la} poses sur le plateau. Silence, puis applaudissements : la bonne réponse. On te donne {trouvaille}."
     }
   },
 
@@ -64,7 +70,7 @@ scenes("habite", [
     },
     objet: {
       serie: "reliques",
-      resultat: "La statue tient le même dans sa main de pierre. Elle s’ouvre : {trouvaille}, qui t’attendait."
+      resultat: "La statue tient {objet:le même|la même} dans sa main de pierre. Elle s’ouvre : {trouvaille}, qui t’attendait."
     }
   }
 
