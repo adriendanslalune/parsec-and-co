@@ -1,8 +1,12 @@
 # Les prompts des illustrations
 
-Pour chaque image : colle le prompt maître dans ChatGPT, puis la scène juste après « Scène : ». Envoie-moi l’image avec son nom (par exemple `rocheux-2`), je la convertis et je l’intègre.
+Les illustrations montrent les mondes, pas les scènes : l’imagination fait le reste. Chaque type de monde peut avoir plusieurs images, et le jeu évite de te redonner une image déjà vue tant qu’il en reste d’autres pour ce type.
 
-Déjà faites : les 12 mondes, et 18 scènes (`desert-1`, `desert-2`, `desert-3`, `etrange-3`, `gazeux-1`, `gazeux-2`, `gazeux-3`, `glace-1`, `glace-2`, `glace-3`, `habite-3`, `rocheux-1`, `rocheux-2`, `rocheux-3`, `toxique-1`, `volcan-1`, `volcan-2`, `volcan-3`). Il reste 18 scènes : chacune remplace l’image de son monde sur une seule scène.
+Pour chaque image : colle le prompt maître dans ChatGPT, puis la description juste après « Scène : ». Envoie-moi l’image avec son nom (par exemple `rocheux-b`), je la convertis et je l’intègre.
+
+Déjà faites : les 12 premières images de monde (`rocheux`, `gazeux`, `desert`, `glace`, `volcan`, `toxique`, `crateres`, `ocean`, `jungle`, `tempere`, `etrange`, `habite`).
+
+Les meilleures références de style sont `ocean` et `desert` : aplats francs, peu de détails. On peut les joindre à ChatGPT avec « dans le même style que cette image ».
 
 ## Le prompt maître
 
@@ -12,276 +16,150 @@ Illustration pour un jeu mobile d’exploration spatiale humoristique, dans le s
 Scène :
 ```
 
-## Les 12 mondes
+## Les deuxièmes et troisièmes images de chaque monde
 
-### `rocheux` (Monde rocheux)
+Les quatre premiers mondes (rocheux, gazeux, désert, glace) font les deux tiers des tirages : c’est là que de nouvelles images se voient le plus.
 
-```
-Un monde de cailloux gris à perte de vue : des vallées remplies de cailloux, un relief monotone qui n’a jamais fait d’effort, un ciel pâle. L’explorateur, minuscule, est assis au milieu de l’image sur un caillou à peine plus gros que les autres.
-```
-
-### `gazeux` (Géante gazeuse)
-
-```
-Au cœur d’une géante gazeuse, sans aucun sol : des bandes de nuages couleur crème et café au lait, une tempête énorme à l’horizon. L’explorateur, minuscule, flotte au milieu de l’image, accroché à son petit vaisseau rond.
-```
-
-### `desert` (Monde désertique)
-
-```
-Des dunes ocre sous deux soleils, sans une seule ombre ; une dune qui ressemble un peu à une autre dune. L’explorateur, minuscule, en haut d’une dune au milieu de l’image, cherche de l’ombre la main en visière.
-```
-
-### `glace` (Monde glacé)
-
-```
-Des falaises de glace bleue jusqu’à l’horizon, des craquelures, un froid honnête. L’explorateur, minuscule, au milieu de l’image sur une corniche, se frotte les bras.
-```
-
-### `volcan` (Monde volcanique)
-
-```
-Des volcans qui fument tous en même temps sous un ciel orange, des coulées de lave entre des croûtes de roche sombre. L’explorateur, minuscule, au milieu de l’image, saute d’une pierre à l’autre.
-```
-
-### `toxique` (Monde toxique)
-
-```
-Une atmosphère verdâtre, des lacs jaunes qui fument doucement, une vieille sonde à moitié dissoute. L’explorateur, minuscule, au milieu de l’image, se tient le casque comme on se pince le nez.
-```
-
-### `crateres` (Monde criblé)
-
-```
-Des cratères dans des cratères, à perte de vue, une surface grise et morte, très calme, sous un ciel noir étoilé. L’explorateur, minuscule, au bord d’un cratère au milieu de l’image.
-```
-
-### `ocean` (Monde océan)
-
-```
-Un océan turquoise sans aucune île, des vagues lentes et chaudes ; sous la surface, l’ombre de quelque chose de très grand. Le petit vaisseau rond de l’explorateur flotte comme un bouchon au milieu de l’image, l’explorateur, minuscule, debout dessus.
-```
-
-### `jungle` (Monde jungle)
-
-```
-Des arbres hauts comme des tours, et sur leurs cimes d’autres arbres ; des fleurs énormes qui ont l’air de sourire. L’explorateur, minuscule, sur une racine au milieu de l’image, lève les yeux.
-```
-
-### `tempere` (Monde tempéré)
-
-```
-Des prairies, une rivière, un ciel raisonnable, une lumière du soir très douce, quelques oiseaux. L’explorateur, minuscule, assis dans l’herbe au milieu de l’image avec un thermos.
-```
-
-### `etrange` (Monde étrange)
-
-```
-Des montagnes de cristal, des rochers qui flottent un peu au-dessus du sol, et dans le ciel les anneaux de la planète, dont l’ombre tombe de travers. L’explorateur, minuscule, au milieu de l’image, la tête penchée.
-```
-
-### `habite` (Monde habité)
-
-```
-Une ville extraterrestre à la nuit tombante, des bâtiments ronds aux fenêtres allumées, des habitants polis aux formes variées qui regardent arriver un petit vaisseau rond. L’explorateur, minuscule, sur la passerelle au milieu de l’image, fait un signe de la main.
-```
-
-## Les 33 scènes
-
-### `rocheux-2` (La faille qui brille, scène 2)
+### Monde rocheux
 
+`rocheux-b`
 ```
-Un col entre des collines grises. Des centaines de galets roulent tous dans la même direction, en file, vers le col, poussés par un vent sec. L’explorateur, minuscule, les suit à mi-pente, au milieu de l’image, les mains dans le dos.
+Une surface grise qui a décidé très tôt de ne pas faire d’efforts : une plaine plate et nue jusqu’à l’horizon, sous un ciel du matin, avec un seul rocher au milieu. L’explorateur, minuscule, adossé au rocher au milieu de l’image, bâille.
 ```
 
-### `rocheux-3` (La faille qui brille, scène 3)
-
-```
-L’entrée d’une grotte à flanc de colline grise, d’où sort un souffle tiède visible comme une vapeur douce ; tout au fond, une lueur. Devant l’entrée, un tas de galets sagement rangés. L’explorateur, minuscule, à côté du tas, écoute, une main sur son casque.
-```
-
-### `gazeux-1` (La chose polie, scène 1)
-
-```
-Au milieu de nuages sans fin, couleur crème et café au lait, un éclair horizontal traverse toute l’image de gauche à droite. L’explorateur, minuscule, dans son petit vaisseau rond au milieu de l’image, le regarde passer.
-```
-
-### `gazeux-2` (La chose polie, scène 2)
-
-```
-Dans les nuages, une immense créature translucide, lente, entre la méduse et la raie, qui nage sans prêter attention à rien. L’explorateur, minuscule, dans son petit vaisseau rond à côté d’elle, la filme.
-```
-
-### `gazeux-3` (La chose polie, scène 3)
-
-```
-Une tempête de la taille d’un continent vue d’en haut, avec un œil calme au centre ; la créature translucide nage vers l’œil. L’explorateur, minuscule, dans son petit vaisseau rond, au bord de la tempête.
-```
-
-### `desert-1` (La route sous le sable, scène 1)
-
-```
-Des dunes ocre à perte de vue, traversées par une ligne parfaitement droite qui file jusqu’à l’horizon, où se dresse un arbre seul. L’explorateur, minuscule, debout sur la ligne au milieu de l’image.
-```
-
-### `desert-2` (La route sous le sable, scène 2)
-
-```
-Une oasis au milieu des dunes : une mare d’eau noire, beaucoup trop calme, et un seul arbre étrange qui pourrait bien bouger. L’explorateur, minuscule, remplit une gourde au bord de l’eau.
-```
-
-### `desert-3` (La route sous le sable, scène 3)
-
-```
-Une grande dune sous laquelle s’enfonce une ancienne route. À chaque pas, le sable vibre en ondes visibles, comme une corde qu’on pince. L’explorateur, minuscule, marche sur la dune au milieu de l’image, l’air d’écouter.
-```
-
-### `glace-1` (La lumière sous la banquise, scène 1)
-
-```
-Une banquise bleue et blanche ; sous la glace transparente, à quelques mètres, une forme sombre grande comme une maison. L’explorateur, minuscule, à genoux sur la glace au milieu de l’image, regarde dessous.
-```
-
-### `glace-2` (La lumière sous la banquise, scène 2)
-
-```
-Des centaines de colonnes de glace alignées comme un orgue géant, le vent qui siffle entre elles. L’explorateur, minuscule, passe entre deux colonnes au milieu de l’image, les épaules rentrées.
-```
-
-### `glace-3` (La lumière sous la banquise, scène 3)
-
+`rocheux-c`
 ```
-La nuit sur la banquise ; sous la glace, une lumière bleue se déplace lentement, comme quelqu’un qui cherche ses clefs. L’explorateur, minuscule, la suit à pas prudents sur la glace.
+Une vallée encaissée remplie de cailloux ronds, au crépuscule, avec des falaises grises de chaque côté. Un géologue y pleurerait d’ennui. L’explorateur, minuscule, au milieu de l’image, tient un caillou à bout de bras et le compare aux autres, très sérieux.
 ```
 
-### `volcan-1` (Enfin, scène 1)
+### Géante gazeuse
 
+`gazeux-b`
 ```
-Un lac de lave orange qui fait des bulles, des îlots sombres et, au milieu, une île où brille quelque chose qui n’est pas de la lave. L’explorateur, minuscule, sur la rive, hésite.
+Vue de très haut, une tempête ronde et immense qui tourne depuis plus longtemps que la plupart des civilisations, avec des éclairs dans ses bords. Le petit vaisseau rond de l’explorateur, minuscule, au milieu de l’image, la contourne prudemment.
 ```
 
-### `volcan-2` (Enfin, scène 2)
-
+`gazeux-c`
 ```
-Une cheminée volcanique éteinte, large comme un puits, vue de haut ; une très vieille corde y pend, attachée à rien de visible. L’explorateur, minuscule, au bord du puits au milieu de l’image, tient la corde.
+Au cœur d’une géante gazeuse, de nuit : des nuages bleu nuit et violets, éclairés de l’intérieur par des orages lointains. L’explorateur, minuscule, flotte au milieu de l’image, accroché à son petit vaisseau rond, et cherche en vain un endroit où se poser.
 ```
 
-### `volcan-3` (Enfin, scène 3)
+### Monde désertique
 
+`desert-b`
 ```
-Un sol de roche sombre et tiède, parcouru de fissures orangées qui palpitent comme un cœur. L’explorateur, minuscule, allongé au milieu de l’image, l’oreille collée au sol.
+Un désert si vaste que le vent s’y perd : des rides de sable à l’infini, un tourbillon de poussière qui hésite à un carrefour imaginaire. L’explorateur, minuscule, au milieu de l’image, lui montre la direction du doigt.
 ```
-
-### `toxique-1` (Le marcheur du lac jaune, scène 1)
 
+`desert-c`
 ```
-Un lac jaune parfaitement immobile sous un ciel verdâtre ; sur la rive, des traces de pas qui entrent dans le lac, et aucune qui en sort. L’explorateur, minuscule, regarde les traces de loin, prudent.
+Un désert de nuit, sous un ciel plein d’étoiles, des dunes bleutées et argentées et un silence qu’on entend d’ici. L’explorateur, minuscule, assis au sommet d’une dune au milieu de l’image, les genoux contre la poitrine.
 ```
 
-### `toxique-2` (Le marcheur du lac jaune, scène 2)
+### Monde glacé
 
+`glace-b`
 ```
-Une mare verte d’où montent des bulles qui éclatent en petits nuages en forme de bouches qui parlent. L’explorateur, minuscule, penché au bord de la mare au milieu de l’image, une main derrière l’oreille.
+De la glace jusqu’à l’horizon, une banquise plate et blanche sous un ciel blanc, si vide qu’on ne voit pas où finit le sol. L’explorateur, minuscule, au milieu de l’image, est le seul point de couleur.
 ```
 
-### `toxique-3` (Le marcheur du lac jaune, scène 3)
-
+`glace-c`
 ```
-Une pluie verte qui grésille sur un sol rongé et sur un petit vaisseau rond. L’explorateur, minuscule, s’abrite sous un surplomb rocheux qui fond un peu.
+La nuit sur un monde glacé : des blocs de glace qui craquent comme une vieille maison, de longues fissures bleues qui courent sur le sol, une lune pâle. L’explorateur, minuscule, au milieu de l’image, regarde une fissure passer entre ses pieds.
 ```
 
-### `crateres-1` (Celui qui saute, scène 1)
+### Monde volcanique
 
+`volcan-b`
 ```
-Un cratère parfait, d’une rondeur suspecte, sur un sol gris sous un ciel noir ; au centre exact, un point noir qui n’a pas d’ombre. L’explorateur, minuscule, sur le bord du cratère au milieu de l’image.
+Une croûte noire, mince comme une excuse, craquelée en grandes plaques, avec de la lave orange qui attend juste dessous dans les fentes. L’explorateur, minuscule, au milieu de l’image, avance sur la pointe des pieds. Peu d’éléments, grandes surfaces simples.
 ```
 
-### `crateres-2` (Celui qui saute, scène 2)
-
+`volcan-c`
 ```
-Dans la poussière grise, une seule empreinte énorme à trois orteils, longue de deux mètres, et rien autour. L’explorateur, minuscule, allongé à côté pour la mesurer.
+Un seul grand volcan qui fume tranquillement sous un ciel orange, au loin, et une plaine de cendre grise au premier plan. L’explorateur, minuscule, au milieu de l’image, se bouche le nez à cause de l’odeur. Peu d’éléments, ciel en aplat.
 ```
 
-### `crateres-3` (Celui qui saute, scène 3)
+### Monde toxique
 
+`toxique-b`
 ```
-Un vieux module spatial à moitié enterré sur le flanc d’un cratère, son antenne qui tourne encore lentement ; tout près, de grandes empreintes à trois orteils. L’explorateur, minuscule, devant le module au milieu de l’image.
+Un marécage de flaques vertes et jaunes qui font de petites bulles, sous un ciel jaunâtre, avec des arbres morts tordus. L’explorateur, minuscule, au milieu de l’image, saute d’une pierre sèche à l’autre en retenant sa respiration.
 ```
-
-### `ocean-1` (Ce qui nage dessous, scène 1)
 
+`toxique-c`
 ```
-Une mer plate et turquoise jusqu’à l’horizon ; sous la surface, une ombre immense, plus longue que le petit vaisseau rond qui flotte au-dessus. L’explorateur, minuscule, debout sur le vaisseau, regarde dessous.
+Un brouillard vert épais au ras du sol, d’où dépassent des rochers aux formes molles, comme rongés. Au loin, une sonde de la Compagnie à moitié dissoute. L’explorateur, minuscule, au milieu de l’image, agite la main devant son casque pour chasser le brouillard.
 ```
 
-### `ocean-2` (Ce qui nage dessous, scène 2)
+### Monde criblé
 
+`crateres-b`
 ```
-Une île couverte d’herbes et de mousse qui flotte et dérive : c’est le dos d’un très vieil animal doux, dont on devine un œil à demi fermé au ras de l’eau. L’explorateur, minuscule, s’en approche dans une petite barque.
+Une surface grise parfaitement calme, sous un ciel noir étoilé, avec un seul objet au milieu : un trousseau de clefs posé par terre. L’explorateur, minuscule, au milieu de l’image, le ramasse, soulagé.
 ```
 
-### `ocean-3` (Ce qui nage dessous, scène 3)
-
+`crateres-c`
 ```
-La nuit sur l’océan ; le plancton lumineux s’allume et dessine de grandes spirales et des boucles à la surface de l’eau. L’explorateur, minuscule, dans une petite barque au milieu de l’image, une rame levée.
+Un très grand cratère vu d’en haut, avec à l’intérieur un cratère plus petit, et dedans un plus petit encore, et ainsi de suite. L’explorateur, minuscule, debout au bord du plus petit, au milieu de l’image, regarde dedans. Ciel noir.
 ```
 
-### `jungle-1` (Les jardiniers, scène 1)
+### Monde océan
 
+`ocean-b`
 ```
-Une jungle d’arbres hauts de cent mètres, et sur leurs cimes pousse une seconde forêt, dans la lumière. L’explorateur, minuscule, grimpe le long d’un tronc, au milieu de l’image.
+Un océan turquoise sans aucune île, sous un ciel sans nuage, parfaitement plat jusqu’à l’horizon. L’explorateur, minuscule, au milieu de l’image, dans un petit canot pneumatique, déplie une carte entièrement bleue.
 ```
 
-### `jungle-2` (Les jardiniers, scène 2)
-
+`ocean-c`
 ```
-Une fleur géante, grande comme une voiture, qui s’ouvre avec un air faussement aimable au milieu de la jungle. L’explorateur, minuscule, recule d’un pas devant elle.
+La nuit sur l’océan : des vagues lentes et chaudes, et le plancton qui s’allume en grandes spirales lumineuses autour du petit vaisseau rond. L’explorateur, minuscule, assis sur le vaisseau au milieu de l’image, fait semblant de ne pas regarder.
 ```
 
-### `jungle-3` (Les jardiniers, scène 3)
+### Monde jungle
 
+`jungle-b`
 ```
-Un sentier impeccablement entretenu dans la jungle, bordé de bornes, avec un balai posé contre un arbre et personne en vue. L’explorateur, minuscule, au premier virage du sentier, au milieu de l’image.
+Une jungle si dense qu’elle forme un mur de feuilles géantes, avec une seule petite entrée sombre en forme de bouche. L’explorateur, minuscule, au milieu de l’image, hésite devant l’entrée. Peu d’éléments, grandes formes simples.
 ```
-
-### `tempere-1` (Le thé encore chaud, scène 1)
 
+`jungle-c`
 ```
-Des prairies vertes, un ruisseau qui sort d’une pierre taillée, un ciel raisonnable. L’explorateur, minuscule, pique-nique sur une nappe à carreaux au milieu de l’image.
+Une clairière dans la jungle où toutes les plantes, les fleurs et même les champignons ont un grand sourire aimable, tournés vers l’explorateur, minuscule, au milieu de l’image, qui recule d’un pas. Peu d’éléments, grandes formes simples.
 ```
 
-### `tempere-2` (Le thé encore chaud, scène 2)
+### Monde tempéré
 
+`tempere-b`
 ```
-Un verger aux fruits mûrs et nombreux, où aucun oiseau ne se pose ; un panier abandonné au pied d’un arbre. L’explorateur, minuscule, regarde un fruit sans oser y toucher.
+Un paysage si agréable qu’il en devient suspect : une colline verte parfaite, un arbre parfait, un nuage parfait, un ruisseau parfait. L’explorateur, minuscule, au milieu de l’image, cherche le piège avec une loupe. Peu d’éléments, aplats simples.
 ```
 
-### `tempere-3` (Le thé encore chaud, scène 3)
-
+`tempere-c`
 ```
-Une petite maison seule au milieu des prairies, porte ouverte, une table mise devant avec une théière qui fume, et personne. L’explorateur, minuscule, sur le seuil.
+Une lumière du soir très douce sur des champs et une rivière, avec des oiseaux qui volent en formation. L’explorateur, minuscule, au milieu de l’image, debout sur un petit pont de bois, s’essuie le casque comme on essuie une larme. Peu d’éléments, aplats simples.
 ```
 
-### `etrange-1` (Le monde qui hésite, scène 1)
+### Monde étrange
 
+`etrange-b`
 ```
-Un paysage où la gravité tire vers la gauche : rochers, eau et arbres penchent et tombent tous du même côté. L’explorateur, minuscule, marche debout sur une paroi verticale, au milieu de l’image.
+Des montagnes de cristal lavande qui chantent quand on passe, avec des ondes visibles qui sortent de chaque sommet. L’explorateur, minuscule, au milieu de l’image, les mains sur les côtés de son casque, grimace un peu.
 ```
 
-### `etrange-2` (Le monde qui hésite, scène 2)
-
+`etrange-c`
 ```
-Une forêt de grands cristaux lavande qui chantent, entourés d’ondes visibles. L’explorateur, minuscule, passe au milieu, les mains sur son casque.
+Un paysage où la gravité vient de changer d’avis : la moitié des rochers et un petit lac flottent en l’air, à l’envers, tandis que l’autre moitié est restée au sol. L’explorateur, minuscule, au milieu de l’image, flotte la tête en bas, l’air résigné.
 ```
 
-### `habite-1` (La statue, scène 1)
+### Monde habité
 
+`habite-b`
 ```
-Une place de ville extraterrestre aux bâtiments ronds ; tous les habitants, de formes variées, regardent en silence un petit vaisseau rond qui vient de se poser. L’un d’eux tend un plateau avec un plat violet. L’explorateur, minuscule, descend la passerelle au milieu de l’image.
+Une ville extraterrestre de nuit, vue de loin, avec des milliers de fenêtres rondes allumées. Au premier plan, sur une colline, une petite foule d’habitants polis de formes variées attend l’explorateur, minuscule, au milieu de l’image, avec un carnet de notes chacun. Moins de ville, plus de gens.
 ```
-
-### `habite-2` (La statue, scène 2)
 
+`habite-c`
 ```
-Un marché extraterrestre coloré : étals, auvents, marchandises étranges, habitants qui marchandent. L’explorateur, minuscule, au milieu de la foule, tend un boulon à un marchand.
+Une rue étroite d’une ville extraterrestre, en journée. À toutes les fenêtres, des habitants de formes variées se penchent pour regarder passer l’explorateur, minuscule, au milieu de l’image, qui fait semblant de rien. Moins de décor, plus de gens.
 ```

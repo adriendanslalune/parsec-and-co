@@ -74,7 +74,7 @@ function ouvrirFiche(m, nouveau) {
   html += "<button type=\"button\" id=\"fermerFiche\">Fermer</button></div>";
   page.innerHTML = html;
   dessinerPlanete(document.getElementById("cvFiche"), m);
-  illustrer([m.type]);
+  illustrer([illustrationDe(m), m.type]);
   document.getElementById("fiche").classList.remove("cache");
   document.getElementById("fermerFiche").addEventListener("click", fermer);
   majHud();

@@ -70,7 +70,7 @@ Rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jung
 - **Carte** : cartographie ancienne sur papier blanc cassé, encre sépia, quadrillage, bords roussis, rose des vents qui pointe vers le centre, galaxie en lavis sépia au dézoom.
 - **Bas d'écran** : le message (papier tramé) et le bouton « Scruter le vide ».
 - **Fenêtres** (fiche, soute, Guide) : page de magazine pulp, se ferment d'un glisser vers le bas ou d'un toucher sur le fond.
-- **Vignette d'expédition** : nocturne, en ligne claire, dessinée en code en attendant les illustrations (ciel en aplats, planète cerclée d'encre, sol au premier plan, l'explorateur minuscule le bras levé).
+- **Vignette d'expédition** : nocturne, en ligne claire, dessinée en code ; remplacée par l’illustration du monde quand elle existe (ciel en aplats, planète cerclée d'encre, sol au premier plan, l'explorateur minuscule le bras levé).
 - Symboles à l'encre partout (fusée, étoile, planète, caisse, boussole, livre, spirale, antenne, viseur, lune, un par série).
 
 ### Direction artistique
@@ -93,7 +93,7 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
 ## En attente
 
 1. **Plus de types de mondes** (26 au total) : rares (bibliothèque, champignon, administratif, cimetière de vaisseaux, musical, en chantier, ruche), très rares (creux, plat, horloge, miroir, à rebours), légendaires (endormi, fantôme, jardin d'un dieu absent). Règle : un type fantastique n'est gardé que si ChatGPT en fait une illustration cohérente. Viser à terme plusieurs histoires par type : le moteur en tire déjà une au hasard parmi celles du fichier, et une seule histoire par type, c'est répétitif sur les mondes fréquents.
-2. **Illustrations** : environ 60 images (style Moebius, palette pastel, portrait vertical, aucun texte), prompt maître testé sur 3 images d'abord, WebP ~100 Ko.
+2. **Illustrations** : des images de monde, pas de scène (l’imagination fait le reste). Les 12 premières sont faites (style Moebius, palette pastel, portrait vertical, aucun texte, WebP ~100 Ko). Reste à en faire plusieurs par type : un monde garde son image, et le jeu évite de redonner une image déjà vue tant qu’il en reste d’autres pour ce type.
 3. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
 4. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.
 5. **Play Store**.
