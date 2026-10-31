@@ -234,6 +234,8 @@ function roseDesVents(px, py, ang) {
 }
 function dessiner() {
   const t = performance.now();
+  // le navigateur peut rendre un contexte remis à zéro (Android libère la carte quand l’appli passe en arrière-plan) : on redonne l’échelle à chaque image
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   dessinerFond();
   const aBrume = Math.max(0, Math.min(1, (vue.lpp - 2) / 30));
   if (aBrume > 0) { const [bx, by] = ecran(-BRUME_LY / 2, -BRUME_LY / 2); ctx.globalAlpha = aBrume; ctx.globalCompositeOperation = "multiply"; ctx.drawImage(brume, bx, by, BRUME_LY / vue.lpp, BRUME_LY / vue.lpp); ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1; }
@@ -314,6 +316,10 @@ function majEchelle() {
 }
 function redim() { dpr = Math.min(window.devicePixelRatio || 1, 2.5); W = window.innerWidth; H = window.innerHeight; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); dessiner(); }
 brancher(() => window.addEventListener("resize", redim));
+// au retour de l’appli, ou quand le navigateur rend la carte qu’il avait libérée, on la reprend à la bonne taille
+brancher(() => document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") redim(); }));
+brancher(() => window.addEventListener("pageshow", redim));
+brancher(() => canvas.addEventListener("contextrestored", redim));
 let animEnCours = false;
 function boucleAnim() { if (animEnCours) return; animEnCours = true; (function pas() { const encore = dessiner(); if (encore) requestAnimationFrame(pas); else animEnCours = false; })(); }
 let demande = false;
