@@ -87,7 +87,7 @@ function ouvrirExpedition(m) {
   html += "</div><div id=\"listeSoute\"></div></div>";
   page.innerHTML = html;
   dessinerPlanete(document.getElementById("cvFiche"), m);
-  illustrer([m.type + "-" + (exp.h ? exp.h + 1 + "-" : "") + (exp.scenes[exp.i] + 1), m.type]);
+  illustrer([illustrationDe(m), m.type]);
   document.getElementById("fiche").classList.remove("cache");
   page.querySelectorAll("button[data-choix]").forEach(b => b.addEventListener("click", () => resoudre(m, sc, b.dataset.choix, null)));
   const bs = document.getElementById("ouvrirSoute");

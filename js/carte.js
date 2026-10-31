@@ -67,8 +67,22 @@ function dessinerSpectacles(t) {
 
 // la vignette : ligne claire, aplats, trame de points, et toi, minuscule, devant le monde
 const SOLS = { rocheux: "#c9b6a4", gazeux: "#d9c6e8", desert: "#efcf98", glace: "#e3f0f2", volcan: "#7a3a2c", toxique: "#c2d48a", crateres: "#bdb7b2", ocean: "#7fc4cf", jungle: "#7dbf7f", tempere: "#b6dcb0", etrange: "#d8b9ee", habite: "#e9cf86" };
-// les illustrations : illustrations/<type>-<scène>.webp pour une scène (<type>-<histoire>-<scène> à partir de la 2e histoire),
-// illustrations/<type>.webp pour le monde ; on essaie les noms dans l’ordre, et tant qu’aucun fichier n’existe, la vignette dessinée reste
+// les illustrations : une ou plusieurs images par type de monde (rocheux.webp, rocheux-b.webp, rocheux-c.webp…),
+// leur nombre est donné par illustrations/liste.js ; on essaie les noms dans l’ordre, et si aucun fichier n’existe, la vignette dessinée reste
+const ILLUSTRATIONS = {};
+function illustrations(nombres) { Object.assign(ILLUSTRATIONS, nombres); }
+// un monde garde son image ; à la découverte, on lui donne une des images de son type les moins vues parmi tes mondes
+function illustrationDe(m) {
+  const n = ILLUSTRATIONS[m.type] || 0; if (!n) return m.type;
+  if (!Number.isInteger(m.illu) || m.illu >= n) {
+    const vues = new Array(n).fill(0);
+    for (const x of explores.values()) if (x !== m && x.type === m.type && Number.isInteger(x.illu) && x.illu < n) vues[x.illu]++;
+    const min = Math.min(...vues), libres = vues.map((v, i) => v === min ? i : -1).filter(i => i >= 0);
+    m.illu = libres[Math.floor(hash(Math.round(m.x * 1000), Math.round(m.y * 1000), 5, seed + 77) * libres.length)];
+    sauver("parsec.explores", [...explores.values()]);
+  }
+  return m.illu ? m.type + "-" + String.fromCharCode(97 + m.illu) : m.type;
+}
 const illusAbsentes = new Set();
 function illustrer(noms) {
   const cadre = document.querySelector("#page .image"); if (!cadre) return;
