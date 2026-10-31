@@ -163,3 +163,109 @@ Une ville extraterrestre de nuit, vue de loin, avec des milliers de fenêtres ro
 ```
 Une rue étroite d’une ville extraterrestre, en journée. À toutes les fenêtres, des habitants de formes variées se penchent pour regarder passer l’explorateur, minuscule, au milieu de l’image, qui fait semblant de rien. Moins de décor, plus de gens.
 ```
+
+## Les nouveaux mondes : premier lot
+
+Ces mondes n’apparaissent dans la galaxie qu’à partir de leur première image. Ordre conseillé : la première image de chacun d’abord (ça fait entrer les 6 dans le jeu), puis les autres.
+
+### Monde-bibliothèque
+
+`bibliotheque`
+```
+Une planète couverte de rayonnages de livres géants qui montent jusqu’aux nuages, comme des falaises, avec des échelles roulantes et des pages qui volent dans le vent. Au pied des étagères, une petite bibliothécaire de pierre à lunettes, assise à son bureau. L’explorateur, minuscule, au milieu de l’image, la salue poliment.
+```
+
+`bibliotheque-b`
+```
+Une immense salle de lecture à ciel ouvert, des tables à perte de vue sous de grandes lampes vertes, et des lecteurs extraterrestres de toutes les formes qui lisent sans un bruit. L’explorateur, minuscule, au milieu de l’image, marche sur la pointe des pieds.
+```
+
+`bibliotheque-c`
+```
+Des montagnes faites de piles de livres, des rivières de pages, et un ciel où des livres ouverts volent comme des oiseaux. L’explorateur, minuscule, au milieu de l’image, en attrape un au vol.
+```
+
+### Monde en chantier
+
+`chantier`
+```
+Une planète pas finie : des échafaudages jusqu’à l’horizon, des grues, des montagnes à moitié construites dont on voit l’armature, des piquets, des cordeaux et des plots de chantier. L’explorateur, minuscule, au milieu de l’image, suit une file de plots de déviation.
+```
+
+`chantier-b`
+```
+Une cabane de chantier au milieu d’un paysage inachevé ; devant, des ouvriers extraterrestres à six bras, en casques jaunes, prennent la pause autour d’une cafetière qui fume. L’explorateur, minuscule, au milieu de l’image, passe sur la pointe des pieds.
+```
+
+`chantier-c`
+```
+Un monde à moitié terminé : à gauche un paysage fini et coloré, à droite seulement des poutres, des fondations et du sol en attente, avec une grande grue entre les deux. L’explorateur, minuscule, au milieu de l’image, debout pile sur la limite.
+```
+
+### Monde champignon
+
+`champignon`
+```
+Une forêt de champignons géants aux chapeaux larges comme des places publiques, roses et lavande, dont les lamelles s’allument doucement au crépuscule. L’explorateur, minuscule, au milieu de l’image, marche sous les chapeaux, éclairé par eux.
+```
+
+`champignon-b`
+```
+La nuit dans une forêt de champignons lumineux, bleus et verts, avec des nuages de spores dorées qui flottent dans l’air. L’explorateur, minuscule, au milieu de l’image, retient sa respiration, les joues gonflées dans son casque.
+```
+
+`champignon-c`
+```
+Un seul champignon colossal, grand comme une montagne, au milieu d’une plaine de mousse, avec un village de petits champignons à son pied. L’explorateur, minuscule, au milieu de l’image, lève la tête vers le chapeau.
+```
+
+### Cimetière de vaisseaux
+
+`cimetiere`
+```
+Une plaine immense où des centaines d’épaves de vaisseaux de toutes les époques sont alignées en rangs parfaitement droits, sous un ciel gris rosé. L’explorateur, minuscule, au milieu de l’image, marche dans l’allée entre deux rangées.
+```
+
+`cimetiere-b`
+```
+Une cabane de tôle au bout d’une rangée d’épaves, la fenêtre allumée ; devant, un vieux robot gardien astique un énorme registre. L’explorateur, minuscule, au milieu de l’image, attend poliment son tour.
+```
+
+`cimetiere-c`
+```
+Au crépuscule, un croiseur spatial géant échoué sur le flanc, à moitié enfoncé dans le sable, avec des plantes qui poussent par les hublots. L’explorateur, minuscule, au milieu de l’image, debout sur la coque, regarde l’horizon.
+```
+
+### Monde plat
+
+`plat`
+```
+Un monde parfaitement plat en forme de disque, vu de biais : champs, lacs et forêts posés à plat, et le bord du disque qui s’arrête net sur le vide étoilé. L’explorateur, minuscule, au milieu de l’image, marche vers le bord.
+```
+
+`plat-b`
+```
+Le bord du monde : une cascade tombe dans le vide étoilé sans jamais toucher le fond ; sur la dernière pierre, un vieux pêcheur tend sa ligne dans les étoiles. L’explorateur, minuscule, au milieu de l’image, est assis à côté de lui.
+```
+
+`plat-c`
+```
+Vu d’en dessous, un monde plat posé sur le dos d’une créature gigantesque et paisible, aux yeux fermés, qui flotte dans les étoiles. L’explorateur, minuscule, au milieu de l’image, allongé au bord du disque, regarde par-dessus.
+```
+
+### Monde dessiné
+
+`dessine`
+```
+Un paysage encore au crayon et à l’encre, noir sur papier crème, sans aucune couleur, avec les traits de construction visibles et un ciel en hachures. Seul l’explorateur est en couleur, avec son scaphandre orange, minuscule, au milieu de l’image. Ici, malgré la palette demandée plus haut, le paysage reste en noir et blanc.
+```
+
+`dessine-b`
+```
+Un paysage dessiné au trait qui s’arrête au milieu d’une colline : au-delà, la page est blanche, avec quelques traits de crayon légers qui hésitent. L’explorateur, minuscule et seul en couleur, au milieu de l’image, au bord du blanc. Le paysage reste en noir et blanc.
+```
+
+`dessine-c`
+```
+Sur une grande page blanche, une gomme grande comme une maison, usée sur un coin, un crayon géant bien taillé et la trace ronde d’une tasse de café. L’explorateur, minuscule et seul en couleur, au milieu de l’image, regarde la gomme. Le reste est en noir et blanc.
+```

@@ -1,6 +1,16 @@
-// Monde rocheux : l’histoire d’expédition
+// Monde rocheux : la fiche du monde et son histoire d’expédition
 //
-// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+// LA FICHE DU MONDE, monde({ … }) :
+//   cle      : le nom court du type, sans accent ni espace : le même que celui du fichier et des images ;
+//   nom      : le nom affiché ;
+//   rarete   : commun, insolite, rare ou legendaire. Part des tirages : 70, 20, 8 et 2 %, partagée entre les mondes de même rareté ;
+//   poids    : (facultatif) la part de ce monde dans sa rareté, 1 par défaut ;
+//   danger   : de … à … (0 à 5) ; chaque point de danger, c’est 7 % de risque de blessure sur un choix risqué ;
+//   couleurs : les deux couleurs de la planète sur la vignette dessinée, puis sol : la couleur du sol ;
+//   guide    : trois façons de décrire le monde dans le Guide (« Le Guide dit : Untel, c’est … »).
+// Un monde n’apparaît dans la galaxie qu’une fois qu’il a au moins une image (voir illustrations/liste.js).
+//
+// L’HISTOIRE, histoire(cle, titre, [ 3 scènes ]) : une expédition joue les 3 scènes, dans l’ordre. Chaque scène a :
 //   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
 //               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
 //   situation : ce que l’explorateur découvre ;
@@ -19,6 +29,21 @@
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
 // Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
+
+monde({
+  cle: "rocheux",
+  nom: "Monde rocheux",
+  rarete: "commun",
+  poids: 22,
+  danger: [1, 3],
+  couleurs: ["#8d7b6e", "#4a3f3a"],
+  sol: "#c9b6a4",
+  guide: [
+    "des cailloux, puis d’autres cailloux, puis une vallée, remplie de cailloux",
+    "une surface grise qui a décidé très tôt de ne pas faire d’efforts",
+    "un relief si monotone que les géologues y pleurent d’ennui, puis de joie, puis d’ennui"
+  ]
+});
 
 histoire("rocheux", "La faille qui brille", [
 

@@ -1,6 +1,16 @@
-// Monde criblé : l’histoire d’expédition
+// Monde criblé : la fiche du monde et son histoire d’expédition
 //
-// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+// LA FICHE DU MONDE, monde({ … }) :
+//   cle      : le nom court du type, sans accent ni espace : le même que celui du fichier et des images ;
+//   nom      : le nom affiché ;
+//   rarete   : commun, insolite, rare ou legendaire. Part des tirages : 70, 20, 8 et 2 %, partagée entre les mondes de même rareté ;
+//   poids    : (facultatif) la part de ce monde dans sa rareté, 1 par défaut ;
+//   danger   : de … à … (0 à 5) ; chaque point de danger, c’est 7 % de risque de blessure sur un choix risqué ;
+//   couleurs : les deux couleurs de la planète sur la vignette dessinée, puis sol : la couleur du sol ;
+//   guide    : trois façons de décrire le monde dans le Guide (« Le Guide dit : Untel, c’est … »).
+// Un monde n’apparaît dans la galaxie qu’une fois qu’il a au moins une image (voir illustrations/liste.js).
+//
+// L’HISTOIRE, histoire(cle, titre, [ 3 scènes ]) : une expédition joue les 3 scènes, dans l’ordre. Chaque scène a :
 //   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
 //               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
 //   situation : ce que l’explorateur découvre ;
@@ -19,6 +29,21 @@
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
 // Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
+
+monde({
+  cle: "crateres",
+  nom: "Monde criblé",
+  rarete: "commun",
+  poids: 10,
+  danger: [1, 2],
+  couleurs: ["#a9a3a0", "#3e3b3a"],
+  sol: "#bdb7b2",
+  guide: [
+    "des cratères dans des cratères, comme si quelqu’un avait raté le même coup de poing pendant un milliard d’années",
+    "une surface morte, calme, et parfaitement reposante pour qui ne tient pas à la vie",
+    "le genre d’endroit où on retrouve ses clefs tout de suite, parce qu’il n’y a rien d’autre"
+  ]
+});
 
 histoire("crateres", "Celui qui saute", [
 

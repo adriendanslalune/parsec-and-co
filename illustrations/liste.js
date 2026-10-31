@@ -3,6 +3,7 @@
 // La première image d’un type s’appelle <type>.webp, les suivantes <type>-b.webp, <type>-c.webp, <type>-d.webp…
 // Pour ajouter une image : dépose le fichier dans ce dossier avec la lettre suivante, puis augmente le nombre ici.
 // Chaque monde garde son image ; un nouveau monde reçoit une des images de son type que tu as le moins vues.
+// Un type à 0 image n’apparaît pas encore dans la galaxie : il y entre dès sa première image.
 
 illustrations({
   rocheux: 3,
@@ -16,5 +17,11 @@ illustrations({
   jungle: 1,
   tempere: 1,
   etrange: 1,
-  habite: 1
+  habite: 1,
+  bibliotheque: 0,
+  chantier: 0,
+  champignon: 0,
+  cimetiere: 0,
+  plat: 0,
+  dessine: 0
 });

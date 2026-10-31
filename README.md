@@ -21,14 +21,16 @@ La sauvegarde vit dans le navigateur (localStorage, clés `parsec.*`), et elle e
 | `js/sons.js` | les sons synthétisés : bips, carillon, radio de l’antenne |
 | `js/ecoute.js` | scruter le vide : le ping, puis l’antenne |
 | `js/voyage.js` | partir, voler, arriver ; les nouveaux ports |
-| `js/expeditions.js` | le moteur des expéditions : types de mondes, tirage de l’histoire, choix et leur souvenir, blessure, convalescence |
-| `mondes/*.js` | les histoires d’expédition, un fichier par type de monde |
+| `js/expeditions.js` | le moteur des expéditions : tirage du type de monde (par rareté), tirage de l’histoire, choix et leur souvenir, blessure, convalescence |
+| `mondes/*.js` | les mondes, un fichier par type : sa fiche (nom, rareté, danger, couleurs, textes du Guide) et son histoire |
 | `js/soute.js` | les objets des quatre séries, leurs paliers, la grille où on les bricole |
 | `js/demarrage.js` | le démarrage, chargé en dernier |
 | `manifest.webmanifest`, `icones/`, `sw.js` | l’appli installable : nom, couleurs, icône, jeu hors ligne |
 
 Les fichiers de `js/` sont des scripts classiques qui partagent leurs variables : l’ordre des balises `<script>` dans `index.html` compte.
 
-## Écrire des histoires
+## Écrire des mondes et des histoires
 
-Chaque fichier de `mondes/` contient l’histoire d’un type de monde : 3 scènes qui se suivent, et pour les scènes 2 et 3 une phrase de rappel selon le choix d’avant. Le mode d’emploi est en tête de chaque fichier. On ne touche qu’aux textes entre guillemets ; on peut ajouter une autre histoire à la suite, le jeu en tire une au hasard ; on ne supprime ni ne réordonne rien d’existant, parce qu’une expédition en cours retient les numéros.
+Chaque fichier de `mondes/` contient la fiche d’un type de monde, puis son histoire : 3 scènes qui se suivent, et pour les scènes 2 et 3 une phrase de rappel selon le choix d’avant. Le mode d’emploi est en tête de chaque fichier. On ne touche qu’aux textes entre guillemets ; on peut ajouter une autre histoire à la suite, le jeu en tire une au hasard ; on ne supprime ni ne réordonne rien d’existant, parce qu’une expédition en cours retient les numéros.
+
+Pour ajouter un type de monde : copier un fichier de `mondes/` sous un nouveau nom et le réécrire, puis ajouter une ligne dans `index.html` (à côté des autres mondes), une dans `sw.js` (la liste des fichiers) et une dans `illustrations/liste.js` (à 0 : le monde entre dans la galaxie avec sa première image).

@@ -1,27 +1,30 @@
-// Parsec & Co : le moteur des expéditions. Les scènes elles-mêmes sont dans mondes/, un fichier par type de monde.
+// Parsec & Co : le moteur des expéditions. Les mondes eux-mêmes (fiche et histoire) sont dans mondes/, un fichier par type.
 // Script classique : il partage ses variables avec les autres fichiers de js/ (voir l’ordre dans index.html).
 
 // ===================== Types de mondes =====================
-const TYPES = [
-  { k: "rocheux", nom: "Monde rocheux", poids: 22, c1: "#8d7b6e", c2: "#4a3f3a", danger: [1, 3], desc: ["des cailloux, puis d’autres cailloux, puis une vallée, remplie de cailloux", "une surface grise qui a décidé très tôt de ne pas faire d’efforts", "un relief si monotone que les géologues y pleurent d’ennui, puis de joie, puis d’ennui"] },
-  { k: "gazeux", nom: "Géante gazeuse", poids: 16, c1: "#e8c38a", c2: "#9a6a3c", danger: [2, 4], desc: ["une boule de gaz de la taille d’une mauvaise idée, avec des tempêtes qui durent plus longtemps que la plupart des civilisations", "des bandes de nuages couleur café au lait, sans surface où poser quoi que ce soit, ni même une opinion", "un endroit où « atterrir » n’est pas un verbe mais une façon de mourir"] },
-  { k: "desert", nom: "Monde désertique", poids: 14, c1: "#f0c78a", c2: "#b8763a", danger: [1, 3], desc: ["du sable, de la chaleur, et une seule dune qui ressemble un peu à une autre dune", "un désert si vaste que le vent lui-même s’y perd et revient demander son chemin", "deux soleils, zéro ombre, et un silence qu’on entend d’ici"] },
-  { k: "glace", nom: "Monde glacé", poids: 14, c1: "#d9eef5", c2: "#6e9fc0", danger: [1, 3], desc: ["de la glace jusqu’à l’horizon, puis, après l’horizon, de la glace", "un monde qui craque la nuit comme une vieille maison, en beaucoup plus grand et sans personne pour s’en inquiéter", "des falaises bleues, un froid honnête, et nulle part où acheter des gants"] },
-  { k: "volcan", nom: "Monde volcanique", poids: 9, c1: "#f27c4a", c2: "#3a1f1c", danger: [3, 5], desc: ["des volcans qui n’ont jamais entendu parler du concept de pause", "une croûte mince comme une excuse, et dessous, de la lave qui attend", "un ciel orange, une odeur d’œuf, et des paysages magnifiques pour qui aime regarder vite"] },
-  { k: "toxique", nom: "Monde toxique", poids: 8, c1: "#b7d36a", c2: "#4d5a2a", danger: [3, 5], desc: ["une atmosphère verdâtre qui dissout les sondes, les espoirs, et les paragraphes trop longs", "des lacs jaunes dont la Compagnie déconseille formellement de goûter l’eau, par expérience", "un monde où respirer est une mauvaise habitude que l’on perd vite"] },
-  { k: "crateres", nom: "Monde criblé", poids: 10, c1: "#a9a3a0", c2: "#3e3b3a", danger: [1, 2], desc: ["des cratères dans des cratères, comme si quelqu’un avait raté le même coup de poing pendant un milliard d’années", "une surface morte, calme, et parfaitement reposante pour qui ne tient pas à la vie", "le genre d’endroit où on retrouve ses clefs tout de suite, parce qu’il n’y a rien d’autre"] },
-  { k: "ocean", nom: "Monde océan", poids: 3, c1: "#5fb8c9", c2: "#1f4a7a", danger: [1, 2], desc: ["de l’eau partout, très profonde, avec dedans quelque chose de grand qui n’a pas encore donné son nom", "un océan turquoise sans aucune île, ce qui rend les cartes très simples et les naufrages très longs", "des vagues lentes, chaudes, et un plancton qui brille la nuit en formant des mots qu’on préfère ne pas lire"] },
-  { k: "jungle", nom: "Monde jungle", poids: 2, c1: "#6fbf73", c2: "#1f4a2c", danger: [2, 3], desc: ["une forêt si dense qu’on y entre debout et qu’on en sort digéré", "des arbres hauts comme des tours, et au sommet, d’autres arbres, qui semblent au courant", "tout y pousse, tout y mange, et tout y sourit, ce qui est le plus inquiétant"] },
-  { k: "tempere", nom: "Monde tempéré", poids: 2, c1: "#9fd6a8", c2: "#3b6fb0", danger: [0, 1], desc: ["des prairies, des rivières, un climat raisonnable : la Compagnie y voit déjà des impôts", "un monde si agréable qu’on se demande ce qu’il cache, et la réponse est : rien, c’est pire", "des saisons, des oiseaux, et une lumière du soir qui ferait pleurer un expert-comptable"] },
-  { k: "etrange", nom: "Monde étrange", poids: 2, c1: "#d7a8f0", c2: "#4a2a7a", danger: [2, 4], desc: ["des montagnes de cristal qui chantent quand on passe, faux, mais avec conviction", "la gravité y change d’avis deux fois par jour, et les habitants, s’il y en a, ne s’en formalisent plus", "un monde dont les anneaux projettent une ombre qui met trois heures à arriver au sol et repart vexée"] },
-  { k: "habite", nom: "Monde habité", poids: 2, c1: "#f7d774", c2: "#7a4a2a", danger: [2, 5], desc: ["des lumières la nuit, des villes le jour, et une civilisation qui nous regarde arriver avec l’expression de quelqu’un dont on sonne à la porte pendant le dîner", "quelqu’un y vit déjà, construit déjà, et a déjà un avis sur nous", "une espèce intelligente, polie, et visiblement en train de prendre des notes"] }
-];
-const POIDS_TOTAL = TYPES.reduce((s, t) => s + t.poids, 0);
+// chaque fichier mondes/<type>.js appelle monde({…}) pour sa fiche, puis histoire(…) pour son expédition
+const TYPES = [], TYPE = {};
+const RARETES = { commun: 70, insolite: 20, rare: 8, legendaire: 2 };   // part des tirages, en %
+function monde(d) {
+  const t = { k: d.cle, nom: d.nom, rarete: d.rarete || "commun", poids: d.poids || 1, danger: d.danger, c1: d.couleurs[0], c2: d.couleurs[1], sol: d.sol, desc: d.guide };
+  TYPES.push(t); TYPE[t.k] = t;
+}
+// un type n’entre dans la galaxie qu’avec au moins une image ; on tire d’abord la rareté, puis le type selon son poids
+function tirerType(h) {
+  let dispo = TYPES.filter(t => (ILLUSTRATIONS[t.k] || 0) > 0);
+  if (!dispo.length) dispo = TYPES.filter(t => t.rarete === "commun");
+  const rar = Object.keys(RARETES).filter(r => dispo.some(t => t.rarete === r));
+  let x = h(5) * rar.reduce((s, r) => s + RARETES[r], 0), r = rar[0];
+  for (const c of rar) { x -= RARETES[c]; if (x <= 0) { r = c; break; } }
+  const pool = dispo.filter(t => t.rarete === r);
+  let y = h(1) * pool.reduce((s, t) => s + t.poids, 0), type = pool[0];
+  for (const t of pool) { y -= t.poids; if (y <= 0) { type = t; break; } }
+  return type;
+}
 const OUVERTURES = ["Le Guide dit :", "D’après le Guide,", "Le Guide, sobrement :", "Extrait du Guide, page 4 081 :", "Le Guide note, sans s’émouvoir :"];
 function genererMonde(e) {
   const h = (a) => hash(Math.round(e.x * 1000), Math.round(e.y * 1000), a, seed + 99);
-  let tirage = h(1) * POIDS_TOTAL, type = TYPES[0];
-  for (const t of TYPES) { tirage -= t.poids; if (tirage <= 0) { type = t; break; } }
+  const type = tirerType(h);
   const danger = type.danger[0] + Math.floor(h(2) * (type.danger[1] - type.danger[0] + 1));
   return { id: e.id, nom: e.nom, x: e.x, y: e.y, d: e.d, type: type.k, titre: type.nom, danger, c1: type.c1, c2: type.c2,
     texte: OUVERTURES[Math.floor(h(3) * OUVERTURES.length)] + " " + e.nom + ", c’est " + type.desc[Math.floor(h(4) * type.desc.length)] + ".", trouve: Date.now(), journal: [] };
