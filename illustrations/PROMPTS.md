@@ -4,7 +4,7 @@ Les illustrations montrent les mondes, pas les scènes : l’imagination fait le
 
 Pour chaque image : colle le prompt maître dans ChatGPT, puis la description juste après « Scène : ». Envoie-moi l’image avec son nom (par exemple `rocheux-b`), je la convertis et je l’intègre.
 
-Déjà faites : 32 images (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`, `tempere`, `tempere-b`, `tempere-c`, `etrange`, `habite`).
+Déjà faites : 36 images (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`, `tempere`, `tempere-b`, `tempere-c`, `etrange`, `etrange-b`, `etrange-c`, `habite`, `habite-b`, `habite-c`).
 
 Les meilleures références de style sont `ocean` et `desert` : aplats francs, peu de détails. On peut les joindre à ChatGPT avec « dans le même style que cette image ».
 
