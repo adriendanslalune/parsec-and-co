@@ -5,8 +5,8 @@
 // Chaque monde garde son image ; un nouveau monde reçoit une des images de son type que tu as le moins vues.
 
 illustrations({
-  rocheux: 1,
-  gazeux: 1,
+  rocheux: 3,
+  gazeux: 3,
   desert: 1,
   glace: 1,
   volcan: 1,
