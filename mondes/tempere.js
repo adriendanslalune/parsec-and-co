@@ -1,6 +1,16 @@
-// Monde tempéré : l’histoire d’expédition
+// Monde tempéré : la fiche du monde et son histoire d’expédition
 //
-// Une expédition joue les 3 scènes de l’histoire, dans l’ordre. Chaque scène a :
+// LA FICHE DU MONDE, monde({ … }) :
+//   cle      : le nom court du type, sans accent ni espace : le même que celui du fichier et des images ;
+//   nom      : le nom affiché ;
+//   rarete   : commun, insolite, rare ou legendaire. Part des tirages : 70, 20, 8 et 2 %, partagée entre les mondes de même rareté ;
+//   poids    : (facultatif) la part de ce monde dans sa rareté, 1 par défaut ;
+//   danger   : de … à … (0 à 5) ; chaque point de danger, c’est 7 % de risque de blessure sur un choix risqué ;
+//   couleurs : les deux couleurs de la planète sur la vignette dessinée, puis sol : la couleur du sol ;
+//   guide    : trois façons de décrire le monde dans le Guide (« Le Guide dit : Untel, c’est … »).
+// Un monde n’apparaît dans la galaxie qu’une fois qu’il a au moins une image (voir illustrations/liste.js).
+//
+// L’HISTOIRE, histoire(cle, titre, [ 3 scènes ]) : une expédition joue les 3 scènes, dans l’ordre. Chaque scène a :
 //   rappel    : (scènes 2 et 3) la phrase qui ouvre la scène, selon ce qui s’est passé juste avant :
 //               prudent, reussite (risque réussi), echec (risque raté, on revient après la convalescence) ou objet ;
 //   situation : ce que l’explorateur découvre ;
@@ -19,6 +29,21 @@
 // Pour modifier : ne touche qu’au texte entre les guillemets droits "…". Garde les virgules et les accolades.
 // Pour une autre histoire du même monde : copie tout le bloc histoire( … ); à la suite, avec un autre titre.
 // Ne supprime pas une histoire et ne change pas l’ordre des scènes : une expédition en cours retient leurs numéros.
+
+monde({
+  cle: "tempere",
+  nom: "Monde tempéré",
+  rarete: "commun",
+  poids: 2,
+  danger: [0, 1],
+  couleurs: ["#9fd6a8", "#3b6fb0"],
+  sol: "#b6dcb0",
+  guide: [
+    "des prairies, des rivières, un climat raisonnable : la Compagnie y voit déjà des impôts",
+    "un monde si agréable qu’on se demande ce qu’il cache, et la réponse est : rien, c’est pire",
+    "des saisons, des oiseaux, et une lumière du soir qui ferait pleurer un expert-comptable"
+  ]
+});
 
 histoire("tempere", "Le thé encore chaud", [
 

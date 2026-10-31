@@ -6,6 +6,7 @@ const FICHIERS = [
   "js/galaxie.js", "js/etat.js", "js/interface.js", "js/carte.js", "js/sons.js", "js/ecoute.js", "js/voyage.js", "js/expeditions.js", "js/soute.js", "js/demarrage.js",
   "mondes/rocheux.js", "mondes/gazeux.js", "mondes/desert.js", "mondes/glace.js", "mondes/volcan.js", "mondes/toxique.js",
   "mondes/crateres.js", "mondes/ocean.js", "mondes/jungle.js", "mondes/tempere.js", "mondes/etrange.js", "mondes/habite.js",
+  "mondes/bibliotheque.js", "mondes/chantier.js", "mondes/champignon.js", "mondes/cimetiere.js", "mondes/plat.js", "mondes/dessine.js",
   "illustrations/liste.js", "icones/icone.svg", "icones/icone-180.png", "icones/icone-192.png", "icones/icone-512.png"
 ];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FICHIERS)).then(() => self.skipWaiting())); });

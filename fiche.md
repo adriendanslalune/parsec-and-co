@@ -44,8 +44,13 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - **Verrou** : on ne repart pas scruter tant que l'expédition en cours n'est pas finie.
 - À la fin : la fiche du Guide (texte, journal des choix), et le monde devient un port.
 
-### Les mondes (12 types actuels)
-Rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité. Chacun avec un poids de tirage (les rocheux dominent), une fourchette de danger (0 à 5), des couleurs, des textes du Guide et une histoire de 3 scènes.
+### Les mondes
+- Le jeu n’est pas obligé d’être réaliste : fantastique, mystérieux, loufoque, ultra-civilisé ou totalement imaginaire.
+- Quatre raretés, avec leur part des tirages : **communs** 70 %, **insolites** (loufoques et civilisés) 20 %, **rares** (mystérieux) 8 %, **légendaires** 2 %. Dans une rareté, chaque type a un poids (les rocheux dominent les communs).
+- Chaque type a une fourchette de danger (0 à 5), des couleurs, trois textes du Guide, une histoire de 3 scènes et ses illustrations. Un type n’entre dans la galaxie qu’avec sa première image : on ne garde un monde fantastique que si son illustration est cohérente.
+- Un type = un fichier (`mondes/<type>.js`), lisible sans être développeur.
+- Communs : rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité.
+- Écrits, en attente de leur image : bibliothèque, en chantier (insolites) ; champignon, cimetière de vaisseaux, plat (rares) ; dessiné (légendaire).
 
 ### Les ports
 - Tout monde exploré est un port de la Compagnie : il écoute le vide, il étend le territoire (hachures vert-de-gris sur la carte).
@@ -92,7 +97,12 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
 
 ## En attente
 
-1. **Plus de types de mondes** (26 au total) : rares (bibliothèque, champignon, administratif, cimetière de vaisseaux, musical, en chantier, ruche), très rares (creux, plat, horloge, miroir, à rebours), légendaires (endormi, fantôme, jardin d'un dieu absent). Règle : un type fantastique n'est gardé que si ChatGPT en fait une illustration cohérente. Viser à terme plusieurs histoires par type : le moteur en tire déjà une au hasard parmi celles du fichier, et une seule histoire par type, c'est répétitif sur les mondes fréquents.
+1. **Plus de types de mondes** : 34 types validés, écrits par lots de 6 (fiche, histoire, prompts des images). Le premier lot est écrit (voir « Les mondes »). Restent :
+   - insolites, loufoques : administratif, musical, ruche, objets perdus, salle d’attente, trop petit, tricoté, comestible ;
+   - insolites, ultra-civilisés : ville-monde, musée, parlement, station balnéaire, robots retraités, gare de l’espace ;
+   - rares, mystérieux : creux, horloge, miroir, à rebours, écho, vivant, œuf, carte ;
+   - légendaires : endormi, fantôme, jardin d’un dieu absent, rêve, à l’envers, le bout de la galaxie.
+   Viser aussi plusieurs histoires par type pour les communs fréquents.
 2. **Illustrations** : des images de monde, pas de scène (l’imagination fait le reste). Les 12 premières sont faites (style Moebius, palette pastel, portrait vertical, aucun texte, WebP ~100 Ko). Reste à en faire plusieurs par type : un monde garde son image, et le jeu évite de redonner une image déjà vue tant qu’il en reste d’autres pour ce type.
 3. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
 4. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.

@@ -66,7 +66,6 @@ function dessinerSpectacles(t) {
 }
 
 // la vignette : ligne claire, aplats, trame de points, et toi, minuscule, devant le monde
-const SOLS = { rocheux: "#c9b6a4", gazeux: "#d9c6e8", desert: "#efcf98", glace: "#e3f0f2", volcan: "#7a3a2c", toxique: "#c2d48a", crateres: "#bdb7b2", ocean: "#7fc4cf", jungle: "#7dbf7f", tempere: "#b6dcb0", etrange: "#d8b9ee", habite: "#e9cf86" };
 // les illustrations : une ou plusieurs images par type de monde (rocheux.webp, rocheux-b.webp, rocheux-c.webp…),
 // leur nombre est donné par illustrations/liste.js ; on essaie les noms dans l’ordre, et si aucun fichier n’existe, la vignette dessinée reste
 const ILLUSTRATIONS = {};
@@ -126,7 +125,7 @@ function dessinerPlanete(cv, m) {
   g.strokeStyle = ENCRE; g.lineWidth = 2.5; g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.stroke();
   if (anneaux) { g.strokeStyle = PAPIER; g.lineWidth = 2; g.beginPath(); g.ellipse(cx, cy, R * 1.65, R * 0.32, -0.28, 0, Math.PI); g.stroke(); }
   // le sol, au premier plan, en aplat cerné d’encre
-  const sol = SOLS[m.type] || "#c9b6a4", base = h * 0.78, pts = [];
+  const sol = (TYPE[m.type] || {}).sol || "#c9b6a4", base = h * 0.78, pts = [];
   for (let i = 0; i <= 12; i++) pts.push([i * w / 12, base - (m.type === "glace" ? 22 * hh(i, 10) * (i % 2) : m.type === "desert" ? 10 * Math.sin(i * 1.3 + hh(1, 11) * 6) : 16 * hh(i, 10))]);
   g.fillStyle = sol; g.beginPath(); g.moveTo(0, h); pts.forEach(([x, y]) => g.lineTo(x, y)); g.lineTo(w, h); g.closePath(); g.fill();
   g.strokeStyle = ENCRE; g.lineWidth = 2.5; g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.stroke();
