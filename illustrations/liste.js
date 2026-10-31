@@ -7,8 +7,8 @@
 illustrations({
   rocheux: 3,
   gazeux: 3,
-  desert: 1,
-  glace: 1,
+  desert: 3,
+  glace: 3,
   volcan: 1,
   toxique: 1,
   crateres: 1,
