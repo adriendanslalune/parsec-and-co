@@ -4,7 +4,7 @@ Les illustrations montrent les mondes, pas les scènes : l’imagination fait le
 
 Pour chaque image : colle le prompt maître dans ChatGPT, puis la description juste après « Scène : ». Envoie-moi l’image avec son nom (par exemple `rocheux-b`), je la convertis et je l’intègre.
 
-Déjà faites : 20 images (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `toxique`, `crateres`, `ocean`, `jungle`, `tempere`, `etrange`, `habite`).
+Déjà faites : 24 images (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `ocean`, `jungle`, `tempere`, `etrange`, `habite`).
 
 Les meilleures références de style sont `ocean` et `desert` : aplats francs, peu de détails. On peut les joindre à ChatGPT avec « dans le même style que cette image ».
 
