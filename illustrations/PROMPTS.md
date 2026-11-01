@@ -323,3 +323,123 @@ Un paysage dessiné au trait qui s’arrête au milieu d’une colline : au-del�
 ```
 Sur une grande page blanche, une gomme grande comme une maison, usée sur un coin, un crayon géant bien taillé et la trace ronde d’une tasse de café. Le reste est en noir et blanc.
 ```
+
+## Les objets de la soute
+
+20 objets : 4 séries, 5 paliers. Une image par objet, **sur fond transparent**, nommée `<série>-<palier>` (par exemple `epaves-1`). Elle remplit la tuile de la soute, sur la couleur de sa série ; le palier reste écrit dans un coin. Plus le palier est haut, plus l’objet doit avoir l’air précieux, imposant ou étrange.
+
+### Le prompt maître des objets
+
+```
+Objet pour l’inventaire d’un jeu mobile d’exploration spatiale humoristique, dans le style de Moebius (Jean Giraud) : ligne claire, contour d’encre bleu nuit épais et net, grands aplats de couleur, peu d’ombres, palette pastel et chaude d’impression pulp des années 50. Un seul objet, entier, centré, vu de trois quarts, qui remplit presque toute l’image, lisible même tout petit (comme une icône de 64 pixels). Fond transparent (PNG avec canal alpha), sans ombre portée, sans décor, sans cadre, sans personnage. Aucun texte, aucune lettre, aucun chiffre. Format carré.
+
+Objet :
+```
+
+### Épaves (la technique)
+
+`epaves-1`
+```
+un boulon d’épave, gros et un peu rouillé, avec un reste de peinture orange
+```
+
+`epaves-2`
+```
+un rouage de métal encore gras, avec une goutte d’huile qui pend à une dent
+```
+
+`epaves-3`
+```
+un petit mécanisme d’engrenages imbriqués qui tourne tout seul, avec de légers traits de mouvement
+```
+
+`epaves-4`
+```
+un moteur d’épave cabossé, encore chaud, avec une petite fumée qui s’échappe d’une tuyère
+```
+
+`epaves-5`
+```
+le cœur d’un vaisseau : une sphère de métal à hublot, lumineuse à l’intérieur, avec des tuyaux qui battent comme des veines
+```
+
+### Fossiles (le vivant)
+
+`fossiles-1`
+```
+une écaille fossile, grande comme une main, aux reflets nacrés
+```
+
+`fossiles-2`
+```
+un os creux percé de petits trous, comme une flûte, avec de légers traits de son qui en sortent
+```
+
+`fossiles-3`
+```
+un crâne fossile à trois orbites, rond et plutôt sympathique
+```
+
+`fossiles-4`
+```
+un squelette replié avec soin dans une boîte en bois ouverte, comme un instrument dans son étui
+```
+
+`fossiles-5`
+```
+un fossile en spirale qui respire encore : la pierre se soulève doucement, avec une petite buée
+```
+
+### Reliques (les civilisations)
+
+`reliques-1`
+```
+un tesson de poterie gravé de motifs géométriques
+```
+
+`reliques-2`
+```
+une pièce de monnaie ancienne montrée en double, de face et de dos, avec exactement le même motif des deux côtés (aucune lettre)
+```
+
+`reliques-3`
+```
+un sceau administratif en métal, lourd et très officiel, avec un tampon encreur
+```
+
+`reliques-4`
+```
+une couronne dorée de forme étrange, faite pour une tête à plusieurs pointes
+```
+
+`reliques-5`
+```
+un trône portatif pliant, à moitié déplié, en bois sculpté et velours rouge, avec une poignée de transport
+```
+
+### Bizarreries (la physique tordue)
+
+`bizarreries-1`
+```
+un bocal de verre fermé qui contient une petite lueur douce et vivante
+```
+
+`bizarreries-2`
+```
+une petite spirale de son enroulée sur elle-même, comme un ruban transparent, posée dans une boîte
+```
+
+`bizarreries-3`
+```
+un petit paradoxe de poche : un cube impossible, comme un triangle de Penrose en volume, pas plus gros qu’une pomme
+```
+
+`bizarreries-4`
+```
+un petit miracle dans un écrin : une étincelle dorée qui flotte au-dessus d’un coussin, avec une étiquette vierge accrochée
+```
+
+`bizarreries-5`
+```
+une chose indescriptible mais polie : une forme douce et changeante, qui semble faire une petite révérence
+```

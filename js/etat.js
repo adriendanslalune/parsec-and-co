@@ -25,4 +25,4 @@ const vieux = charger("parsec.equipage", null); if (vieux && vieux.length && !jo
 const VITESSE = 20000, PORTEE = 160;
 let vol = charger("parsec.vol", null);             // { versId, deX, deY, t0, t1 } : ton vaisseau en route
 if (!vol) { const anc = charger("parsec.explorateurs", []); if (anc.length) { vol = anc[0]; sauver("parsec.vol", vol); } }
-let blesse = charger("parsec.blesse", 0);          // horodatage de fin de convalescence
+try { localStorage.removeItem("parsec.blesse"); } catch (e) {}   // l’ancienne convalescence, supprimée : on oublie l’heure de fin

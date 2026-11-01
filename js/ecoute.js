@@ -25,7 +25,6 @@ function prochainSignal(poste) {
 function mondeEnAttente() { for (const m of explores.values()) if (!m.vu) return m; return null; }
 const btnPing = document.getElementById("btnPing");
 function ecouter() {
-  if (Date.now() < blesse) { dire("<b>Convalescence.</b> Encore " + dureeTxt(blesse - Date.now()) + ". Tes oreilles aussi ont besoin de repos."); return; }
   const att = mondeEnAttente();
   if (att) { dire("<b>" + att.nom + " t’attend.</b> On ne repart pas écouter le noir sans avoir fini avec le dernier monde. <button type=\"button\" data-fiche=\"" + att.id + "\">Y retourner</button>"); return; }
   if (colonies.size === 1) { ecouterDepuis(colonies.get("home")); return; }

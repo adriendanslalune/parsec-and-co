@@ -5,7 +5,6 @@
 function dureeVers(e) { return Math.max(5000, e.d * VITESSE / facteurVitesse()); }
 function partir(e) {
   if (vol) { dire("<b>Tu es déjà en vol</b> vers " + (decouverts.get(vol.versId) || {}).nom + ". Arrivée dans " + dureeTxt(Math.max(0, vol.t1 - Date.now())) + "."); return; }
-  if (Date.now() < blesse) { dire("<b>Convalescence.</b> Tu repars dans " + dureeTxt(blesse - Date.now()) + ". Le Guide recommande une tisane."); return; }
   const att = mondeEnAttente(); if (att && att.id !== e.id) { dire("<b>" + att.nom + " t’attend.</b> Finis d’abord là-bas. <button type=\"button\" data-fiche=\"" + att.id + "\">Y retourner</button>"); return; }
   const de = posteProche(e.x, e.y), duree = dureeVers(e);
   vol = { versId: e.id, deX: de.x, deY: de.y, t0: Date.now(), t1: Date.now() + duree }; sauver("parsec.vol", vol);

@@ -3,7 +3,7 @@
 
 // ===================== Démarrage =====================
 for (const f of branchements) f();   // tous les fichiers sont là : on branche les doigts, les boutons, le redimensionnement
-setInterval(() => { if (Math.random() < 0.12) lancerSpectacle(); tickVol(); majBlessure(); sauver("parsec.vu", Date.now()); if (navettes.length || colonies.size > 1) demander(); }, 1000);
+setInterval(() => { if (Math.random() < 0.12) lancerSpectacle(); tickVol(); sauver("parsec.vu", Date.now()); if (navettes.length || colonies.size > 1) demander(); }, 1000);
 const vuLe = charger("parsec.vu", 0);
 reprise = { depuis: vuLe, arrivees: [] };
 tickVol(); majHud();
