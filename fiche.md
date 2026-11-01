@@ -50,8 +50,8 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Chaque type a une fourchette de danger (0 à 5), des couleurs, trois textes du Guide, une histoire de 3 scènes et ses illustrations. Un type n’entre dans la galaxie qu’avec sa première image : on ne garde un monde fantastique que si son illustration est cohérente.
 - Un type = un fichier (`mondes/<type>.js`), lisible sans être développeur.
 - Communs : rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité.
-- Dans la galaxie : la bibliothèque et le chantier (insolites) ; le champignon (rare).
-- Écrits, en attente de leur image : cimetière de vaisseaux, plat (rares) ; dessiné (légendaire).
+- Dans la galaxie : la bibliothèque et le chantier (insolites) ; le champignon et le cimetière de vaisseaux (rares).
+- Écrits, en attente de leur image : plat (rare) ; dessiné (légendaire).
 
 ### Les ports
 - Tout monde exploré est un port de la Compagnie : il écoute le vide, il étend le territoire (hachures vert-de-gris sur la carte).
