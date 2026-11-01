@@ -46,11 +46,12 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 
 ### Les mondes
 - Le jeu n’est pas obligé d’être réaliste : fantastique, mystérieux, loufoque, ultra-civilisé ou totalement imaginaire.
-- Quatre raretés, avec leur part des tirages : **communs** 70 %, **insolites** (loufoques et civilisés) 20 %, **rares** (mystérieux) 8 %, **légendaires** 2 %. Dans une rareté, chaque type a un poids (les rocheux dominent les communs).
+- Quatre raretés, avec leur part des tirages : **communs** 70 %, **insolites** (loufoques et civilisés) 20 %, **rares** (mystérieux) 8 %, **légendaires** 2 %. Dans une rareté, chaque type a un poids (les rocheux dominent les communs). La part d’un type ne dépend pas des autres : un type tiré qui n’a pas encore d’image laisse sa place à un commun.
 - Chaque type a une fourchette de danger (0 à 5), des couleurs, trois textes du Guide, une histoire de 3 scènes et ses illustrations. Un type n’entre dans la galaxie qu’avec sa première image : on ne garde un monde fantastique que si son illustration est cohérente.
 - Un type = un fichier (`mondes/<type>.js`), lisible sans être développeur.
 - Communs : rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité.
-- Écrits, en attente de leur image : bibliothèque, en chantier (insolites) ; champignon, cimetière de vaisseaux, plat (rares) ; dessiné (légendaire).
+- Dans la galaxie : la bibliothèque (insolite).
+- Écrits, en attente de leur image : en chantier (insolite) ; champignon, cimetière de vaisseaux, plat (rares) ; dessiné (légendaire).
 
 ### Les ports
 - Tout monde exploré est un port de la Compagnie : il écoute le vide, il étend le territoire (hachures vert-de-gris sur la carte).

@@ -9,17 +9,20 @@ function monde(d) {
   const t = { k: d.cle, nom: d.nom, rarete: d.rarete || "commun", poids: d.poids || 1, danger: d.danger, c1: d.couleurs[0], c2: d.couleurs[1], sol: d.sol, desc: d.guide };
   TYPES.push(t); TYPE[t.k] = t;
 }
-// un type n’entre dans la galaxie qu’avec au moins une image ; on tire d’abord la rareté, puis le type selon son poids
+// on tire la rareté (parts fixes), puis le type selon son poids parmi tous les types de cette rareté ;
+// un type sans image n’entre pas encore dans la galaxie : il laisse sa place à un commun, sans prendre celle des autres
 function tirerType(h) {
-  let dispo = TYPES.filter(t => (ILLUSTRATIONS[t.k] || 0) > 0);
-  if (!dispo.length) dispo = TYPES.filter(t => t.rarete === "commun");
-  const rar = Object.keys(RARETES).filter(r => dispo.some(t => t.rarete === r));
+  const illustre = t => (ILLUSTRATIONS[t.k] || 0) > 0;
+  const choisirDans = (pool, x) => { let y = x * pool.reduce((s, t) => s + t.poids, 0); for (const t of pool) { y -= t.poids; if (y <= 0) return t; } return pool[pool.length - 1]; };
+  const rar = Object.keys(RARETES);
   let x = h(5) * rar.reduce((s, r) => s + RARETES[r], 0), r = rar[0];
   for (const c of rar) { x -= RARETES[c]; if (x <= 0) { r = c; break; } }
-  const pool = dispo.filter(t => t.rarete === r);
-  let y = h(1) * pool.reduce((s, t) => s + t.poids, 0), type = pool[0];
-  for (const t of pool) { y -= t.poids; if (y <= 0) { type = t; break; } }
-  return type;
+  const pool = TYPES.filter(t => t.rarete === r);
+  const type = pool.length ? choisirDans(pool, h(1)) : null;
+  if (type && illustre(type)) return type;
+  let communs = TYPES.filter(t => t.rarete === "commun" && illustre(t));
+  if (!communs.length) communs = TYPES.filter(t => t.rarete === "commun");
+  return choisirDans(communs, h(1));
 }
 const OUVERTURES = ["Le Guide dit :", "D’après le Guide,", "Le Guide, sobrement :", "Extrait du Guide, page 4 081 :", "Le Guide note, sans s’émouvoir :"];
 function genererMonde(e) {
