@@ -154,7 +154,8 @@ const brume = document.createElement("canvas"); brume.width = brume.height = BRU
   for (let j = 0; j < BRUME_N; j++) for (let i = 0; i < BRUME_N; i++) { const x = (i + 0.5) * pas - BRUME_LY / 2, y = (j + 0.5) * pas - BRUME_LY / 2, v = Math.min(1, densite(x, y) * 0.55), k = (j * BRUME_N + i) * 4, chaud = Math.exp(-Math.hypot(x, y) / 2500); d[k] = 120 + 70 * chaud; d[k + 1] = 92 + 30 * chaud; d[k + 2] = 70 - 20 * chaud; d[k + 3] = Math.round(255 * Math.pow(v, 0.8) * 0.55); }
   g.putImageData(img, 0, 0); })();
 function ecran(x, y) { return [(x - vue.cx) / vue.lpp + W / 2, (y - vue.cy) / vue.lpp + H / 2]; }
-function monde(sx, sy) { return [vue.cx + (sx - W / 2) * vue.lpp, vue.cy + (sy - H / 2) * vue.lpp]; }
+// un point de l’écran → sa position dans la galaxie
+function versGalaxie(sx, sy) { return [vue.cx + (sx - W / 2) * vue.lpp, vue.cy + (sy - H / 2) * vue.lpp]; }
 function rayonSysteme() { return Math.min(16, 0.00004 / vue.lpp); }
 function hautBande() { const h = document.querySelector(".hud"); return h ? h.getBoundingClientRect().bottom + 8 : 0; }
 function pasJoli(v) { const p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p; return (m >= 5 ? 5 : m >= 2 ? 2 : 1) * p; }
@@ -360,7 +361,7 @@ function annulerEcoute() {
 }
 brancher(() => canvas.addEventListener("pointercancel", e => { pointeurs.delete(e.pointerId); if (pointeurs.size < 2) pinch = null; }));
 brancher(() => canvas.addEventListener("wheel", e => { e.preventDefault(); arreterVol(); zoomVers(e.clientX, e.clientY, vue.lpp * Math.exp(e.deltaY * 0.0015)); demander(); }, { passive: false }));
-function zoomVers(sx, sy, lppNouveau) { lppNouveau = Math.max(LPP_MIN, Math.min(LPP_MAX, lppNouveau)); const [wx, wy] = monde(sx, sy); vue.lpp = lppNouveau; vue.cx = wx - (sx - W / 2) * vue.lpp; vue.cy = wy - (sy - H / 2) * vue.lpp; }
+function zoomVers(sx, sy, lppNouveau) { lppNouveau = Math.max(LPP_MIN, Math.min(LPP_MAX, lppNouveau)); const [wx, wy] = versGalaxie(sx, sy); vue.lpp = lppNouveau; vue.cx = wx - (sx - W / 2) * vue.lpp; vue.cy = wy - (sy - H / 2) * vue.lpp; }
 function etoileTouchee(sx, sy) { let best = null, bd = 22; for (const e of decouverts.values()) { const [ex, ey] = ecran(e.x, e.y); const d = Math.hypot(ex - sx, ey - sy); if (d < bd) { bd = d; best = e; } } return best; }
 function colonieTouchee(sx, sy) { let best = null, bd = 28; for (const c of colonies.values()) { const [ex, ey] = ecran(c.x, c.y); const d = Math.hypot(ex - sx, ey - sy); if (d < bd) { bd = d; best = c; } } return best; }
 
