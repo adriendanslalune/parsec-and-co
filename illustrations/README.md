@@ -18,3 +18,7 @@ Pour ajouter une image : le fichier ici avec la lettre suivante, et le nombre au
 ## Les prompts
 
 Le prompt maître et les prompts des prochaines images : [PROMPTS.md](PROMPTS.md).
+
+## Les objets de la soute
+
+Une image par objet, sur fond transparent, dans `objets/` : `epaves-1.webp` à `bizarreries-5.webp` (4 séries, 5 paliers). Le jeu la montre dans la tuile de la soute dès que le fichier existe, sans rien déclarer ailleurs ; tant qu’elle manque, la tuile garde son symbole et son chiffre romain.

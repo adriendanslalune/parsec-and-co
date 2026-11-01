@@ -84,11 +84,16 @@ button[disabled] { opacity: 0.5; cursor: default; }
 .fiche .journal { border-left: 2px solid var(--orange); padding-left: 12px; margin: 12px 0; color: var(--encre-douce); font-style: italic; font-size: 16px; }
 .gris { color: var(--encre-douce); font-size: 14px; font-style: italic; }
 /* la soute */
+#legende { min-height: 5.6em; }
 .grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px 9px; margin: 12px 0; touch-action: none; }
 .colonne { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 12px; text-align: center; padding: 4px 2px 3px; border: 1.5px solid var(--encre); border-radius: 3px; line-height: 1.1; }
 .case { aspect-ratio: 1; background: rgba(27,36,81,0.05); border: 1.5px dashed rgba(27,36,81,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
 .tuile { width: 86%; height: 86%; border: 1.5px solid var(--encre); border-radius: 3px; box-shadow: 2px 2px 0 var(--encre); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--encre); cursor: grab; transition: transform 0.15s; position: relative; }
 .tuile span { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 20px; line-height: 1; }
 .tuile small { font-size: 9px; letter-spacing: 1px; margin-top: 3px; }
+/* une tuile illustrée : l’objet remplit la case, le palier passe dans un coin */
+.tuile img.objet { position: absolute; inset: 6%; width: 88%; height: 88%; object-fit: contain; pointer-events: none; }
+.tuile.illustree .ico { display: none; }
+.tuile.illustree span { position: absolute; right: 3px; bottom: 2px; font-size: 12px; color: var(--encre); text-shadow: 1px 1px 0 var(--papier); }
 input { font: 400 18px "Vollkorn", Georgia, serif; padding: 10px 12px; border: 1.5px solid var(--encre); border-radius: 3px; width: 100%; box-sizing: border-box; background: #fbf3dc; color: var(--encre); }
 @media (prefers-reduced-motion: reduce) { .tuile, button, .fiche .image.illustree, .jauge i { transition: none; } .fiche .image .illu { animation: none; } }

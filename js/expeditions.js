@@ -76,7 +76,6 @@ function commencerExpedition(m) {
 function ouvrirExpedition(m) {
   const page = document.getElementById("page");
   const exp = m.exp;
-  if (Date.now() < blesse && exp.i < exp.scenes.length) { fermer(); dire("<b>Convalescence.</b> " + m.nom + " attendra que tu sois sur pied, encore " + dureeTxt(blesse - Date.now()) + ". Le Guide recommande une tisane et un plaid."); return; }
   if (exp.i >= exp.scenes.length) { exp.finie = true; const neuf = !m.vu; m.vu = true; sauver("parsec.explores", [...explores.values()]); if (neuf) nouveauComptoir(m); ouvrirFiche(m, true); return; }
   const hist = histoireDe(m), sc = hist.scenes[exp.scenes[exp.i]], rappel = exp.i > 0 && sc.r[(exp.choix || [])[exp.i - 1]];
   m._trouvaille = tirerTrouvaille(m, exp.i);
@@ -101,8 +100,17 @@ function ouvrirExpedition(m) {
     ls.querySelectorAll("button[data-objet]").forEach(b => b.addEventListener("click", () => { const o = objets.find(x => x.id === b.dataset.objet); resoudre(m, sc, "o", o); }));
   });
 }
+// le risque raté : on repart les mains vides, avec une réplique, et l’expédition continue
+const RATES = [
+  "Le médecin de bord, un grille-pain diplômé par correspondance, te prescrit une tartine. Tu repars, la tartine à la main.",
+  "Ton scaphandre a déposé une réclamation officielle. Tu la signes sans la lire, comme tout le monde.",
+  "La Compagnie rappelle que les bosses ne sont pas couvertes par ton contrat. Tu repars quand même, {toi:cabossé|cabossée} de partout.",
+  "Le Guide classe l’incident dans la rubrique « ça arrive ». Tu repars, un peu plus humble qu’avant.",
+  "Le vaisseau te passe de la musique douce pendant trente secondes. C’est tout ce qu’il peut faire. Ça suffit.",
+  "Tu as été {toi:déclaré « un peu cabossé »|déclarée « un peu cabossée »} par le pilote automatique, qui ne sait pas mentir. Tu repars."
+];
 function resoudre(m, sc, choix, objet) {
-  const exp = m.exp; let ligne = "", gagne = null, blessure = 0, xp = 1, fait = "prudent";   // fait : ce dont la scène suivante se souviendra
+  const exp = m.exp; let ligne = "", gagne = null, rate = false, xp = 1, fait = "prudent";   // fait : ce dont la scène suivante se souviendra
   if (choix === "o") {
     if (objet && sc.o && objet.serie === sc.o[0]) { soute = soute.filter(x => x.id !== objet.id); sauver("parsec.soute", soute); ligne = "<b>Tu sors " + objet.nom + ".</b> " + texte(sc.o[1], m, objet) + " <span class=\"gris\">(" + objet.nom + " y est " + accords("{objet:resté|restée}", objet) + ".)</span>"; gagne = m._trouvaille; xp = (objet.palier || 1) >= 3 ? 4 : 2; fait = "objet"; }
     else if (objet && objet.tag === "artefact" && (objet.palier || 1) >= 2) {
@@ -114,41 +122,15 @@ function resoudre(m, sc, choix, objet) {
   } else if (choix === "a") { ligne = "<b>" + texte(sc.a[0], m) + ".</b> " + texte(sc.a[1], m); }
   else {
     const echec = Math.random() * 100 < 7 * m.danger;   // 7 % par point de danger
-    if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); blessure = (5 + 5 * m.danger) * 60 * 1000; xp = 1; fait = "echec"; }
+    if (echec) { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[2], m); rate = true; xp = 1; fait = "echec"; }
     else { ligne = "<b>" + texte(sc.b[0], m) + ".</b> " + texte(sc.b[1], m); gagne = m._trouvaille; xp = 2; fait = "reussite"; }
   }
   if (gagne) { const ob = gagne.objet; soute.push({ id: "art-" + m.id + "-" + exp.i + "-" + Date.now(), nom: ob.nom, tag: "artefact", serie: ob.serie, serieNom: ob.serieNom, palier: 1, de: m.nom, provenance: gagne.provenance, usage: "objet" }); sauver("parsec.soute", soute); carillon(); ligne += " <span class=\"gris\">(Dans la soute : " + ob.nom + ". Provenance : " + gagne.provenance + ".)</span>"; }
-  else if (blessure) { blesse = Math.max(blesse, Date.now() + blessure); sauver("parsec.blesse", blesse); bipSourd(); }
+  else if (rate) { bipSourd(); ligne += " <span class=\"gris\">" + accords(RATES[Math.floor(Math.random() * RATES.length)]) + "</span>"; }
   else bip(1);
   exp.journal.push(ligne); (exp.choix = exp.choix || [])[exp.i] = fait; exp.i += 1;
   gagnerXp(xp);
   sauver("parsec.explores", [...explores.values()]);
   majHud();
-  if (blessure) {
-    fermer(); majBlessure();
-    const REPOS = [
-      "Le médecin de bord, un grille-pain diplômé par correspondance, te prescrit {d} de repos et une tartine.",
-      "Ton scaphandre a déposé une réclamation officielle. Délai de traitement : {d}. Tu restes {toi:allongé|allongée} en attendant.",
-      "La Compagnie rappelle que les blessures ne sont pas couvertes par ton contrat. Le canapé de la cabine, si. {d}.",
-      "Le Guide classe l’incident dans la rubrique « ça arrive ». Repos forcé : {d}, sous plaid réglementaire.",
-      "Le vaisseau a mis de la musique douce et refuse de décoller pendant {d}. Il dit que c’est pour ton bien.",
-      "Tu as été {toi:déclaré « un peu cabossé »|déclarée « un peu cabossée »} par le pilote automatique, qui ne sait pas mentir. Repos : {d}."
-    ];
-    dire("<b>Retour au vaisseau, en pièces détachées.</b> " + texte(sc.b[2], m) + " " + accords(REPOS[Math.floor(Math.random() * REPOS.length)]).replace("{d}", dureeTxt(blessure)) + " " + m.nom + " t’attendra.");
-    return;
-  }
   ouvrirExpedition(m);
-}
-// la convalescence : le bouton l’affiche, et tout attend
-let etaitBlesse = Date.now() < blesse;
-function majBlessure() {
-  if (Date.now() < blesse) {
-    etaitBlesse = true;
-    if (!radio) { btnPing.disabled = true; btnPing.innerHTML = ico("lune") + "Repos forcé, encore " + dureeTxt(blesse - Date.now()); }
-  } else if (etaitBlesse) {
-    etaitBlesse = false; btnPing.disabled = false; btnPing.innerHTML = ico("antenne") + "Scruter le vide";
-    const att = mondeEnAttente();
-    carillon();
-    dire("<b>" + accords("{toi:Remis|Remise}") + " sur pied.</b> " + (att ? att.nom + " t’attend. <button type=\"button\" data-fiche=\"" + att.id + "\">Y retourner</button>" : "Le vide t’attend."));
-  }
 }

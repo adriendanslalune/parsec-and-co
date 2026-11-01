@@ -35,12 +35,12 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 
 ### L'expédition
 - Une histoire de 3 scènes qui se suivent, tirée parmi celles du type de monde (une seule par type pour l'instant), avec un titre. Chaque scène : une situation et trois options.
-- Les scènes 2 et 3 s'ouvrent sur une phrase qui se souvient du choix d'avant : prudent, risque réussi, blessure ou objet.
+- Les scènes 2 et 3 s'ouvrent sur une phrase qui se souvient du choix d'avant : prudent, risque réussi, risque raté ou objet.
   - **Prudent** : on apprend peu, on rentre entier (+1 XP).
-  - **Risqué** : trouvaille probable, ou blessure selon le danger du monde (7 % par point de danger) (+2 XP si réussi). À 12 %, la règle d’avant, 61 % des expéditions jouées tout en risque finissaient sur une blessure ; à 7 %, environ 40 %.
+  - **Risqué** : trouvaille probable, ou ratée selon le danger du monde (7 % par point de danger) (+2 XP si réussi, +1 sinon).
   - **Sortir un objet de la soute** : un objet de la bonne série fait basculer la scène ; un objet de palier 2+ garantit le risqué ; palier 3+ donne +4 XP. L'objet est consommé.
 - **La trouvaille** est l'objet réellement reçu : un objet de palier 1 d'une des quatre séries, nommé tel quel dans le texte, avec une provenance drôle (« Provenance : une boîte noire qui ne contient que des excuses »).
-- **Blessure** : l'expédition s'arrête, convalescence de 5 min + 5 min par point de danger, ni vol ni scrutation pendant ce temps. Répliques drôles tirées au hasard. On reprend à la scène suivante une fois remis.
+- **Risque raté** : pas de trouvaille, un son sourd, une réplique drôle tirée au hasard, et l'expédition continue. Pas de blessure ni d'attente : la convalescence (jusqu'à 30 min sans pouvoir jouer) est supprimée, et le prudent reste à repenser pour qu'il vaille la peine d'être choisi.
 - **Verrou** : on ne repart pas scruter tant que l'expédition en cours n'est pas finie.
 - À la fin : la fiche du Guide (texte, journal des choix), et le monde devient un port.
 
@@ -81,7 +81,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 ### Le grand compteur
 - La part de la galaxie à l’écoute : la zone qu’écoutent tes ports (la portée du ping, environ 130 al), les recouvrements comptés une fois, rapportée au disque de la galaxie. Un port, c’est environ 0,000 5 %.
 - En gros dans le bandeau, à six décimales, il défile chiffre par chiffre avec un cliquetis à chaque nouveau port.
-- Une jauge sur toute la largeur, un ordre de grandeur à la fois (de 0,0001 % à 0,001 %, puis de 0,001 % à 0,01 %…) : pleine, elle repart sur l’ordre suivant, avec le carillon.
+- Une jauge sur toute la largeur, de 0 % à la galaxie entière. Au début, on ne la voit pas : c’est ce qui donne envie de la remplir.
 - Il ne sert à rien acheter et n’a pas de fin. Plus tard, il servira de comparaison entre joueurs.
 
 ### Direction artistique
@@ -90,7 +90,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Trait d'encre fin, aplats, ombres de couleur décalées (impression mal calée), trame de points.
 
 ### Sauvegarde
-localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, blesse, vu).
+localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, vu).
 
 ## Écarté, et pourquoi
 - **L'argent, les cargos, les routes commerciales** : de la gestion, ennuyeux ; l'argent n'achetait rien de désirable.

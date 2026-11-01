@@ -54,20 +54,16 @@ function partGalaxie() {
   partCle = cle; partValeur = aire / AIRE_GALAXIE * 100; return partValeur;
 }
 function fmtPart(p) { const [e, d] = p.toFixed(6).split("."); return Number(e).toLocaleString("fr-FR") + "," + d.replace(/(\d{3})(?=\d)/g, "$1\u202f"); }
-function fmtBorne(p) { return p.toFixed(6).replace(/0+$/, "").replace(/\.$/, "").replace(".", ",") + " %"; }
-function decade(p) { const k = Math.floor(Math.log10(Math.max(p, 1e-9))); return [Math.pow(10, k), Math.pow(10, k + 1)]; }
 function afficherPart(p) {
   document.getElementById("partNb").textContent = fmtPart(p);
-  const [lo, hi] = decade(p);
-  document.getElementById("partBar").style.width = Math.max(1, (p - lo) / (hi - lo) * 100) + "%";
-  document.getElementById("partMin").textContent = fmtBorne(lo); document.getElementById("partMax").textContent = fmtBorne(hi);
+  document.getElementById("partBar").style.width = Math.min(100, p) + "%";
 }
-// le compteur défile chiffre par chiffre jusqu’à la nouvelle valeur, avec un cliquetis ; un nouvel ordre de grandeur sonne le carillon
+// le compteur défile chiffre par chiffre jusqu’à la nouvelle valeur, avec un cliquetis
 function majPart() {
   const p = partGalaxie();
   if (partAffichee === null || reduit) { partAffichee = p; afficherPart(p); return; }
   if (p === partAffichee || (partAnim && partAnim.vers === p)) return;
-  const de = partAffichee, t0 = performance.now(), duree = 1600, palier = decade(p)[0] > decade(de)[0];
+  const de = partAffichee, t0 = performance.now(), duree = 1600;
   let dernier = fmtPart(de), tic0 = 0;
   partAnim = { vers: p };
   (function pas(t) {
@@ -75,7 +71,7 @@ function majPart() {
     const u = Math.min(1, (t - t0) / duree), v = de + (p - de) * (1 - Math.pow(1 - u, 3));
     const s = fmtPart(v); if (s !== dernier && t - tic0 > 45) { tic(); tic0 = t; } dernier = s;
     partAffichee = v; afficherPart(v);
-    if (u < 1) requestAnimationFrame(pas); else { partAffichee = p; afficherPart(p); partAnim = null; if (palier) carillon(); }
+    if (u < 1) requestAnimationFrame(pas); else { partAffichee = p; afficherPart(p); partAnim = null; }
   })(t0);
 }
 function majHud() {

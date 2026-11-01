@@ -15,13 +15,13 @@ La sauvegarde vit dans le navigateur (localStorage, clés `parsec.*`), et elle e
 | `index.html` | la page : le bandeau, la carte, le bas d’écran, et l’ordre de chargement des scripts |
 | `css/style.css` | l’apparence : parchemin, pulp, boutons, fenêtres, soute |
 | `js/galaxie.js` | la formule de la galaxie : densité, étoiles par niveaux de cellules, noms, planètes, monde de départ |
-| `js/etat.js` | la sauvegarde et l’état de la partie (graine, joueur, étoiles repérées, mondes explorés, ports, vol, blessure) |
+| `js/etat.js` | la sauvegarde et l’état de la partie (graine, joueur, étoiles repérées, mondes explorés, ports, vol) |
 | `js/interface.js` | les symboles à l’encre, le bandeau, niveau et titres, le message du bas, la fiche du Guide, les formats |
 | `js/carte.js` | le dessin de la carte papier, la vie des ports, la vignette d’expédition, les doigts et la caméra |
 | `js/sons.js` | les sons synthétisés : bips, carillon, radio de l’antenne |
 | `js/ecoute.js` | scruter le vide : le ping, puis l’antenne |
 | `js/voyage.js` | partir, voler, arriver ; les nouveaux ports |
-| `js/expeditions.js` | le moteur des expéditions : tirage du type de monde (par rareté), tirage de l’histoire, choix et leur souvenir, blessure, convalescence |
+| `js/expeditions.js` | le moteur des expéditions : tirage du type de monde (par rareté), tirage de l’histoire, choix et leur souvenir |
 | `mondes/*.js` | les mondes, un fichier par type : sa fiche (nom, rareté, danger, couleurs, textes du Guide) et son histoire |
 | `js/soute.js` | les objets des quatre séries, leurs paliers, la grille où on les bricole |
 | `js/demarrage.js` | le démarrage, chargé en dernier |
