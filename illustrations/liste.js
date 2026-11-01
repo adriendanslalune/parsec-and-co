@@ -20,7 +20,7 @@ illustrations({
   habite: 3,
   bibliotheque: 3,
   chantier: 3,
-  champignon: 0,
+  champignon: 3,
   cimetiere: 0,
   plat: 0,
   dessine: 0
