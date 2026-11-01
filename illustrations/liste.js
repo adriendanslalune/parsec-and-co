@@ -18,7 +18,7 @@ illustrations({
   tempere: 3,
   etrange: 3,
   habite: 3,
-  bibliotheque: 0,
+  bibliotheque: 3,
   chantier: 0,
   champignon: 0,
   cimetiere: 0,
