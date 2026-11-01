@@ -42,7 +42,7 @@ function ouvrirSoute(message) {
   const lignes = Math.max(6, ...soute.map(o => o.ligne + 2));
   let html = '<div class="texte"><h2>La soute</h2><div class="sous">Le vaisseau de ' + joueur.nom + ', ' + soute.length + ' objet' + (soute.length > 1 ? 's' : '') + ' à bord</div>';
   html += '<div class="grille" id="grille">';
-  for (const serie of SERIES_ORDRE) html += '<div class="colonne" style="background:' + SERIE_COUL[serie] + '">' + ico(serie) + SERIE_NOM[serie] + '</div>';
+  for (const serie of SERIES_ORDRE) html += '<div class="colonne" style="background:' + SERIE_COUL[serie] + '">' + ico(serie) + SERIE_NOM[serie].replace("Bizarreries", "Bizarre\u00adries") + '</div>';
   for (let l = 0; l < lignes; l++) for (const serie of SERIES_ORDRE) {
     const o = soute.find(x => x.serie === serie && x.ligne === l);
     html += '<div class="case" data-serie="' + serie + '" data-ligne="' + l + '">' + (o ? '<div class="tuile" data-id="' + o.id + '" style="background:' + SERIE_COUL[serie] + '">' + imageObjet(serie, o.palier || 1) + ico(serie) + '<span>' + ROMAINS[(o.palier || 1) - 1] + '</span></div>' : '') + '</div>';
