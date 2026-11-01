@@ -85,8 +85,8 @@ button[disabled] { opacity: 0.5; cursor: default; }
 .gris { color: var(--encre-douce); font-size: 14px; font-style: italic; }
 /* la soute */
 #legende { min-height: 5.6em; }
-.grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px 9px; margin: 12px 0; touch-action: none; }
-.colonne { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 12px; text-align: center; padding: 4px 2px 3px; border: 1.5px solid var(--encre); border-radius: 3px; line-height: 1.1; }
+.grille { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px 9px; margin: 12px 0; touch-action: none; }
+.colonne { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: clamp(9px, 2.9vw, 12px); min-width: 0; hyphens: manual; text-align: center; padding: 4px 2px 3px; border: 1.5px solid var(--encre); border-radius: 3px; line-height: 1.1; }
 .case { aspect-ratio: 1; background: rgba(27,36,81,0.05); border: 1.5px dashed rgba(27,36,81,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
 .tuile { width: 86%; height: 86%; border: 1.5px solid var(--encre); border-radius: 3px; box-shadow: 2px 2px 0 var(--encre); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--encre); cursor: grab; transition: transform 0.15s; position: relative; }
 .tuile span { font-family: "Bowlby One", "Arial Black", Impact, sans-serif; font-size: 20px; line-height: 1; }
