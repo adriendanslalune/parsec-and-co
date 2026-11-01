@@ -22,6 +22,6 @@ illustrations({
   chantier: 3,
   champignon: 3,
   cimetiere: 3,
-  plat: 2,
+  plat: 3,
   dessine: 0
 });
