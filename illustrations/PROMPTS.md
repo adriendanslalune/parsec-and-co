@@ -6,7 +6,7 @@ Pour chaque image : colle le prompt maître dans ChatGPT, puis la description ju
 
 Toutes les images sont à refaire en paysages seuls : les anciennes, avec un explorateur dedans, restent en place jusqu’à ce que leur nouvelle version arrive, puis je les remplace une à une. Les nouveaux mondes (bibliothèque, chantier, champignon, cimetière, plat, dessiné) entrent dans la galaxie avec leur première image.
 
-Refaites en paysages seuls : 48 sur 54 (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`, `tempere`, `tempere-b`, `tempere-c`, `etrange`, `etrange-b`, `etrange-c`, `habite`, `habite-b`, `habite-c`, `bibliotheque`, `bibliotheque-b`, `bibliotheque-c`, `chantier`, `chantier-b`, `chantier-c`, `champignon`, `champignon-b`, `champignon-c`, `cimetiere`, `cimetiere-b`, `cimetiere-c`).
+Refaites en paysages seuls : 50 sur 54 (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`, `tempere`, `tempere-b`, `tempere-c`, `etrange`, `etrange-b`, `etrange-c`, `habite`, `habite-b`, `habite-c`, `bibliotheque`, `bibliotheque-b`, `bibliotheque-c`, `chantier`, `chantier-b`, `chantier-c`, `champignon`, `champignon-b`, `champignon-c`, `cimetiere`, `cimetiere-b`, `cimetiere-c`, `plat`, `plat-b`).
 
 ## Le prompt maître
 
@@ -306,7 +306,7 @@ Le bord du monde : une cascade tombe dans le vide étoilé sans jamais toucher l
 
 `plat-c`
 ```
-Vu d’en dessous, un monde plat posé sur des piliers de pierre immenses qui se perdent dans les étoiles, comme une table cosmique.
+Le bord d’un monde plat vu exactement de profil, à hauteur du sol, comme une coupe de géologue : en haut, une prairie plate dont l’horizon est une ligne parfaitement droite, tracée à la règle ; dessous, la tranche du disque, épaisse, en couches de roche colorées comme un gâteau, avec des racines qui pendent dans le vide étoilé. Au bord, un petit garde-fou en bois et un panneau sans texte. Vue de face, sans aucune perspective plongeante ni contre-plongée : on ne voit ni le dessus ni le dessous du disque, seulement sa tranche.
 ```
 
 ### Monde dessiné
