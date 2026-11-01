@@ -71,12 +71,18 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Le niveau accélère le vaisseau.
 
 ### Interface
-- **Bandeau** pleine largeur en parchemin grillé : Parsec & Co, nom, titre et niveau, barre d'XP, relevé (mondes, objets, distance au centre) avec l'échelle, menu Soute / Guide / Galaxie. Double filet sépia et trait orange décalé en bas.
+- **Bandeau** pleine largeur en parchemin grillé : Parsec & Co, nom, titre et niveau, le grand compteur, barre d'XP, relevé (mondes, objets, distance au centre) avec l'échelle, menu Soute / Guide / Galaxie. Double filet sépia et trait orange décalé en bas.
 - **Carte** : cartographie ancienne sur papier blanc cassé, encre sépia, quadrillage, bords roussis, rose des vents qui pointe vers le centre, galaxie en lavis sépia au dézoom.
 - **Bas d'écran** : le message (papier tramé) et le bouton « Scruter le vide ».
 - **Fenêtres** (fiche, soute, Guide) : page de magazine pulp, se ferment d'un glisser vers le bas ou d'un toucher sur le fond.
 - **Vignette d'expédition** : nocturne, en ligne claire, dessinée en code ; remplacée par l’illustration du monde quand elle existe (ciel en aplats, planète cerclée d'encre, sol au premier plan, l'explorateur minuscule le bras levé).
 - Symboles à l'encre partout (fusée, étoile, planète, caisse, boussole, livre, spirale, antenne, viseur, lune, un par série).
+
+### Le grand compteur
+- La part de la galaxie à l’écoute : la zone qu’écoutent tes ports (la portée du ping, environ 130 al), les recouvrements comptés une fois, rapportée au disque de la galaxie. Un port, c’est environ 0,000 5 %.
+- En gros dans le bandeau, à six décimales, il défile chiffre par chiffre avec un cliquetis à chaque nouveau port.
+- Une jauge sur toute la largeur, un ordre de grandeur à la fois (de 0,0001 % à 0,001 %, puis de 0,001 % à 0,01 %…) : pleine, elle repart sur l’ordre suivant, avec le carillon.
+- Il ne sert à rien acheter et n’a pas de fin. Plus tard, il servira de comparaison entre joueurs.
 
 ### Direction artistique
 - Couleurs : papier #efe6d2, sépia #3b2a1e, brique #b5523b, vert-de-gris #3f8f80, lavande #6f5fae, orange #ef9b4f, rose #e8a99a, encre #1b2451.
@@ -103,7 +109,7 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
    - rares, mystérieux : creux, horloge, miroir, à rebours, écho, vivant, œuf, carte ;
    - légendaires : endormi, fantôme, jardin d’un dieu absent, rêve, à l’envers, le bout de la galaxie.
    Viser aussi plusieurs histoires par type pour les communs fréquents.
-2. **Illustrations** : des paysages seuls, sans personnage ni vaisseau (l’imagination fait le reste, et les personnages faisaient dériver le style vers le dessin animé). Une image par monde visité, plusieurs par type, sans image par scène. Les 36 images actuelles, avec un explorateur dedans, sont à refaire en paysages. Un personnage dessiné une fois sur fond transparent, posé par le jeu, reste possible si on lui trouve un rôle.
+2. **Illustrations** : des paysages seuls, sans personnage ni vaisseau (l’imagination fait le reste, et les personnages faisaient dériver le style vers le dessin animé). Une image par monde visité, plusieurs par type, sans image par scène. Les 36 images actuelles, avec un explorateur dedans, sont à refaire en paysages. Pas de personnage pour l’instant.
 3. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
 4. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.
 5. **Play Store**.

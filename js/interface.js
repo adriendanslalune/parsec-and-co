@@ -36,7 +36,50 @@ function accords(s, objet, trouvaille) {
 }
 function facteurVitesse() { return 1 + 0.15 * niveau(); }
 function gagnerXp(n) { const avant = niveau(); joueur.xp += n; sauver("parsec.joueur", joueur); majHud(); if (niveau() > avant) { carillon(); dire("<b>Promotion.</b> " + joueur.nom + " est désormais <b>" + titre() + "</b>. La Compagnie n’a pas de budget pour une médaille, mais elle y a pensé."); } }
+// ===================== Le grand compteur : la part de la galaxie à l’écoute =====================
+// la zone qu’écoutent tes ports (la portée du ping), les recouvrements comptés une fois, rapportée au disque de la galaxie
+const ECOUTE = PORTEE * 0.8, AIRE_GALAXIE = Math.PI * R_MAX * R_MAX;
+let partCle = "", partValeur = 0, partAffichee = null, partAnim = null;
+function partGalaxie() {
+  const cs = [...colonies.values()], cle = cs.map(c => c.id).join("|");
+  if (cle === partCle) return partValeur;
+  // chaque cercle n’ajoute que ce que les précédents ne couvraient pas : on le mesure sur des points répartis en tournesol
+  const N = 1500, or = Math.PI * (3 - Math.sqrt(5)); let aire = 0;
+  cs.forEach((c, i) => {
+    const voisins = cs.slice(0, i).filter(d => Math.hypot(d.x - c.x, d.y - c.y) < 2 * ECOUTE); let libres = 0;
+    for (let k = 0; k < N; k++) { const r = ECOUTE * Math.sqrt((k + 0.5) / N), a = k * or, x = c.x + r * Math.cos(a), y = c.y + r * Math.sin(a);
+      if (!voisins.some(d => Math.hypot(d.x - x, d.y - y) < ECOUTE)) libres++; }
+    aire += Math.PI * ECOUTE * ECOUTE * libres / N;
+  });
+  partCle = cle; partValeur = aire / AIRE_GALAXIE * 100; return partValeur;
+}
+function fmtPart(p) { const [e, d] = p.toFixed(6).split("."); return Number(e).toLocaleString("fr-FR") + "," + d.replace(/(\d{3})(?=\d)/g, "$1\u202f"); }
+function fmtBorne(p) { return p.toFixed(6).replace(/0+$/, "").replace(/\.$/, "").replace(".", ",") + " %"; }
+function decade(p) { const k = Math.floor(Math.log10(Math.max(p, 1e-9))); return [Math.pow(10, k), Math.pow(10, k + 1)]; }
+function afficherPart(p) {
+  document.getElementById("partNb").textContent = fmtPart(p);
+  const [lo, hi] = decade(p);
+  document.getElementById("partBar").style.width = Math.max(1, (p - lo) / (hi - lo) * 100) + "%";
+  document.getElementById("partMin").textContent = fmtBorne(lo); document.getElementById("partMax").textContent = fmtBorne(hi);
+}
+// le compteur défile chiffre par chiffre jusqu’à la nouvelle valeur, avec un cliquetis ; un nouvel ordre de grandeur sonne le carillon
+function majPart() {
+  const p = partGalaxie();
+  if (partAffichee === null || reduit) { partAffichee = p; afficherPart(p); return; }
+  if (p === partAffichee || (partAnim && partAnim.vers === p)) return;
+  const de = partAffichee, t0 = performance.now(), duree = 1600, palier = decade(p)[0] > decade(de)[0];
+  let dernier = fmtPart(de), tic0 = 0;
+  partAnim = { vers: p };
+  (function pas(t) {
+    if (!partAnim || partAnim.vers !== p) return;
+    const u = Math.min(1, (t - t0) / duree), v = de + (p - de) * (1 - Math.pow(1 - u, 3));
+    const s = fmtPart(v); if (s !== dernier && t - tic0 > 45) { tic(); tic0 = t; } dernier = s;
+    partAffichee = v; afficherPart(v);
+    if (u < 1) requestAnimationFrame(pas); else { partAffichee = p; afficherPart(p); partAnim = null; if (palier) carillon(); }
+  })(t0);
+}
 function majHud() {
+  majPart();
   document.getElementById("nomJ").textContent = joueur.nom || "…";
   document.getElementById("titreJ").textContent = titre() + ", niveau " + (niveau() + 1);
   const n = niveau(), a = PALIERS[n], b = PALIERS[Math.min(n + 1, PALIERS.length - 1)];
