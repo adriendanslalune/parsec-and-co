@@ -1,6 +1,6 @@
 # Les illustrations
 
-Les illustrations montrent les mondes : une image par monde visité, sur toutes ses scènes et sur sa fiche du Guide. Il n’y a pas d’image par scène, l’imagination fait le reste.
+Les illustrations montrent les mondes : une image par monde visité, sur toutes ses scènes et sur sa fiche du Guide. Il n’y a pas d’image par scène, l’imagination fait le reste. Ce sont des paysages seuls, sans personnage ni vaisseau : les images actuelles, faites avec un explorateur dedans, sont à refaire et seront remplacées une à une.
 
 ## Plusieurs images par type
 
@@ -11,7 +11,8 @@ Pour ajouter une image : le fichier ici avec la lettre suivante, et le nombre au
 ## Le format
 
 - Portrait vertical, 2:3, converti en WebP 720 × 1080, qualité 58 : environ 50 à 140 Ko selon le grain.
-- Sur téléphone, la case montre surtout le centre de l’image : le sujet tient dans le tiers central, et l’explorateur jamais dans le quart du bas (l’étiquette du titre le cacherait).
+- Sur téléphone, la case montre surtout le centre de l’image : le sujet tient dans le tiers central, avec un espace dégagé au sol au milieu.
+- Aucun personnage, aucune créature, aucun vaisseau.
 - Aucun texte dans l’image.
 
 ## Les prompts
