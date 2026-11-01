@@ -11,7 +11,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 ## Principes
 
 - **Ce qui marche passe par la main et l'oreille.** Le ping et l'antenne sont les meilleurs moments du jeu parce qu'ils sont tactiles et sonores. Un mécanisme qui se résume à un pourcentage est à refuser.
-- **Simple et satisfaisant.** Pas de gestion, pas de jauges, pas de chaîne de production.
+- **Simple et satisfaisant.** Pas de gestion, pas de jauges de gestion (énergie, nourriture…), pas de chaîne de production.
 - **Une brique à la fois**, testée sur téléphone avant la suivante.
 
 ## Le jeu tel qu'il existe
@@ -115,7 +115,7 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
 5. **Play Store**.
 
 ## Ce qu'on ne fera pas
-- Pas de bâtiments, pas de jauges, pas de chaîne de production.
+- Pas de bâtiments, pas de jauges de gestion, pas de chaîne de production.
 - Pas de durées réelles : les distances réelles servent aux chiffres.
 - Pas de relativité.
 - Pas de combat entre joueurs, pas de vol d'un monde à un joueur actif.
