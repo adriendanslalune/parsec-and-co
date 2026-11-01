@@ -323,19 +323,3 @@ Un paysage dessiné au trait qui s’arrête au milieu d’une colline : au-del�
 ```
 Sur une grande page blanche, une gomme grande comme une maison, usée sur un coin, un crayon géant bien taillé et la trace ronde d’une tasse de café. Le reste est en noir et blanc.
 ```
-
-## Le personnage (facultatif, en attente)
-
-Si on décide de poser un petit explorateur sur les paysages, il est dessiné une seule fois, et c’est le jeu qui le place. Une image par pose, sur fond transparent : `explorateur-debout`, `explorateur-assis`, `explorateur-dos`, `explorateur-court`, `explorateur-allonge`.
-
-```
-Personnage pour un jeu mobile, dans le style de Moebius (Jean Giraud) : ligne claire, trait d’encre fin et régulier, aplats de couleur, peu d’ombres, palette pastel et chaude d’impression pulp des années 50. Un petit explorateur spatial en scaphandre orange, casque rond blanc à visière sombre, petit sac à dos gris ; silhouette simple et un peu allongée, sans visage visible, sans aucun gros yeux ni expression de dessin animé. Personnage seul, entier, centré, vu de plain-pied, sur fond transparent (PNG avec canal alpha), sans ombre portée au sol, sans décor, sans cadre, sans texte. Format carré.
-
-Pose :
-```
-
-- `explorateur-debout` : debout de trois quarts, le bras levé, comme on montre un monde.
-- `explorateur-assis` : assis par terre, les genoux contre la poitrine.
-- `explorateur-dos` : de dos, debout, regardant au loin.
-- `explorateur-court` : en train de courir, de profil.
-- `explorateur-allonge` : allongé sur le dos, un bras en travers du casque, épuisé.
