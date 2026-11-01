@@ -6,7 +6,7 @@ Pour chaque image : colle le prompt maître dans ChatGPT, puis la description ju
 
 Toutes les images sont à refaire en paysages seuls : les anciennes, avec un explorateur dedans, restent en place jusqu’à ce que leur nouvelle version arrive, puis je les remplace une à une. Les nouveaux mondes (bibliothèque, chantier, champignon, cimetière, plat, dessiné) entrent dans la galaxie avec leur première image.
 
-Refaites en paysages seuls : 27 sur 54 (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`).
+Refaites en paysages seuls : 30 sur 54 (`rocheux`, `rocheux-b`, `rocheux-c`, `gazeux`, `gazeux-b`, `gazeux-c`, `desert`, `desert-b`, `desert-c`, `glace`, `glace-b`, `glace-c`, `volcan`, `volcan-b`, `volcan-c`, `toxique`, `toxique-b`, `toxique-c`, `crateres`, `crateres-b`, `crateres-c`, `ocean`, `ocean-b`, `ocean-c`, `jungle`, `jungle-b`, `jungle-c`, `tempere`, `tempere-b`, `tempere-c`).
 
 ## Le prompt maître
 
