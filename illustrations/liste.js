@@ -23,5 +23,5 @@ illustrations({
   champignon: 3,
   cimetiere: 3,
   plat: 3,
-  dessine: 0
+  dessine: 3
 });

@@ -50,8 +50,7 @@ Ton : H2G2 et le Disque-monde, humour et absurde. Dessin : Moebius, ligne claire
 - Chaque type a une fourchette de danger (0 à 5), des couleurs, trois textes du Guide, une histoire de 3 scènes et ses illustrations. Un type n’entre dans la galaxie qu’avec sa première image : on ne garde un monde fantastique que si son illustration est cohérente.
 - Un type = un fichier (`mondes/<type>.js`), lisible sans être développeur.
 - Communs : rocheux, gazeux, désertique, glacé, volcanique, toxique, criblé, océan, jungle, tempéré, étrange, habité.
-- Dans la galaxie : la bibliothèque et le chantier (insolites) ; le champignon, le cimetière de vaisseaux et le monde plat (rares).
-- Écrits, en attente de leur image : dessiné (légendaire).
+- Dans la galaxie : la bibliothèque et le chantier (insolites) ; le champignon, le cimetière de vaisseaux et le monde plat (rares) ; le monde dessiné (légendaire).
 
 ### Les ports
 - Tout monde exploré est un port de la Compagnie : il écoute le vide, il étend le territoire (hachures vert-de-gris sur la carte).
@@ -110,7 +109,7 @@ localStorage, clés `parsec.*` (seed, joueur, decouverts, explores, soute, vol, 
    - rares, mystérieux : creux, horloge, miroir, à rebours, écho, vivant, œuf, carte ;
    - légendaires : endormi, fantôme, jardin d’un dieu absent, rêve, à l’envers, le bout de la galaxie.
    Viser aussi plusieurs histoires par type pour les communs fréquents.
-2. **Illustrations** : des paysages seuls, sans personnage ni vaisseau (l’imagination fait le reste, et les personnages faisaient dériver le style vers le dessin animé). Une image par monde visité, plusieurs par type, sans image par scène. Les 36 images actuelles, avec un explorateur dedans, sont à refaire en paysages. Pas de personnage pour l’instant.
+2. **Illustrations** : des paysages seuls, sans personnage ni vaisseau (l’imagination fait le reste, et les personnages faisaient dériver le style vers le dessin animé). Une image par monde visité, plusieurs par type, sans image par scène. Les 54 images (18 mondes, 3 chacun) sont faites. Reste à en ajouter selon la fréquence des mondes (environ 95 mondes visités avant de revoir une image, soit une centaine d’images pour les communs), et les 20 objets de la soute. Pas de personnage pour l’instant.
 3. **Le carnet d'un explorateur disparu** (nom provisoire Ezra Bloom) : chasse au trésor solo. Des pages trouvées en expédition donnent des indices à croiser ; le monde final est écrit à la main. Anti-divulgâchage : indices et cachette calculés pour chaque joueur, relatifs à ses propres mondes.
 4. **Multijoueur** (avec un serveur, en dernier) : galaxie commune (graine partagée), départ n'importe où, liste des joueurs avec leur position, messages laissés sur les mondes, classement mensuel (jamais cumulé), réputation, colonies fantômes, explorer les mondes des autres. **Le Signal du Centre** : chaque semaine, Sagittarius A* émet ; chaque joueur le mesure depuis ses ports ; les cercles de tous se croisent ; la récompense exige d'avoir mesuré soi-même. Tester avec une centaine de bots avant de trancher la question des départs dispersés.
 5. **Play Store**.
