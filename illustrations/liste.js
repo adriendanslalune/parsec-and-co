@@ -19,7 +19,7 @@ illustrations({
   etrange: 3,
   habite: 3,
   bibliotheque: 3,
-  chantier: 0,
+  chantier: 3,
   champignon: 0,
   cimetiere: 0,
   plat: 0,
