@@ -21,7 +21,7 @@ illustrations({
   bibliotheque: 3,
   chantier: 3,
   champignon: 3,
-  cimetiere: 0,
+  cimetiere: 3,
   plat: 0,
   dessine: 0
 });
